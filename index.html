@@ -4,21 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="uploads/logo.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="preload" as="script" href="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z">
-<link rel="preload" as="script" href="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1">
-<script src="./support.js" defer></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <title>1to1AI | Trackea tus ventas de WhatsApp y optimiza Meta Ads</title>
 <meta name="description" content="Trackea cada venta de WhatsApp y alimenta tu Pixel de Meta automáticamente. Optimiza campañas que antes eran imposibles de medir y baja tu CPL. Solicita acceso." />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 500;font-display:swap;src:url(uploads/fonts/inter-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 500;font-display:swap;src:url(uploads/fonts/jetbrains-mono-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:600 700;font-display:swap;src:url(uploads/fonts/space-grotesk-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 html{scroll-behavior:smooth}
 body{margin:0;background:#F5F8FC;color:#424242;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:#0056CF}a:hover{color:#002F70}
@@ -46,7 +37,8 @@ input,select,textarea{font:inherit}
 {"@type":"Question","name":"¿Cómo se mide el ROAS de campañas que cierran por WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"El ROAS se mide atribuyendo cada venta de WhatsApp al anuncio que la originó: 1to1AI registra el valor de la conversión y lo envía a Meta, que lo cruza con el gasto de la campaña."}},
 {"@type":"Question","name":"¿Cuánto tarda la implementación de 1to1AI?","acceptedAnswer":{"@type":"Answer","text":"La revisión de la solicitud tarda 24 a 48 horas; tras la aprobación, la configuración del evento personalizado y del formulario inteligente se hace el mismo día."}}]}]}
 </script>
-</helmet>
+</head>
+<body>
 <div style="min-height:100vh;background:#F5F8FC;background-image:linear-gradient(90deg,#00132E08 1px,transparent 1px);background-size:calc(100%/6) 100%">
 
 <!-- ============ HEADER ============ -->
@@ -434,32 +426,32 @@ input,select,textarea{font:inherit}
         <li style="display:flex;gap:12px;align-items:flex-start"><span aria-hidden="true" style="flex:none;font-family:'JetBrains Mono',monospace;color:#0056CF">03</span><span style="line-height:1.55">Configuración el mismo día de la aprobación</span></li>
       </ul>
     </div>
-    <form id="accessForm" class="rv" noValidate="{{ true }}" onSubmit="{{ submitForm }}" style="background:#FFFFFF;border:1px solid #D7E3F4;border-radius:24px 24px 24px 4px;padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;box-shadow:0 24px 64px #00132E14">
+    <form id="accessForm" class="rv" novalidate style="background:#FFFFFF;border:1px solid #D7E3F4;border-radius:24px 24px 24px 4px;padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;box-shadow:0 24px 64px #00132E14">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
         <div style="display:flex;flex-direction:column;gap:7px">
           <label for="f-nombre" style="font-size:14px;font-weight:500;color:#00132E">Nombre completo</label>
-          <input id="f-nombre" name="nombre" type="text" required="{{ true }}" autoComplete="name" data-msg="Escribe tu nombre completo." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E" />
+          <input id="f-nombre" name="nombre" type="text" required autocomplete="name" data-msg="Escribe tu nombre completo." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E" />
           <p data-err="nombre" style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#00132E;display:none"></p>
         </div>
         <div style="display:flex;flex-direction:column;gap:7px">
           <label for="f-email" style="font-size:14px;font-weight:500;color:#00132E">Email corporativo</label>
-          <input id="f-email" name="email" type="email" required="{{ true }}" autoComplete="email" data-msg="Escribe un email válido, por ejemplo nombre@tuempresa.com." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E" />
+          <input id="f-email" name="email" type="email" required autocomplete="email" data-msg="Escribe un email válido, por ejemplo nombre@tuempresa.com." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E" />
           <p data-err="email" style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#00132E;display:none"></p>
         </div>
         <div style="display:flex;flex-direction:column;gap:7px">
           <label for="f-empresa" style="font-size:14px;font-weight:500;color:#00132E">Empresa</label>
-          <input id="f-empresa" name="empresa" type="text" required="{{ true }}" autoComplete="organization" data-msg="Indica el nombre de tu empresa." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E" />
+          <input id="f-empresa" name="empresa" type="text" required autocomplete="organization" data-msg="Indica el nombre de tu empresa." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E" />
           <p data-err="empresa" style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#00132E;display:none"></p>
         </div>
         <div style="display:flex;flex-direction:column;gap:7px">
           <label for="f-tel" style="font-size:14px;font-weight:500;color:#00132E">Teléfono con WhatsApp</label>
-          <input id="f-tel" name="telefono" type="tel" required="{{ true }}" autoComplete="tel" data-msg="Escribe un teléfono con WhatsApp, con lada, por ejemplo +52 55 1234 5678." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E" />
+          <input id="f-tel" name="telefono" type="tel" required autocomplete="tel" data-msg="Escribe un teléfono con WhatsApp, con lada, por ejemplo +52 55 1234 5678." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E" />
           <p data-err="telefono" style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#00132E;display:none"></p>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:7px">
         <label for="f-leads" style="font-size:14px;font-weight:500;color:#00132E">Leads mensuales aproximados</label>
-        <select id="f-leads" name="leads" required="{{ true }}" data-msg="Selecciona tu volumen de leads mensuales." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E">
+        <select id="f-leads" name="leads" required data-msg="Selecciona tu volumen de leads mensuales." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E">
           <option value="">Selecciona un rango</option>
           <option value="500-1000">500 – 1,000</option>
           <option value="1000-5000">1,000 – 5,000</option>
@@ -471,7 +463,7 @@ input,select,textarea{font:inherit}
       </div>
       <div style="display:flex;flex-direction:column;gap:7px">
         <label for="f-motivo" style="font-size:14px;font-weight:500;color:#00132E">¿Por qué quieres medir tus ventas de WhatsApp?</label>
-        <textarea id="f-motivo" name="motivo" rows="4" required="{{ true }}" data-msg="Cuéntanos brevemente qué campañas quieres optimizar." style="padding:12px 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E;resize:vertical"></textarea>
+        <textarea id="f-motivo" name="motivo" rows="4" required data-msg="Cuéntanos brevemente qué campañas quieres optimizar." style="padding:12px 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E;resize:vertical"></textarea>
         <p data-err="motivo" style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#00132E;display:none"></p>
       </div>
       <button type="submit" style="min-height:52px;border:none;cursor:pointer;background:#0056CF;color:#FFFFFF;font-weight:500;font-size:16px;border-radius:999px;font-family:'Inter',sans-serif" style-hover="background:#002F70">Enviar solicitud →</button>
@@ -531,13 +523,18 @@ input,select,textarea{font:inherit}
   </div>
 </footer>
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;motionEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;railVisible&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
-class Component extends DCLogic {
-  renderVals() {
-    return { submitForm: (e) => this.handleSubmit(e) };
-  }
-  handleSubmit(e) {
+<script>
+(function () {
+  document.querySelectorAll('[style-hover]').forEach((el) => {
+    const hov = el.getAttribute('style-hover');
+    let prev = null;
+    el.addEventListener('mouseenter', () => { prev = el.getAttribute('style') || ''; el.setAttribute('style', prev + ';' + hov); });
+    el.addEventListener('mouseleave', () => { if (prev !== null) { el.setAttribute('style', prev); prev = null; } });
+  });
+
+  const accessForm = document.getElementById('accessForm');
+  if (accessForm) accessForm.addEventListener('submit', handleSubmit);
+  function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
     const status = document.getElementById('formStatus');
@@ -563,20 +560,19 @@ class Component extends DCLogic {
     status.textContent = '✓ Solicitud recibida. Revisamos tu información y te contactamos en 24–48 h al email que dejaste.';
     form.querySelector('button[type="submit"]').disabled = true;
   }
-  componentDidMount() {
-    const motion = (this.props.motionEnabled ?? true) && !matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const ease = 'cubic-bezier(.16,1,.3,1)';
-    if (this.props.railVisible === false) { const r = document.getElementById('rail'); if (r) r.style.display = 'none'; }
-    const nav = document.getElementById('mainNav');
+
+  const motion = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ease = 'cubic-bezier(.16,1,.3,1)';
+  const nav = document.getElementById('mainNav');
     if (nav && innerWidth >= 900) nav.style.display = 'flex';
 
     const rvs = [...document.querySelectorAll('.rv')];
     if (motion) {
       rvs.forEach((el) => { if (el.getBoundingClientRect().top > innerHeight * 0.92) { el.style.opacity = '0'; el.style.transform = 'translateY(18px)'; el.dataset.hid = '1'; } });
-      this.io = new IntersectionObserver((es) => {
+      const io = new IntersectionObserver((es) => {
         es.forEach((en) => {
           if (!en.isIntersecting) return;
-          const el = en.target; this.io.unobserve(el);
+          const el = en.target; io.unobserve(el);
           if (el.dataset.hid) {
             const d = el.dataset.delay || '0s';
             el.style.transition = 'opacity .5s ' + ease + ' ' + d + ',transform .5s ' + ease + ' ' + d;
@@ -584,7 +580,7 @@ class Component extends DCLogic {
           }
         });
       }, { threshold: 0.12 });
-      rvs.forEach((el) => this.io.observe(el));
+      rvs.forEach((el) => io.observe(el));
     }
 
     const counters = [...document.querySelectorAll('[data-count]')];
@@ -600,15 +596,15 @@ class Component extends DCLogic {
     };
     if (!motion) counters.forEach((el) => { const d = parseInt(el.dataset.decimals || '0', 10); el.textContent = parseFloat(el.dataset.count).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); });
     else {
-      this.ioCnt = new IntersectionObserver((es) => { es.forEach((en) => { if (en.isIntersecting) { runCounter(en.target); this.ioCnt.unobserve(en.target); } }); }, { threshold: 0.6 });
-      counters.forEach((el) => this.ioCnt.observe(el));
+      const ioCnt = new IntersectionObserver((es) => { es.forEach((en) => { if (en.isIntersecting) { runCounter(en.target); ioCnt.unobserve(en.target); } }); }, { threshold: 0.6 });
+      counters.forEach((el) => ioCnt.observe(el));
     }
 
     const spaths = [...document.querySelectorAll('[data-scrollpath]')];
     if (!motion) spaths.forEach((p) => { p.style.strokeDashoffset = '0'; });
     else {
       let ticking = false;
-      this.onScroll = () => {
+      const onScroll = () => {
         if (ticking) return; ticking = true;
         requestAnimationFrame(() => {
           ticking = false;
@@ -619,14 +615,14 @@ class Component extends DCLogic {
           });
         });
       };
-      addEventListener('scroll', this.onScroll, { passive: true });
-      this.onScroll();
+      addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
     }
 
     const logRows = [...document.querySelectorAll('#liveLog .logRow')];
     if (motion && logRows.length) {
       let cur = 0;
-      this.logTimer = setInterval(() => {
+      setInterval(() => {
         const prev = logRows[cur]; cur = (cur + 1) % logRows.length; const next = logRows[cur];
         prev.style.transform = 'translateY(-22px)';
         next.style.transition = 'none'; next.style.transform = 'translateY(22px)';
@@ -641,7 +637,7 @@ class Component extends DCLogic {
     const hdr = document.getElementById('siteHeader');
     const prog = document.getElementById('scrollProgress');
     let hTick = false;
-    this.onHdr = () => {
+    const onHdr = () => {
       if (hTick) return; hTick = true;
       requestAnimationFrame(() => {
         hTick = false; const y = scrollY;
@@ -652,13 +648,13 @@ class Component extends DCLogic {
         }
       });
     };
-    addEventListener('scroll', this.onHdr, { passive: true });
-    this.onHdr();
+    addEventListener('scroll', onHdr, { passive: true });
+    onHdr();
 
     const pill = document.getElementById('railPill');
     const railLinks = [...document.querySelectorAll('[data-rail]')];
     const secIds = ['hero', 'caracteristicas', 'beneficios', 'testimonios', 'contacto'];
-    this.ioRail = new IntersectionObserver((es) => {
+    const ioRail = new IntersectionObserver((es) => {
       es.forEach((en) => {
         if (!en.isIntersecting) return;
         const i = secIds.indexOf(en.target.id); if (i < 0) return;
@@ -673,17 +669,8 @@ class Component extends DCLogic {
         });
       });
     }, { rootMargin: '-40% 0px -55% 0px' });
-    secIds.forEach((id) => { const s = document.getElementById(id); if (s) this.ioRail.observe(s); });
-  }
-  componentWillUnmount() {
-    if (this.io) this.io.disconnect();
-    if (this.ioCnt) this.ioCnt.disconnect();
-    if (this.ioRail) this.ioRail.disconnect();
-    if (this.onScroll) removeEventListener('scroll', this.onScroll);
-    if (this.onHdr) removeEventListener('scroll', this.onHdr);
-    if (this.logTimer) clearInterval(this.logTimer);
-  }
-}
+    secIds.forEach((id) => { const s = document.getElementById(id); if (s) ioRail.observe(s); });
+})();
 </script>
 </body>
 </html>
