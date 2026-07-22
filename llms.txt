@@ -1,0 +1,22 @@
+# 1to1AI
+
+> 1to1AI es un software de atribución que trackea conversaciones de WhatsApp y las envía como eventos de conversión al Pixel de Meta y a la API de Conversiones (CAPI), para que las campañas de Meta Ads se optimicen hacia ventas reales.
+
+Mercado: México y LATAM. Idioma: español de México (es-MX).
+Modelo: acceso por solicitud; revisión en 24–48 horas; requisito de más de 500 leads mensuales.
+
+## Qué hace
+- Crea eventos de conversión personalizados (compra, cotización, cita).
+- Formulario inteligente que se comparte por WhatsApp, email o cualquier canal de venta.
+- Cada respuesta dispara eventos al Pixel de Meta y a CAPI en tiempo real, atribuidos al anuncio de origen.
+- Meta optimiza campañas hacia ventas cerradas por chat, no hacia clics.
+
+## Secciones clave
+- Cómo funciona: https://1to1ai.com/#como-funciona
+- Características: https://1to1ai.com/#caracteristicas
+- Beneficios: https://1to1ai.com/#beneficios
+- Preguntas frecuentes: https://1to1ai.com/#faq
+- Solicitar acceso: https://1to1ai.com/#contacto
+
+## Contacto
+[[PENDIENTE: email de contacto y perfiles sociales]]

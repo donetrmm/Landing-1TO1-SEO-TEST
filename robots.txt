@@ -1,0 +1,24 @@
+# robots.txt — 1to1ai.com
+# Decisión GEO consciente: los crawlers de motores generativos están PERMITIDOS
+# para que ChatGPT, Perplexity, Claude, Gemini y AI Overviews puedan citar la página.
+# Para revocar el permiso a alguno, cambia "Allow: /" por "Disallow: /" en su bloque.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://1to1ai.com/sitemap.xml

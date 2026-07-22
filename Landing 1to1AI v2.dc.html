@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>1to1AI | Trackea tus ventas de WhatsApp y optimiza Meta Ads</title>
+<meta name="description" content="Trackea cada venta de WhatsApp y alimenta tu Pixel de Meta automáticamente. Optimiza campañas que antes eran imposibles de medir y baja tu CPL. Solicita acceso." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F5F8FC;color:#424242;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#0056CF}a:hover{color:#002F70}
+::selection{background:#43C5FF55}
+:focus-visible{outline:3px solid #0056CF;outline-offset:2px;border-radius:6px}
+input,select,textarea{font:inherit}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes lineUp{from{opacity:0;transform:translateY(.6em)}to{opacity:1;transform:none}}
+@keyframes cardIn{from{opacity:0;transform:translateY(44px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 #43C5FF66;opacity:1}50%{box-shadow:0 0 0 9px #43C5FF00;opacity:.75}}
+@keyframes drift{0%{transform:translate(0,0)}50%{transform:translate(4%,-3%) scale(1.06)}100%{transform:translate(0,0)}}
+
+@media(max-width:1023px){#rail{display:none!important}}
+@media(max-width:719px){#procesoSteps svg,#procesoSteps .pconn,#procesoSteps .pdot{display:none!important}#procesoSteps article{width:100%!important}}
+#procesoSteps article{box-sizing:border-box}
+@media(max-width:760px){#heroVisual{min-height:460px}}
+.ghostNum{position:absolute;top:clamp(24px,4vw,56px);right:clamp(8px,3vw,40px);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(120px,18vw,260px);line-height:1;letter-spacing:-0.04em;color:transparent;-webkit-text-stroke:1px #D7E3F4;user-select:none;pointer-events:none}
+
+@media(prefers-reduced-motion:reduce){*{animation-duration:.15s!important;animation-delay:0s!important;transition-duration:.15s!important}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","name":"1to1AI","url":"https://1to1ai.com","logo":"https://1to1ai.com/logo.png","areaServed":["MX","LATAM"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","availableLanguage":["es-MX","en"]}},
+{"@type":"WebSite","name":"1to1AI","url":"https://1to1ai.com","inLanguage":"es-MX"},
+{"@type":"SoftwareApplication","name":"1to1AI","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Software de atribución que trackea conversaciones de WhatsApp y las envía como eventos de conversión al Pixel de Meta y a la API de Conversiones.","offers":{"@type":"Offer","price":"0","priceCurrency":"MXN","description":"Acceso por solicitud, aprobación en 24–48 horas"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cómo trackear ventas de WhatsApp en Meta Ads?","acceptedAnswer":{"@type":"Answer","text":"Se trackean enviando cada conversación como evento de conversión al Pixel de Meta mediante un formulario inteligente: 1to1AI captura la respuesta del cliente y dispara el evento al Pixel y a la API de Conversiones en tiempo real."}},
+{"@type":"Question","name":"¿Se puede alimentar el Pixel de Meta desde WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"Sí. Aunque WhatsApp no ejecuta píxeles, 1to1AI conecta cada conversación con la API de Conversiones de Meta, de modo que las ventas cerradas por chat llegan al Pixel como eventos atribuidos al anuncio original."}},
+{"@type":"Question","name":"¿Qué es la API de Conversiones y para qué sirve?","acceptedAnswer":{"@type":"Answer","text":"La API de Conversiones (CAPI) es la vía de servidor a servidor con la que Meta recibe eventos de conversión sin depender del navegador; sirve para reportar ventas que ocurren fuera del sitio web, como las que cierran por WhatsApp."}},
+{"@type":"Question","name":"¿Cómo se mide el ROAS de campañas que cierran por WhatsApp?","acceptedAnswer":{"@type":"Answer","text":"El ROAS se mide atribuyendo cada venta de WhatsApp al anuncio que la originó: 1to1AI registra el valor de la conversión y lo envía a Meta, que lo cruza con el gasto de la campaña."}},
+{"@type":"Question","name":"¿Cuánto tarda la implementación de 1to1AI?","acceptedAnswer":{"@type":"Answer","text":"La revisión de la solicitud tarda 24 a 48 horas; tras la aprobación, la configuración del evento personalizado y del formulario inteligente se hace el mismo día."}}]}]}
+</script>
+</helmet>
+<div style="min-height:100vh;background:#F5F8FC">
+
+<!-- ===================== HEADER ===================== -->
+<header id="siteHeader" style="position:sticky;top:0;z-index:50;background:#F5F8FCE0;backdrop-filter:blur(12px);border-bottom:1px solid #D7E3F4;transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .3s,background .3s">
+  <div id="scrollProgress" aria-hidden="true" style="position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:linear-gradient(90deg,#0056CF,#0B9EFD);transform:scaleX(0);transform-origin:left"></div>
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px">
+    <a href="#hero" aria-label="1to1AI — inicio" style="display:flex;align-items:center"><img src="uploads/logo.png" alt="Logotipo de 1to1AI" width="118" height="34" style="display:block;height:34px;width:auto" /></a>
+    <nav aria-label="Navegación principal" style="display:none;gap:32px;font-size:14.5px;font-weight:500" id="mainNav">
+      <a href="#caracteristicas" style="color:#424242;text-decoration:none" style-hover="color:#0056CF">Características</a>
+      <a href="#beneficios" style="color:#424242;text-decoration:none" style-hover="color:#0056CF">Beneficios</a>
+      <a href="#testimonios" style="color:#424242;text-decoration:none" style-hover="color:#0056CF">Testimonios</a>
+      <a href="#contacto" style="color:#424242;text-decoration:none" style-hover="color:#0056CF">Contacto</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:14px">
+      <div role="group" aria-label="Idioma" style="display:flex;border:1px solid #D7E3F4;border-radius:999px;overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:12px">
+        <a href="#hero" aria-current="true" style="padding:8px 12px;background:#00132E;color:#FFFFFF;text-decoration:none">ES</a>
+        <a href="#hero" title="Versión en inglés — próximamente" style="padding:8px 12px;color:#424242;text-decoration:none">EN</a>
+      </div>
+      <a href="#contacto" style="display:inline-flex;align-items:center;gap:8px;background:#0056CF;color:#FFFFFF;text-decoration:none;font-weight:500;font-size:14.5px;padding:11px 22px;border-radius:999px" style-hover="background:#002F70">Solicitar acceso<span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== RAIL ===================== -->
+<nav id="rail" aria-label="Secciones" style="position:fixed;left:18px;top:50%;transform:translateY(-50%);z-index:40;background:#FFFFFF;border:1px solid #D7E3F4;border-radius:999px;padding:8px;display:flex;flex-direction:column;gap:8px;box-shadow:0 2px 8px #00132E14">
+  <div id="railPill" aria-hidden="true" style="position:absolute;left:8px;top:8px;width:40px;height:40px;border-radius:999px;background:#0056CF;transition:transform .4s cubic-bezier(.16,1,.3,1)"></div>
+  <a href="#hero" data-rail="0" aria-label="Inicio" style="position:relative;width:40px;height:40px;display:grid;place-items:center;color:#FFFFFF;border-radius:999px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11l9-8 9 8v9a2 2 0 0 1-2 2h-4v-7h-6v7H5a2 2 0 0 1-2-2z"></path></svg></a>
+  <a href="#caracteristicas" data-rail="1" aria-label="Características" style="position:relative;width:40px;height:40px;display:grid;place-items:center;color:#424242;border-radius:999px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.5"></circle></svg></a>
+  <a href="#beneficios" data-rail="2" aria-label="Beneficios" style="position:relative;width:40px;height:40px;display:grid;place-items:center;color:#424242;border-radius:999px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20v-6M12 20V8M20 20V4"></path></svg></a>
+  <a href="#testimonios" data-rail="3" aria-label="Testimonios" style="position:relative;width:40px;height:40px;display:grid;place-items:center;color:#424242;border-radius:999px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8 8 0 1 1-3.6-6.7L21 4l-.9 3.4A8 8 0 0 1 21 12z"></path></svg></a>
+  <a href="#contacto" data-rail="4" aria-label="Contacto" style="position:relative;width:40px;height:40px;display:grid;place-items:center;color:#424242;border-radius:999px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></a>
+</nav>
+
+<main>
+<!-- ===================== 1 · HERO ===================== -->
+<section id="hero" aria-labelledby="h1" style="position:relative;overflow:hidden;background:#00132E">
+  <div aria-hidden="true" style="position:absolute;inset:-20%;background:radial-gradient(42% 48% at 68% 32%, #0B9EFD3D, transparent 70%),radial-gradient(36% 44% at 82% 70%, #43C5FF24, transparent 70%),radial-gradient(34% 40% at 8% 90%, #0056CF4D, transparent 70%);animation:drift 26s ease-in-out infinite"></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;background-image:radial-gradient(#43C5FF21 1px, transparent 1px);background-size:26px 26px;mask-image:radial-gradient(70% 70% at 65% 35%, #000, transparent)"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;padding:clamp(56px,7vw,104px) clamp(20px,4vw,48px) clamp(72px,8vw,120px);display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:clamp(32px,5vw,64px);align-items:center">
+    <div style="max-width:620px">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;font-weight:500;color:#43C5FF;margin:0 0 22px;display:flex;align-items:center;gap:10px;animation:rise .5s cubic-bezier(.16,1,.3,1) .05s both"><span aria-hidden="true" style="width:26px;height:1px;background:#43C5FF;display:inline-block"></span>SOFTWARE EXCLUSIVO</p>
+      <h1 id="h1" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.035em;font-size:clamp(42px,5.5vw,78px);line-height:1.04;color:#FFFFFF;margin:0 0 24px;text-wrap:balance">
+        <span style="display:block;overflow:hidden"><span style="display:block;animation:lineUp .7s cubic-bezier(.16,1,.3,1) .15s both">Convierte cada conversación</span></span>
+        <span style="display:block;overflow:hidden"><span style="display:block;color:#43C5FF;animation:lineUp .7s cubic-bezier(.16,1,.3,1) .24s both">de WhatsApp en datos</span></span>
+        <span style="display:block;overflow:hidden"><span style="display:block;animation:lineUp .7s cubic-bezier(.16,1,.3,1) .33s both">que optimizan tus campañas</span></span>
+      </h1>
+      <p style="font-size:17px;line-height:1.6;max-width:52ch;margin:0 0 16px;color:#D7E3F4;animation:rise .6s cubic-bezier(.16,1,.3,1) .45s both">Trackea cada venta de WhatsApp con precisión. Alimenta tu pixel de Meta automáticamente y optimiza campañas que antes eran imposibles de medir.</p>
+      <p style="font-size:13.5px;line-height:1.7;max-width:52ch;margin:0 0 32px;color:#D7E3F4;opacity:.78;border-left:2px solid #0B9EFD;padding-left:18px;animation:rise .6s cubic-bezier(.16,1,.3,1) .5s both">1to1AI es un software de atribución que trackea conversaciones de WhatsApp y las envía como eventos de conversión al Pixel de Meta y a la API de Conversiones.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;animation:rise .6s cubic-bezier(.16,1,.3,1) .55s both">
+        <a href="#contacto" id="ctaHero" style="display:inline-flex;align-items:center;gap:12px;background:#0B9EFD;color:#00132E;text-decoration:none;font-weight:500;font-size:16px;padding:15px 26px;border-radius:999px;transition:transform .25s cubic-bezier(.16,1,.3,1),background .2s" style-hover="background:#43C5FF">Solicitar acceso<span aria-hidden="true" style="display:grid;place-items:center;width:26px;height:26px;border-radius:999px;background:#00132E1F;transition:transform .3s cubic-bezier(.16,1,.3,1)" class="ctaArrow">→</span></a>
+        <a href="#como-funciona" style="display:inline-flex;align-items:center;gap:10px;color:#FFFFFF;text-decoration:none;font-weight:500;font-size:16px;padding:15px 26px;border-radius:999px;border:1px solid #FFFFFF33;background:transparent" style-hover="border-color:#43C5FF">Ver cómo funciona</a>
+      </div>
+    </div>
+    <div id="heroVisual" style="position:relative;min-height:520px" aria-label="Dashboard de 1to1AI: métricas de campañas alimentadas por conversaciones de WhatsApp" role="img">
+      <div data-depth="6" style="position:absolute;top:2%;left:0;width:min(240px,46%)"><div style="animation:cardIn .7s cubic-bezier(.16,1,.3,1) .7s both;background:#FFFFFF;border:1px solid #D7E3F4;border-radius:24px 24px 4px 24px;padding:20px 22px;box-shadow:0 24px 64px #00132E80">
+        <p style="margin:0 0 6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#424242">ROAS</p>
+        <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:38px;letter-spacing:-0.02em;color:#00132E;font-variant-numeric:tabular-nums">4.2x</p>
+        <p style="margin:6px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#0056CF;font-variant-numeric:tabular-nums">▲ +127%</p>
+      </div></div>
+      <div data-depth="10" style="position:absolute;top:14%;right:0;width:min(220px,46%)"><div style="animation:cardIn .7s cubic-bezier(.16,1,.3,1) .8s both;background:#FFFFFF0D;backdrop-filter:blur(6px);border:1px solid #FFFFFF29;border-radius:24px 24px 4px 24px;padding:20px 22px;box-shadow:0 24px 64px #00132E3D">
+        <p style="margin:0 0 6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#43C5FF">CONVERSIONES</p>
+        <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:34px;letter-spacing:-0.02em;color:#FFFFFF;font-variant-numeric:tabular-nums">1,247</p>
+        <p style="margin:6px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#43C5FF;font-variant-numeric:tabular-nums">▲ +89%</p>
+      </div></div>
+      <div data-depth="8" style="position:absolute;top:41%;left:0;width:min(300px,72%)"><div style="animation:cardIn .7s cubic-bezier(.16,1,.3,1) .9s both;background:#FFFFFF;border:1px solid #D7E3F4;border-radius:24px 24px 24px 4px;padding:18px 20px;box-shadow:0 24px 64px #00132E80">
+        <div style="display:flex;align-items:center;gap:12px">
+          <span aria-hidden="true" style="width:38px;height:38px;border-radius:999px;background:#F5F8FC;border:1px solid #D7E3F4;display:grid;place-items:center;color:#0056CF"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a8.5 8.5 0 0 1-12.4 7.6L4 21l1.5-4.4A8.5 8.5 0 1 1 21 12z"></path></svg></span>
+          <span aria-hidden="true" style="flex:1;height:1px;background:repeating-linear-gradient(90deg,#0B9EFD 0 6px,transparent 6px 11px)"></span>
+          <span aria-hidden="true" style="width:38px;height:38px;border-radius:999px;background:#F5F8FC;border:1px solid #D7E3F4;display:grid;place-items:center;color:#0056CF"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M9 12h6M12 9v6"></path></svg></span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px">
+          <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#424242">WhatsApp → Pixel de Meta</p>
+          <p style="margin:0;display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#0056CF"><span aria-hidden="true" style="width:8px;height:8px;border-radius:999px;background:#0B9EFD;animation:pulse 1.8s ease-in-out 1.4s infinite"></span>LIVE</p>
+        </div>
+      </div></div>
+      <div data-depth="12" style="position:absolute;top:66%;right:6%;width:min(190px,46%)"><div style="animation:cardIn .7s cubic-bezier(.16,1,.3,1) 1s both;background:#FFFFFF;border:1px solid #D7E3F4;border-radius:24px 24px 4px 24px;padding:18px 20px;box-shadow:0 24px 64px #00132E80">
+        <p style="margin:0 0 6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#424242">LEADS</p>
+        <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;letter-spacing:-0.02em;color:#00132E;font-variant-numeric:tabular-nums">3,891</p>
+        <p style="margin:4px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#0056CF;font-variant-numeric:tabular-nums">▲ +156%</p>
+      </div></div>
+      <div data-depth="5" style="position:absolute;top:74%;left:12%;width:min(170px,42%)"><div style="animation:cardIn .7s cubic-bezier(.16,1,.3,1) 1.1s both;background:#FFFFFF0D;backdrop-filter:blur(6px);border:1px solid #FFFFFF29;border-radius:24px 24px 4px 24px;padding:18px 20px;box-shadow:0 24px 64px #00132E3D">
+        <p style="margin:0 0 6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#43C5FF">CPL</p>
+        <p style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;letter-spacing:-0.02em;color:#FFFFFF;font-variant-numeric:tabular-nums">$2.40</p>
+        <p style="margin:4px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#43C5FF;font-variant-numeric:tabular-nums">▼ −43%</p>
+      </div></div>
+    </div>
+  </div>
+
+  <div aria-hidden="true" style="position:relative;border-top:1px solid #FFFFFF1A;background:#00132E">
+    <div style="max-width:1240px;margin:0 auto;padding:16px clamp(20px,4vw,48px);display:flex;align-items:center;gap:24px;font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums">
+      <p style="margin:0;display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;color:#43C5FF;flex:none"><span style="width:7px;height:7px;border-radius:999px;background:#0B9EFD;animation:pulse 1.8s ease-in-out infinite"></span>ATTRIBUTION_LOG</p>
+      <div id="liveLog" style="position:relative;flex:1;height:20px;overflow:hidden">
+        <p class="logRow" style="position:absolute;inset:0;margin:0;font-size:12.5px;color:#D7E3F4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .5s"><span style="color:#43C5FF">✓</span> evento: compra · atribuido → ad_7231 · CAPI 0.4s</p>
+        <p class="logRow" style="position:absolute;inset:0;margin:0;font-size:12.5px;color:#D7E3F4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transform:translateY(22px);opacity:0;transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .5s"><span style="color:#43C5FF">✓</span> evento: cita_agendada · atribuido → ad_1088 · CAPI 0.3s</p>
+        <p class="logRow" style="position:absolute;inset:0;margin:0;font-size:12.5px;color:#D7E3F4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transform:translateY(22px);opacity:0;transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .5s"><span style="color:#43C5FF">✓</span> evento: cotización · atribuido → ad_5512 · CAPI 0.5s</p>
+        <p class="logRow" style="position:absolute;inset:0;margin:0;font-size:12.5px;color:#D7E3F4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transform:translateY(22px);opacity:0;transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .5s"><span style="color:#43C5FF">✓</span> evento: compra · valor $1,890 MXN → Pixel de Meta</p>
+      </div>
+      <p style="margin:0;font-size:11px;letter-spacing:.12em;color:#FFFFFF99;flex:none">0 preguntas hechas</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 2 · PROBLEMA ===================== -->
+<section id="problema" aria-labelledby="h-problema" style="position:relative;overflow:hidden;background:#FFFFFF;border-top:1px solid #D7E3F4;border-bottom:1px solid #D7E3F4">
+  <span class="ghostNum" aria-hidden="true">02</span>
+  <div style="position:relative;max-width:1240px;margin:0 auto;padding:clamp(88px,9vw,132px) clamp(20px,4vw,48px)">
+    <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 44px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#0056CF;font-weight:500">/02</span><span style="font-weight:500;color:#00132E">DIAGNÓSTICO</span><span aria-hidden="true" style="flex:1;height:1px;background:#D7E3F4"></span><span style="color:#424242">02 — 10</span></div>
+    <h2 id="h-problema" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.035em;font-size:clamp(38px,4.8vw,66px);line-height:1.05;color:#00132E;margin:0 0 18px;max-width:18ch;text-wrap:balance">¿Cansado de campañas a ciegas?</h2>
+    <p class="rv" style="max-width:62ch;line-height:1.6;margin:0 0 52px">Cuando una venta cierra por WhatsApp, Meta nunca se entera. Sin eventos de conversión, el algoritmo no aprende qué anuncio funciona, el pixel se queda sin señal y el costo por lead sube mes tras mes. Estas son las cuatro fallas que 1to1AI detecta en casi toda cuenta que vende por chat.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:#D7E3F4;border:1px solid #D7E3F4;border-radius:48px 16px 48px 16px;overflow:hidden">
+      <article class="rv" style="background:#FFFFFF;padding:34px 32px">
+        <p style="margin:0 0 14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#0056CF">F-01 · SIN_ATRIBUCIÓN</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;letter-spacing:-0.02em;color:#00132E;margin:0 0 10px">Vendes por WhatsApp pero Meta no sabe qué funciona</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6">La venta ocurre en el chat, fuera del alcance del pixel. Para Meta, ese anuncio nunca convirtió.</p>
+      </article>
+      <article class="rv" data-delay=".07s" style="background:#FFFFFF;padding:34px 32px">
+        <p style="margin:0 0 14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#0056CF">F-02 · SIN_DATOS</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;letter-spacing:-0.02em;color:#00132E;margin:0 0 10px">Tus campañas no se optimizan porque no hay datos de conversión</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6">El algoritmo optimiza hacia lo que puede medir. Si no recibe eventos, optimiza hacia clics — no hacia ventas.</p>
+      </article>
+      <article class="rv" data-delay=".14s" style="background:#FFFFFF;padding:34px 32px">
+        <p style="margin:0 0 14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#0056CF">F-03 · ATRIBUCIÓN_MANUAL</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;letter-spacing:-0.02em;color:#00132E;margin:0 0 10px">Pierdes tiempo preguntando "¿cómo nos conociste?"</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6">La memoria del cliente no es un sistema de atribución. Cada respuesta imprecisa contamina tus reportes.</p>
+      </article>
+      <article class="rv" data-delay=".21s" style="background:#FFFFFF;padding:34px 32px">
+        <p style="margin:0 0 14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#0056CF">F-04 · PIXEL_SIN_SEÑAL</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;letter-spacing:-0.02em;color:#00132E;margin:0 0 10px">Tu pixel está muerto y tu CPL se va al cielo</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6">Un pixel sin eventos encarece cada lead: pagas por audiencias frías que Meta no puede refinar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3 · PROCESO ===================== -->
+<section id="como-funciona" aria-labelledby="h-proceso" style="position:relative">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(88px,9vw,132px) clamp(20px,4vw,48px)">
+    <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 44px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#0056CF;font-weight:500">/03</span><span style="font-weight:500;color:#00132E">CÓMO FUNCIONA</span><span aria-hidden="true" style="flex:1;height:1px;background:#D7E3F4"></span><span style="color:#424242">03 — 10</span></div>
+    <h2 id="h-proceso" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.03em;font-size:clamp(32px,3.8vw,54px);line-height:1.08;color:#00132E;margin:0 auto 16px;max-width:24ch;text-align:center;text-wrap:balance">Trackea cada venta como si fuera en tu sitio web</h2>
+    <p class="rv" style="max-width:62ch;line-height:1.6;margin:0 auto 64px;text-align:center">El proceso completo toma cuatro pasos: se define un evento personalizado, se comparte un formulario inteligente por WhatsApp, cada respuesta alimenta el Pixel de Meta vía API de Conversiones en tiempo real, y las campañas comienzan a optimizarse hacia ventas reales.</p>
+    <div id="procesoSteps" style="position:relative;max-width:880px;margin:0 auto">
+      <svg aria-hidden="true" style="position:absolute;left:50%;top:0;transform:translateX(-50%);width:4px;height:100%;overflow:visible" viewBox="0 0 4 100" preserveAspectRatio="none">
+        <path id="procesoPath" data-scrollpath="1" d="M2,0 V100" fill="none" stroke="#0B9EFD" stroke-width="2" vector-effect="non-scaling-stroke" pathLength="1" style="stroke-dasharray:1;stroke-dashoffset:1"></path>
+      </svg>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:clamp(40px,5vw,72px)">
+        <li class="rv" style="position:relative;display:flex;justify-content:flex-start"><span class="pconn" aria-hidden="true" style="position:absolute;top:50%;left:min(420px,calc(50% - 36px));right:calc(50% - 1px);height:2px;background:#D7E3F4"></span><span class="pdot" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:999px;background:#0B9EFD;border:3px solid #F5F8FC"></span><article style="position:relative;width:min(420px,calc(50% - 36px));background:#FFFFFF;border:1px solid #D7E3F4;border-radius:24px 4px 24px 24px;padding:30px 32px;box-shadow:0 2px 8px #00132E14">
+          <p style="margin:0 0 12px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#0056CF;font-variant-numeric:tabular-nums">01</p>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;letter-spacing:-0.02em;color:#00132E;margin:0 0 8px">Crea tu evento personalizado</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6">Define qué quieres trackear: compra, cotización, cita agendada.</p>
+        </article></li>
+        <li class="rv" style="position:relative;display:flex;justify-content:flex-end"><span class="pconn" aria-hidden="true" style="position:absolute;top:50%;left:calc(50% - 1px);right:min(420px,calc(50% - 36px));height:2px;background:#D7E3F4"></span><span class="pdot" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:999px;background:#0B9EFD;border:3px solid #F5F8FC"></span><article style="position:relative;width:min(420px,calc(50% - 36px));background:#FFFFFF;border:1px solid #D7E3F4;border-radius:4px 24px 24px 24px;padding:30px 32px;box-shadow:0 2px 8px #00132E14">
+          <p style="margin:0 0 12px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#0056CF;font-variant-numeric:tabular-nums">02</p>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;letter-spacing:-0.02em;color:#00132E;margin:0 0 8px">Comparte tu formulario inteligente</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6">Envíalo por WhatsApp, email o donde vendas. Sin fricción para el cliente.</p>
+        </article></li>
+        <li class="rv" style="position:relative;display:flex;justify-content:flex-start"><span class="pconn" aria-hidden="true" style="position:absolute;top:50%;left:min(420px,calc(50% - 36px));right:calc(50% - 1px);height:2px;background:#D7E3F4"></span><span class="pdot" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:999px;background:#0B9EFD;border:3px solid #F5F8FC"></span><article style="position:relative;width:min(420px,calc(50% - 36px));background:#FFFFFF;border:1px solid #D7E3F4;border-radius:24px 4px 24px 24px;padding:30px 32px;box-shadow:0 2px 8px #00132E14">
+          <p style="margin:0 0 12px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#0056CF;font-variant-numeric:tabular-nums">03</p>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;letter-spacing:-0.02em;color:#00132E;margin:0 0 8px">Pixel alimentado automáticamente</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6">Cada respuesta envía eventos al Pixel y a CAPI en tiempo real.</p>
+        </article></li>
+        <li class="rv" style="position:relative;display:flex;justify-content:flex-end"><span class="pconn" aria-hidden="true" style="position:absolute;top:50%;left:calc(50% - 1px);right:min(420px,calc(50% - 36px));height:2px;background:#D7E3F4"></span><span class="pdot" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:999px;background:#43C5FF;border:3px solid #F5F8FC;box-shadow:0 0 16px #43C5FF88"></span><article style="position:relative;width:min(420px,calc(50% - 36px));background:#00132E;border-radius:4px 24px 24px 24px;padding:30px 32px;box-shadow:0 24px 64px #00132E3D">
+          <p style="margin:0 0 12px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#43C5FF;font-variant-numeric:tabular-nums">04</p>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;letter-spacing:-0.02em;color:#FFFFFF;margin:0 0 8px">Campañas que se optimizan solas</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#F5F8FC">Meta ahora sabe qué anuncios generan ventas reales — y les asigna el presupuesto.</p>
+        </article></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 4 · BANDA OSCURA ===================== -->
+<section id="caracteristicas" aria-labelledby="h-feat" style="padding:0 clamp(16px,3vw,40px)">
+  <div id="banda" style="max-width:1280px;margin:0 auto;background:#00132E;border-radius:88px 24px 88px 24px;padding:clamp(56px,6vw,88px) clamp(28px,5vw,72px)">
+    <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 44px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#43C5FF;font-weight:500">/04</span><span style="font-weight:500;color:#FFFFFF">CARACTERÍSTICAS</span><span aria-hidden="true" style="flex:1;height:1px;background:#FFFFFF26"></span><span style="color:#D7E3F4">04 — 10</span></div>
+    <h2 id="h-feat" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.03em;font-size:clamp(28px,3.2vw,42px);line-height:1.1;color:#FFFFFF;margin:0 0 48px;max-width:22ch">Todo lo que necesitas para optimizar</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:40px 32px">
+      <div class="rv">
+        <p aria-hidden="true" style="margin:0;display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#43C5FF;background:#FFFFFF0D;border:1px solid #FFFFFF1F;border-radius:10px 10px 10px 3px;padding:10px 14px;font-variant-numeric:tabular-nums"><span style="color:#0B9EFD">▸</span>evento → Pixel/CAPI <span style="color:#FFFFFF">✓ 0.4s</span></p>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;letter-spacing:.01em;color:#FFFFFF;margin:18px 0 8px;text-transform:uppercase">Eventos de atribución automáticos</h3>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:#D7E3F4">Cada conversación se convierte en un evento de conversión sin trabajo manual.</p>
+      </div>
+      <div class="rv" data-delay=".07s">
+        <p aria-hidden="true" style="margin:0;display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#43C5FF;background:#FFFFFF0D;border:1px solid #FFFFFF1F;border-radius:10px 10px 10px 3px;padding:10px 14px;font-variant-numeric:tabular-nums"><span style="color:#0B9EFD">▸</span>optimizar: ventas_reales <span style="color:#FFFFFF">▲</span></p>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;letter-spacing:.01em;color:#FFFFFF;margin:18px 0 8px;text-transform:uppercase">Optimización real para WhatsApp</h3>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:#D7E3F4">Meta optimiza hacia ventas cerradas por chat, no hacia clics en el anuncio.</p>
+      </div>
+      <div class="rv" data-delay=".14s">
+        <p aria-hidden="true" style="margin:0;display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#43C5FF;background:#FFFFFF0D;border:1px solid #FFFFFF1F;border-radius:10px 10px 10px 3px;padding:10px 14px;font-variant-numeric:tabular-nums"><span style="color:#0B9EFD">▸</span>ai.form → dato_correcto <span style="color:#FFFFFF">✓</span></p>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;letter-spacing:.01em;color:#FFFFFF;margin:18px 0 8px;text-transform:uppercase">IA que potencia tus ventas</h3>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:#D7E3F4">Los formularios se adaptan a cada conversación para capturar el dato correcto.</p>
+      </div>
+      <div class="rv" data-delay=".21s">
+        <p aria-hidden="true" style="margin:0;display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#43C5FF;background:#FFFFFF0D;border:1px solid #FFFFFF1F;border-radius:10px 10px 10px 3px;padding:10px 14px;font-variant-numeric:tabular-nums"><span style="color:#0B9EFD">▸</span><span style="text-decoration:line-through;text-decoration-color:#0B9EFD;opacity:.75">"¿cómo nos conociste?"</span><span style="color:#FFFFFF">obsoleto</span></p>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;letter-spacing:.01em;color:#FFFFFF;margin:18px 0 8px;text-transform:uppercase">Adiós a los preguntones</h3>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:#D7E3F4">Nadie vuelve a preguntar "¿cómo nos conociste?": la atribución ya está hecha.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 5 · BENEFICIOS ===================== -->
+<section id="beneficios" aria-labelledby="h-benef">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(88px,9vw,132px) clamp(20px,4vw,48px)">
+    <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 44px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#0056CF;font-weight:500">/05</span><span style="font-weight:500;color:#00132E">BENEFICIOS</span><span aria-hidden="true" style="flex:1;height:1px;background:#D7E3F4"></span><span style="color:#424242">05 — 10</span></div>
+    <h2 id="h-benef" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.03em;font-size:clamp(32px,3.8vw,54px);line-height:1.08;color:#00132E;margin:0 0 18px;max-width:20ch">Un dato preciso le sirve a dos equipos</h2>
+    <p class="rv" style="max-width:62ch;line-height:1.6;margin:0 0 52px">Marketing recupera la atribución que WhatsApp le quitaba; ventas deja de hacer trabajo de encuestador. El mismo evento de conversión alimenta los reportes de ambos.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px">
+      <article class="rv" style="background:#FFFFFF;border:1px solid #D7E3F4;border-radius:48px 16px 16px 16px;padding:38px 36px">
+        <p style="margin:0 0 22px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;color:#0056CF">PARA MARKETING</p>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px">
+          <li style="display:flex;gap:12px;align-items:flex-start"><span aria-hidden="true" style="flex:none;width:22px;height:22px;border-radius:6px;background:#0056CF;color:#FFFFFF;display:grid;place-items:center;font-size:12px;margin-top:2px">✓</span><span style="line-height:1.55">Datos precisos de conversión, evento por evento</span></li>
+          <li style="display:flex;gap:12px;align-items:flex-start"><span aria-hidden="true" style="flex:none;width:22px;height:22px;border-radius:6px;background:#0056CF;color:#FFFFFF;display:grid;place-items:center;font-size:12px;margin-top:2px">✓</span><span style="line-height:1.55">Campañas que realmente se optimizan</span></li>
+          <li style="display:flex;gap:12px;align-items:flex-start"><span aria-hidden="true" style="flex:none;width:22px;height:22px;border-radius:6px;background:#0056CF;color:#FFFFFF;display:grid;place-items:center;font-size:12px;margin-top:2px">✓</span><span style="line-height:1.55">Menor CPL y mayor ROAS</span></li>
+          <li style="display:flex;gap:12px;align-items:flex-start"><span aria-hidden="true" style="flex:none;width:22px;height:22px;border-radius:6px;background:#0056CF;color:#FFFFFF;display:grid;place-items:center;font-size:12px;margin-top:2px">✓</span><span style="line-height:1.55">Reportes en tiempo real</span></li>
+        </ul>
+      </article>
+      <article class="rv" data-delay=".1s" style="background:#FFFFFF;border:1px solid #D7E3F4;border-radius:16px 48px 16px 16px;padding:38px 36px">
+        <p style="margin:0 0 22px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;color:#0056CF">PARA VENTAS</p>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px">
+          <li style="display:flex;gap:12px;align-items:flex-start"><span aria-hidden="true" style="flex:none;width:22px;height:22px;border-radius:6px;background:#0056CF;color:#FFFFFF;display:grid;place-items:center;font-size:12px;margin-top:2px">✓</span><span style="line-height:1.55">Formularios listos para enviar</span></li>
+          <li style="display:flex;gap:12px;align-items:flex-start"><span aria-hidden="true" style="flex:none;width:22px;height:22px;border-radius:6px;background:#0056CF;color:#FFFFFF;display:grid;place-items:center;font-size:12px;margin-top:2px">✓</span><span style="line-height:1.55">Sin preguntas incómodas al cliente</span></li>
+          <li style="display:flex;gap:12px;align-items:flex-start"><span aria-hidden="true" style="flex:none;width:22px;height:22px;border-radius:6px;background:#0056CF;color:#FFFFFF;display:grid;place-items:center;font-size:12px;margin-top:2px">✓</span><span style="line-height:1.55">Proceso de venta más fluido</span></li>
+          <li style="display:flex;gap:12px;align-items:flex-start"><span aria-hidden="true" style="flex:none;width:22px;height:22px;border-radius:6px;background:#0056CF;color:#FFFFFF;display:grid;place-items:center;font-size:12px;margin-top:2px">✓</span><span style="line-height:1.55">Más conversiones al final del embudo</span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6 · ANTES / DESPUÉS ===================== -->
+<section id="antes-despues" aria-labelledby="h-avd" style="position:relative;overflow:hidden;background:#FFFFFF;border-top:1px solid #D7E3F4;border-bottom:1px solid #D7E3F4">
+  <span class="ghostNum" aria-hidden="true">06</span>
+  <div style="position:relative;max-width:1240px;margin:0 auto;padding:clamp(88px,9vw,132px) clamp(20px,4vw,48px)">
+    <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 44px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#0056CF;font-weight:500">/06</span><span style="font-weight:500;color:#00132E">ANTES VS DESPUÉS</span><span aria-hidden="true" style="flex:1;height:1px;background:#D7E3F4"></span><span style="color:#424242">06 — 10</span></div>
+    <h2 id="h-avd" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.03em;font-size:clamp(32px,3.8vw,54px);line-height:1.08;color:#00132E;margin:0 auto 64px;max-width:24ch;text-align:center;text-wrap:balance">El mismo embudo, con y sin datos</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,4vw,56px)">
+      <div>
+        <p class="rv" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;color:#424242;margin:0 0 26px">ANTES · SIN 1TO1AI</p>
+        <div style="position:relative;padding-left:44px">
+          <svg aria-hidden="true" style="position:absolute;left:11px;top:10px;height:calc(100% - 60px);width:4px;overflow:visible" viewBox="0 0 4 100" preserveAspectRatio="none"><path d="M2,0 V100" fill="none" stroke="#424242" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="5 7" vector-effect="non-scaling-stroke"></path></svg>
+          <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px">
+            <li class="rv" style="position:relative"><span aria-hidden="true" style="position:absolute;left:-40px;top:8px;width:14px;height:14px;border-radius:999px;border:2px solid #424242;background:#FFFFFF;opacity:.55"></span><p style="margin:0;font-weight:500;color:#424242">Tráfico de Meta Ads</p></li>
+            <li class="rv" data-delay=".06s" style="position:relative"><span aria-hidden="true" style="position:absolute;left:-40px;top:8px;width:14px;height:14px;border-radius:999px;border:2px solid #424242;background:#FFFFFF;opacity:.55"></span><p style="margin:0;font-weight:500;color:#424242">El lead escribe por WhatsApp</p></li>
+            <li class="rv" data-delay=".12s" style="position:relative"><span aria-hidden="true" style="position:absolute;left:-40px;top:8px;width:14px;height:14px;border-radius:999px;border:2px solid #424242;background:#FFFFFF;opacity:.55"></span><p style="margin:0;font-weight:500;color:#424242">Vendes en el chat</p></li>
+            <li class="rv" data-delay=".18s" style="position:relative"><span aria-hidden="true" style="position:absolute;left:-40px;top:8px;width:14px;height:14px;border-radius:999px;border:2px solid #424242;background:#FFFFFF;opacity:.55"></span><p style="margin:0;font-weight:500;color:#424242">Meta no se entera de nada</p></li>
+            <li class="rv" data-delay=".24s" style="position:relative"><span aria-hidden="true" style="position:absolute;left:-40px;top:8px;width:14px;height:14px;border-radius:999px;border:2px solid #424242;background:#FFFFFF;opacity:.55"></span><p style="margin:0;font-weight:500;color:#424242">Las campañas no mejoran</p></li>
+            <li class="rv" data-delay=".3s" style="position:relative"><span aria-hidden="true" style="position:absolute;left:-43px;top:5px;font-family:'JetBrains Mono',monospace;font-size:16px;color:#424242;opacity:.7">✕</span><p style="margin:0;font-weight:500;color:#424242">Gastas en lo que no funciona</p><p style="margin:4px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#424242;opacity:.7">señal_perdida — fin del dato</p></li>
+          </ol>
+        </div>
+      </div>
+      <div>
+        <p class="rv" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;color:#0056CF;margin:0 0 26px">DESPUÉS · CON 1TO1AI</p>
+        <div style="position:relative;padding-left:44px">
+          <svg aria-hidden="true" style="position:absolute;left:11px;top:10px;height:calc(100% - 20px);width:4px;overflow:visible" viewBox="0 0 4 100" preserveAspectRatio="none">
+            <defs><linearGradient id="gLine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#002F70"></stop><stop offset="0.7" stop-color="#0B9EFD"></stop><stop offset="1" stop-color="#43C5FF"></stop></linearGradient></defs>
+            <path data-scrollpath="1" d="M2,0 V100" fill="none" stroke="url(#gLine)" stroke-width="2.5" vector-effect="non-scaling-stroke" pathLength="1" style="stroke-dasharray:1;stroke-dashoffset:1"></path>
+          </svg>
+          <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px">
+            <li class="rv" style="position:relative"><span aria-hidden="true" style="position:absolute;left:-40px;top:8px;width:14px;height:14px;border-radius:999px;background:#002F70"></span><p style="margin:0;font-weight:500;color:#00132E">Tráfico de Meta Ads</p></li>
+            <li class="rv" data-delay=".06s" style="position:relative"><span aria-hidden="true" style="position:absolute;left:-40px;top:8px;width:14px;height:14px;border-radius:999px;background:#002F70"></span><p style="margin:0;font-weight:500;color:#00132E">El lead escribe por WhatsApp</p></li>
+            <li class="rv" data-delay=".12s" style="position:relative"><span aria-hidden="true" style="position:absolute;left:-40px;top:8px;width:14px;height:14px;border-radius:999px;background:#0056CF"></span><p style="margin:0;font-weight:500;color:#00132E">Responde el formulario inteligente</p></li>
+            <li class="rv" data-delay=".18s" style="position:relative"><span aria-hidden="true" style="position:absolute;left:-40px;top:8px;width:14px;height:14px;border-radius:999px;background:#0B9EFD"></span><p style="margin:0;font-weight:500;color:#00132E">El Pixel recibe el evento vía CAPI</p></li>
+            <li class="rv" data-delay=".24s" style="position:relative"><span aria-hidden="true" style="position:absolute;left:-40px;top:8px;width:14px;height:14px;border-radius:999px;background:#0B9EFD"></span><p style="margin:0;font-weight:500;color:#00132E">Meta optimiza hacia ventas reales</p></li>
+            <li class="rv" data-delay=".3s" style="position:relative"><span aria-hidden="true" style="position:absolute;left:-43px;top:5px;width:20px;height:20px;border-radius:999px;background:#43C5FF;box-shadow:0 0 0 8px #43C5FF33,0 0 24px #43C5FF88"></span><p style="margin:0;font-weight:500;color:#00132E">El ROI se dispara</p><p style="margin:4px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#0056CF">pixel_encendido — señal completa</p></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 7 · MÉTRICAS ===================== -->
+<section id="metricas" aria-labelledby="h-metricas" style="padding:0 clamp(16px,3vw,40px);margin:clamp(72px,8vw,112px) 0">
+  <h2 id="h-metricas" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Métricas del dashboard</h2>
+  <div style="max-width:1280px;margin:0 auto;background:#0056CF;background-image:radial-gradient(50% 120% at 100% 50%, #0B9EFD66, transparent 70%),radial-gradient(40% 120% at 0% 50%, #002F7080, transparent 70%);border-radius:24px 88px 24px 88px;padding:clamp(44px,5vw,64px) clamp(28px,5vw,72px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:36px 0">
+      <div class="rv" style="border-left:1px solid #FFFFFF3D;padding-left:28px"><p style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,3.4vw,48px);letter-spacing:-0.02em;color:#FFFFFF;font-variant-numeric:tabular-nums"><span data-count="4.2" data-decimals="1">0.0</span>x</p><p style="margin:6px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#FFFFFF">ROAS</p></div>
+      <div class="rv" data-delay=".07s" style="border-left:1px solid #FFFFFF3D;padding-left:28px"><p style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,3.4vw,48px);letter-spacing:-0.02em;color:#FFFFFF;font-variant-numeric:tabular-nums"><span data-count="1247">0</span></p><p style="margin:6px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#FFFFFF">CONVERSIONES</p></div>
+      <div class="rv" data-delay=".14s" style="border-left:1px solid #FFFFFF3D;padding-left:28px"><p style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,3.4vw,48px);letter-spacing:-0.02em;color:#FFFFFF;font-variant-numeric:tabular-nums"><span data-count="3891">0</span></p><p style="margin:6px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#FFFFFF">LEADS ATRIBUIDOS</p></div>
+      <div class="rv" data-delay=".21s" style="border-left:1px solid #FFFFFF3D;padding-left:28px"><p style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,3.4vw,48px);letter-spacing:-0.02em;color:#FFFFFF;font-variant-numeric:tabular-nums">−<span data-count="43">0</span>%</p><p style="margin:6px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#FFFFFF">CPL</p></div>
+    </div>
+    <p class="rv" style="margin:32px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#FFFFFF;opacity:.85">Métricas de la cuenta de ejemplo mostrada en el dashboard del hero. Los resultados varían por industria y presupuesto.</p>
+  </div>
+</section>
+
+<!-- ===================== 8 · TESTIMONIOS ===================== -->
+<section id="testimonios" aria-labelledby="h-testim">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(72px,8vw,112px) clamp(20px,4vw,48px)">
+    <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 44px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#0056CF;font-weight:500">/08</span><span style="font-weight:500;color:#00132E">TESTIMONIOS</span><span aria-hidden="true" style="flex:1;height:1px;background:#D7E3F4"></span><span style="color:#424242">08 — 10</span></div>
+    <h2 id="h-testim" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.03em;font-size:clamp(32px,3.8vw,54px);line-height:1.08;color:#00132E;margin:0 0 52px;max-width:22ch">Equipos que ya miden lo que venden</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+      <figure class="rv" style="margin:0;background:#FFFFFF;border:1px solid #D7E3F4;border-radius:24px 24px 24px 4px;padding:34px 32px;display:flex;flex-direction:column;gap:22px">
+        <blockquote style="margin:0;font-size:16px;line-height:1.65;color:#00132E">"Logramos un ROAS 3x en 2 meses. Por primera vez Meta sabe qué anuncio genera cada venta que cerramos por WhatsApp."</blockquote>
+        <figcaption style="display:flex;align-items:center;gap:14px;margin-top:auto">
+          <span aria-hidden="true" style="width:44px;height:44px;border-radius:999px;background:#00132E;color:#43C5FF;display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:14px">CM</span>
+          <span><span style="display:block;font-weight:500;color:#00132E">Carlos Méndez</span><span style="display:block;font-size:13.5px;color:#424242">Director de Marketing</span></span>
+        </figcaption>
+      </figure>
+      <figure class="rv" data-delay=".08s" style="margin:0;background:#FFFFFF;border:1px solid #D7E3F4;border-radius:24px 24px 24px 4px;padding:34px 32px;display:flex;flex-direction:column;gap:22px">
+        <blockquote style="margin:0;font-size:16px;line-height:1.65;color:#00132E">"Dejamos de preguntar '¿cómo nos conociste?'. La atribución llega sola al pixel y las campañas se optimizan sin que toquemos nada."</blockquote>
+        <figcaption style="display:flex;align-items:center;gap:14px;margin-top:auto">
+          <span aria-hidden="true" style="width:44px;height:44px;border-radius:999px;background:#00132E;color:#43C5FF;display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:14px">AR</span>
+          <span><span style="display:block;font-weight:500;color:#00132E">Ana Rodríguez</span><span style="display:block;font-size:13.5px;color:#424242">Growth Lead</span></span>
+        </figcaption>
+      </figure>
+      <figure class="rv" data-delay=".16s" style="margin:0;background:#FFFFFF;border:1px solid #D7E3F4;border-radius:24px 24px 24px 4px;padding:34px 32px;display:flex;flex-direction:column;gap:22px">
+        <blockquote style="margin:0;font-size:16px;line-height:1.65;color:#00132E">"Antes decidíamos el presupuesto a ciegas. Hoy cada peso va al anuncio que sí vende, con datos en tiempo real."</blockquote>
+        <figcaption style="display:flex;align-items:center;gap:14px;margin-top:auto">
+          <span aria-hidden="true" style="width:44px;height:44px;border-radius:999px;background:#00132E;color:#43C5FF;display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:14px">MT</span>
+          <span><span style="display:block;font-weight:500;color:#00132E">Miguel Torres</span><span style="display:block;font-size:13.5px;color:#424242">Fundador</span></span>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="rv" style="margin:20px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#424242">[[PENDIENTE: sustituir por las citas textuales del sitio actual]]</p>
+  </div>
+</section>
+
+<!-- ===================== 8b · FAQ + COMPARATIVA + GLOSARIO ===================== -->
+<section id="faq" aria-labelledby="h-faq" style="background:#FFFFFF;border-top:1px solid #D7E3F4;border-bottom:1px solid #D7E3F4">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(88px,9vw,132px) clamp(20px,4vw,48px)">
+    <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 44px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#0056CF;font-weight:500">/09</span><span style="font-weight:500;color:#00132E">PREGUNTAS FRECUENTES</span><span aria-hidden="true" style="flex:1;height:1px;background:#D7E3F4"></span><span style="color:#424242">09 — 10</span></div>
+    <h2 id="h-faq" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.03em;font-size:clamp(32px,3.8vw,54px);line-height:1.08;color:#00132E;margin:0 0 44px;max-width:24ch">Lo que todo el mundo pregunta antes de medir WhatsApp</h2>
+    <div class="rv" style="display:flex;flex-direction:column;border-top:1px solid #D7E3F4;max-width:860px">
+      <details style="border-bottom:1px solid #D7E3F4">
+        <summary style="cursor:pointer;padding:22px 8px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;color:#00132E;list-style-position:outside">¿Cómo trackear ventas de WhatsApp en Meta Ads?</summary>
+        <p style="margin:0;padding:0 8px 24px;line-height:1.65;max-width:62ch">Se trackean enviando cada conversación como evento de conversión al Pixel de Meta mediante un formulario inteligente: 1to1AI captura la respuesta del cliente y dispara el evento al Pixel y a la API de Conversiones en tiempo real, atribuido al anuncio original.</p>
+      </details>
+      <details style="border-bottom:1px solid #D7E3F4">
+        <summary style="cursor:pointer;padding:22px 8px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;color:#00132E">¿Se puede alimentar el Pixel de Meta desde WhatsApp?</summary>
+        <p style="margin:0;padding:0 8px 24px;line-height:1.65;max-width:62ch">Sí. WhatsApp no ejecuta píxeles, pero 1to1AI conecta cada conversación con la API de Conversiones de Meta, de modo que las ventas cerradas por chat llegan al Pixel como eventos de conversión con su campaña, conjunto y anuncio de origen.</p>
+      </details>
+      <details style="border-bottom:1px solid #D7E3F4">
+        <summary style="cursor:pointer;padding:22px 8px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;color:#00132E">¿Qué es la API de Conversiones y para qué sirve?</summary>
+        <p style="margin:0;padding:0 8px 24px;line-height:1.65;max-width:62ch">La API de Conversiones (CAPI) es la vía de servidor a servidor con la que Meta recibe eventos de conversión sin depender del navegador. Sirve para reportar ventas que ocurren fuera del sitio web — como las que cierran por WhatsApp — sin perder señal por bloqueadores o cookies.</p>
+      </details>
+      <details style="border-bottom:1px solid #D7E3F4">
+        <summary style="cursor:pointer;padding:22px 8px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;color:#00132E">¿Cómo se mide el ROAS de campañas que cierran por WhatsApp?</summary>
+        <p style="margin:0;padding:0 8px 24px;line-height:1.65;max-width:62ch">El ROAS se mide atribuyendo cada venta de WhatsApp al anuncio que la originó: 1to1AI registra el valor de la conversión y lo envía a Meta, que lo cruza con el gasto de campaña para calcular el retorno real, no el estimado.</p>
+      </details>
+      <details style="border-bottom:1px solid #D7E3F4">
+        <summary style="cursor:pointer;padding:22px 8px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;color:#00132E">¿Cuánto tarda la implementación?</summary>
+        <p style="margin:0;padding:0 8px 24px;line-height:1.65;max-width:62ch">La revisión de la solicitud tarda 24 a 48 horas. Tras la aprobación, la configuración del evento personalizado y del formulario inteligente se completa el mismo día; no requiere cambios en tu sitio web.</p>
+      </details>
+    </div>
+
+    <h3 class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;letter-spacing:-0.02em;color:#00132E;margin:72px 0 24px">1to1AI frente a las alternativas</h3>
+    <div class="rv" style="overflow-x:auto;border:1px solid #D7E3F4;border-radius:16px">
+      <table style="border-collapse:collapse;width:100%;min-width:720px;font-size:14.5px">
+        <caption style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Comparación de métodos de atribución para ventas por WhatsApp</caption>
+        <thead>
+          <tr style="background:#00132E;color:#FFFFFF;text-align:left">
+            <th scope="col" style="padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;font-weight:500">CRITERIO</th>
+            <th scope="col" style="padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;font-weight:500;color:#43C5FF">1TO1AI</th>
+            <th scope="col" style="padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;font-weight:500">UTMS MANUALES</th>
+            <th scope="col" style="padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;font-weight:500">"¿CÓMO NOS CONOCISTE?"</th>
+            <th scope="col" style="padding:16px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;font-weight:500">NO MEDIR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #D7E3F4"><th scope="row" style="padding:16px 20px;text-align:left;font-weight:500;color:#00132E">Precisión de atribución</th><td style="padding:16px 20px;font-weight:500;color:#0056CF">Evento por evento, a nivel anuncio</td><td style="padding:16px 20px">Parcial; se pierde al saltar al chat</td><td style="padding:16px 20px">Baja; depende de la memoria del cliente</td><td style="padding:16px 20px">Nula</td></tr>
+          <tr style="border-bottom:1px solid #D7E3F4;background:#F5F8FC"><th scope="row" style="padding:16px 20px;text-align:left;font-weight:500;color:#00132E">Esfuerzo del equipo</th><td style="padding:16px 20px;font-weight:500;color:#0056CF">Automático tras la configuración</td><td style="padding:16px 20px">Alto y constante</td><td style="padding:16px 20px">Una pregunta por cada venta</td><td style="padding:16px 20px">Ninguno</td></tr>
+          <tr style="border-bottom:1px solid #D7E3F4"><th scope="row" style="padding:16px 20px;text-align:left;font-weight:500;color:#00132E">Tiempo de implementación</th><td style="padding:16px 20px;font-weight:500;color:#0056CF">1 día tras aprobación</td><td style="padding:16px 20px">Semanas de disciplina</td><td style="padding:16px 20px">Inmediato pero impreciso</td><td style="padding:16px 20px">—</td></tr>
+          <tr><th scope="row" style="padding:16px 20px;text-align:left;font-weight:500;color:#00132E">Qué aprende Meta</th><td style="padding:16px 20px;font-weight:500;color:#0056CF">Ventas reales, con valor de conversión</td><td style="padding:16px 20px">Clics, no ventas</td><td style="padding:16px 20px">Nada — el dato nunca llega al pixel</td><td style="padding:16px 20px">Nada</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;letter-spacing:-0.02em;color:#00132E;margin:72px 0 24px">Glosario</h3>
+    <dl class="rv" style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px 40px">
+      <div><dt style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#0056CF;margin-bottom:4px">ROAS</dt><dd style="margin:0;font-size:14.5px;line-height:1.6">Retorno sobre la inversión publicitaria: ingresos generados por cada peso gastado en anuncios.</dd></div>
+      <div><dt style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#0056CF;margin-bottom:4px">CPL</dt><dd style="margin:0;font-size:14.5px;line-height:1.6">Costo por lead: lo que cuesta conseguir cada contacto interesado.</dd></div>
+      <div><dt style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#0056CF;margin-bottom:4px">Pixel de Meta</dt><dd style="margin:0;font-size:14.5px;line-height:1.6">Código de Meta que registra las acciones de los usuarios para medir y optimizar campañas.</dd></div>
+      <div><dt style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#0056CF;margin-bottom:4px">CAPI</dt><dd style="margin:0;font-size:14.5px;line-height:1.6">API de Conversiones: canal de servidor a servidor para enviar eventos a Meta sin depender del navegador.</dd></div>
+      <div><dt style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#0056CF;margin-bottom:4px">Atribución</dt><dd style="margin:0;font-size:14.5px;line-height:1.6">Proceso de identificar qué anuncio o canal originó cada conversión.</dd></div>
+      <div><dt style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#0056CF;margin-bottom:4px">Evento de conversión</dt><dd style="margin:0;font-size:14.5px;line-height:1.6">Señal que informa a Meta que ocurrió una acción valiosa: compra, registro o cita.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ===================== 9 · FORMULARIO ===================== -->
+<section id="contacto" aria-labelledby="h-form" style="position:relative;overflow:hidden">
+  <span class="ghostNum" aria-hidden="true">10</span>
+  <div style="position:relative;max-width:1240px;margin:0 auto;padding:clamp(88px,9vw,132px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(36px,5vw,72px);align-items:start">
+    <div>
+      <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 44px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#0056CF;font-weight:500">/10</span><span style="font-weight:500;color:#00132E">ACCESO POR SOLICITUD</span><span aria-hidden="true" style="flex:1;height:1px;background:#D7E3F4"></span><span style="color:#424242">10 — 10</span></div>
+      <h2 id="h-form" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.03em;font-size:clamp(32px,3.8vw,54px);line-height:1.08;color:#00132E;margin:0 0 18px;max-width:16ch">Solicita acceso a 1to1AI</h2>
+      <p class="rv" style="max-width:52ch;line-height:1.6;margin:0 0 28px">1to1AI es software exclusivo: cada solicitud se revisa en 24–48 horas y el acceso se aprueba solo para empresas con más de 500 leads mensuales. Si calificas, un especialista te contacta para configurar tu primer evento personalizado.</p>
+      <ul class="rv" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;font-size:15px">
+        <li style="display:flex;gap:12px;align-items:flex-start"><span aria-hidden="true" style="flex:none;font-family:'JetBrains Mono',monospace;color:#0056CF">01</span><span style="line-height:1.55">Revisión de la solicitud en 24–48 h</span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><span aria-hidden="true" style="flex:none;font-family:'JetBrains Mono',monospace;color:#0056CF">02</span><span style="line-height:1.55">Requisito: más de 500 leads mensuales</span></li>
+        <li style="display:flex;gap:12px;align-items:flex-start"><span aria-hidden="true" style="flex:none;font-family:'JetBrains Mono',monospace;color:#0056CF">03</span><span style="line-height:1.55">Configuración el mismo día de la aprobación</span></li>
+      </ul>
+    </div>
+    <form id="accessForm" class="rv" noValidate="{{ true }}" onSubmit="{{ submitForm }}" style="background:#FFFFFF;border:1px solid #D7E3F4;border-radius:48px 16px 48px 16px;padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;gap:20px;box-shadow:0 24px 64px #00132E14">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <label for="f-nombre" style="font-size:14px;font-weight:500;color:#00132E">Nombre completo</label>
+          <input id="f-nombre" name="nombre" type="text" required="{{ true }}" autoComplete="name" data-msg="Escribe tu nombre completo." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E" />
+          <p data-err="nombre" style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#00132E;display:none"></p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <label for="f-email" style="font-size:14px;font-weight:500;color:#00132E">Email corporativo</label>
+          <input id="f-email" name="email" type="email" required="{{ true }}" autoComplete="email" data-msg="Escribe un email válido, por ejemplo nombre@tuempresa.com." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E" />
+          <p data-err="email" style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#00132E;display:none"></p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <label for="f-empresa" style="font-size:14px;font-weight:500;color:#00132E">Empresa</label>
+          <input id="f-empresa" name="empresa" type="text" required="{{ true }}" autoComplete="organization" data-msg="Indica el nombre de tu empresa." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E" />
+          <p data-err="empresa" style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#00132E;display:none"></p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <label for="f-tel" style="font-size:14px;font-weight:500;color:#00132E">Teléfono con WhatsApp</label>
+          <input id="f-tel" name="telefono" type="tel" required="{{ true }}" autoComplete="tel" data-msg="Escribe un teléfono con WhatsApp, con lada, por ejemplo +52 55 1234 5678." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E" />
+          <p data-err="telefono" style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#00132E;display:none"></p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <label for="f-leads" style="font-size:14px;font-weight:500;color:#00132E">Leads mensuales aproximados</label>
+        <select id="f-leads" name="leads" required="{{ true }}" data-msg="Selecciona tu volumen de leads mensuales." style="min-height:46px;padding:0 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E">
+          <option value="">Selecciona un rango</option>
+          <option value="500-1000">500 – 1,000</option>
+          <option value="1000-5000">1,000 – 5,000</option>
+          <option value="5000-20000">5,000 – 20,000</option>
+          <option value="20000+">Más de 20,000</option>
+          <option value="menos-500">Menos de 500 (aún no califico)</option>
+        </select>
+        <p data-err="leads" style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#00132E;display:none"></p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <label for="f-motivo" style="font-size:14px;font-weight:500;color:#00132E">¿Por qué quieres medir tus ventas de WhatsApp?</label>
+        <textarea id="f-motivo" name="motivo" rows="4" required="{{ true }}" data-msg="Cuéntanos brevemente qué campañas quieres optimizar." style="padding:12px 14px;border:1px solid #D7E3F4;border-radius:10px;background:#F5F8FC;color:#00132E;resize:vertical"></textarea>
+        <p data-err="motivo" style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#00132E;display:none"></p>
+      </div>
+      <button type="submit" style="min-height:52px;border:none;cursor:pointer;background:#0056CF;color:#FFFFFF;font-weight:500;font-size:16px;border-radius:999px;font-family:'Inter',sans-serif" style-hover="background:#002F70">Enviar solicitud →</button>
+      <p id="formStatus" role="status" aria-live="polite" style="margin:0;font-family:'JetBrains Mono',monospace;font-size:13px;color:#00132E;line-height:1.6"></p>
+      <p style="margin:0;font-size:13px;color:#424242;line-height:1.6">Revisamos cada solicitud en 24–48 h. Solo aprobamos empresas con más de 500 leads mensuales.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ===================== 10 · CIERRE ===================== -->
+<section id="cierre" aria-labelledby="h-cierre" style="padding:0 clamp(16px,3vw,40px);margin-bottom:clamp(72px,8vw,112px)">
+  <div style="max-width:1280px;margin:0 auto;background:#00132E;border-radius:88px 24px 24px 88px;padding:clamp(64px,8vw,110px) clamp(28px,5vw,72px);text-align:center;position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(46% 70% at 50% 110%, #0056CF66, transparent 70%)"></div>
+    <h2 id="h-cierre" class="rv" style="position:relative;font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.03em;font-size:clamp(36px,5vw,70px);line-height:1.05;letter-spacing:-0.035em;color:#FFFFFF;margin:0 auto 16px;max-width:18ch;text-wrap:balance">Deja de vender a ciegas.<br />Empieza a optimizar de verdad.</h2>
+    <p class="rv" style="position:relative;color:#D7E3F4;max-width:52ch;margin:0 auto 36px;line-height:1.6">Cada día sin datos es presupuesto que Meta reparte a ciegas. La solicitud toma dos minutos.</p>
+    <a href="#contacto" class="rv" style="position:relative;display:inline-flex;align-items:center;gap:12px;background:#0B9EFD;color:#00132E;text-decoration:none;font-weight:500;font-size:16px;padding:16px 30px;border-radius:999px" style-hover="background:#43C5FF">Solicitar acceso<span aria-hidden="true">→</span></a>
+  </div>
+</section>
+</main>
+
+<!-- ===================== 11 · FOOTER ===================== -->
+<footer style="border-top:1px solid #D7E3F4;background:#FFFFFF">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,5vw,72px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px">
+    <div>
+      <img src="uploads/logo.png" alt="Logotipo de 1to1AI" width="104" height="30" style="display:block;height:30px;width:auto;margin-bottom:16px" />
+      <p style="margin:0;font-size:14px;line-height:1.6;max-width:34ch">Software de atribución que conecta tus conversaciones de WhatsApp con el Pixel de Meta y la API de Conversiones.</p>
+    </div>
+    <nav aria-label="Navegación del sitio">
+      <p style="margin:0 0 14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#00132E">SITIO</p>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14.5px">
+        <li><a href="#caracteristicas" style="text-decoration:none">Características de 1to1AI</a></li>
+        <li><a href="#beneficios" style="text-decoration:none">Beneficios para marketing y ventas</a></li>
+        <li><a href="#testimonios" style="text-decoration:none">Testimonios de clientes</a></li>
+        <li><a href="#faq" style="text-decoration:none">Preguntas frecuentes</a></li>
+        <li><a href="#contacto" style="text-decoration:none">Solicitar acceso</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Legal">
+      <p style="margin:0 0 14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#00132E">LEGAL</p>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14.5px">
+        <li><a href="#top" style="text-decoration:none">Aviso de privacidad</a></li>
+        <li><a href="#top" style="text-decoration:none">Términos y condiciones</a></li>
+      </ul>
+    </nav>
+    <div>
+      <p style="margin:0 0 14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#00132E">CONTACTO</p>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14.5px">
+        <li style="font-family:'JetBrains Mono',monospace;font-size:13px">[[PENDIENTE: email de contacto]]</li>
+        <li style="font-family:'JetBrains Mono',monospace;font-size:13px">[[PENDIENTE: razón social · domicilio fiscal · año de fundación]]</li>
+        <li style="font-family:'JetBrains Mono',monospace;font-size:13px">[[PENDIENTE: perfiles sociales]]</li>
+      </ul>
+    </div>
+  </div>
+  <div style="border-top:1px solid #D7E3F4">
+    <p style="max-width:1240px;margin:0 auto;padding:20px clamp(20px,4vw,48px);font-family:'JetBrains Mono',monospace;font-size:12px;color:#424242">© 2026 1to1AI · México y LATAM · es-MX</p>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;motionEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;railVisible&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { submitForm: (e) => this.handleSubmit(e) };
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById('formStatus');
+    let firstBad = null;
+    form.querySelectorAll('[required]').forEach((field) => {
+      const err = form.querySelector('[data-err="' + field.name + '"]');
+      if (!field.checkValidity()) {
+        if (err) { err.textContent = '! ' + (field.dataset.msg || 'Este campo es obligatorio.'); err.style.display = 'block'; }
+        field.style.borderColor = '#00132E'; field.style.borderWidth = '2px';
+        field.setAttribute('aria-invalid', 'true');
+        if (!firstBad) firstBad = field;
+      } else {
+        if (err) { err.textContent = ''; err.style.display = 'none'; }
+        field.style.borderColor = '#D7E3F4'; field.style.borderWidth = '1px';
+        field.removeAttribute('aria-invalid');
+      }
+    });
+    if (firstBad) {
+      status.textContent = '! Revisa los campos marcados: falta información o el formato no es válido.';
+      firstBad.focus();
+      return;
+    }
+    status.textContent = '✓ Solicitud recibida. Revisamos tu información y te contactamos en 24–48 h al email que dejaste.';
+    form.querySelector('button[type="submit"]').disabled = true;
+  }
+  componentDidMount() {
+    const motion = (this.props.motionEnabled ?? true) && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const ease = 'cubic-bezier(.16,1,.3,1)';
+    if (this.props.railVisible === false) { const r = document.getElementById('rail'); if (r) r.style.display = 'none'; }
+    const nav = document.getElementById('mainNav');
+    if (nav && innerWidth >= 900) nav.style.display = 'flex';
+
+    // Reveals
+    const rvs = [...document.querySelectorAll('.rv')];
+    if (motion) {
+      rvs.forEach((el) => { if (el.getBoundingClientRect().top > innerHeight * 0.92) { el.style.opacity = '0'; el.style.transform = 'translateY(24px)'; el.dataset.hid = '1'; } });
+      this.io = new IntersectionObserver((es) => {
+        es.forEach((en) => {
+          if (!en.isIntersecting) return;
+          const el = en.target; this.io.unobserve(el);
+          if (el.dataset.hid) {
+            const d = el.dataset.delay || '0s';
+            el.style.transition = 'opacity .5s ' + ease + ' ' + d + ',transform .5s ' + ease + ' ' + d;
+            requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'none'; });
+          }
+        });
+      }, { threshold: 0.12 });
+      rvs.forEach((el) => this.io.observe(el));
+    }
+
+    // Icon draw (banda oscura)
+    const banda = document.getElementById('banda');
+    if (banda) {
+      const paths = [...banda.querySelectorAll('.icoDraw [pathLength]')];
+      if (!motion) paths.forEach((p) => { p.style.strokeDashoffset = '0'; });
+      else {
+        this.ioIco = new IntersectionObserver((es) => {
+          if (es.some((x) => x.isIntersecting)) {
+            paths.forEach((p, i) => { p.style.transition = 'stroke-dashoffset 1.1s ' + ease + ' ' + (i * 0.09) + 's'; p.style.strokeDashoffset = '0'; });
+            this.ioIco.disconnect();
+          }
+        }, { threshold: 0.3 });
+        this.ioIco.observe(banda);
+      }
+    }
+
+    // Counters
+    const counters = [...document.querySelectorAll('[data-count]')];
+    const runCounter = (el) => {
+      const target = parseFloat(el.dataset.count); const dec = parseInt(el.dataset.decimals || '0', 10);
+      const t0 = performance.now(); const dur = 1400;
+      const tick = (t) => {
+        const p = Math.min((t - t0) / dur, 1); const v = target * (1 - Math.pow(1 - p, 3));
+        el.textContent = v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    if (!motion) counters.forEach((el) => { const d = parseInt(el.dataset.decimals || '0', 10); el.textContent = parseFloat(el.dataset.count).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); });
+    else {
+      this.ioCnt = new IntersectionObserver((es) => { es.forEach((en) => { if (en.isIntersecting) { runCounter(en.target); this.ioCnt.unobserve(en.target); } }); }, { threshold: 0.6 });
+      counters.forEach((el) => this.ioCnt.observe(el));
+    }
+
+    // Scroll-drawn paths (la ruta del dato)
+    const spaths = [...document.querySelectorAll('[data-scrollpath]')];
+    if (!motion) spaths.forEach((p) => { p.style.strokeDashoffset = '0'; });
+    else {
+      let ticking = false;
+      this.onScroll = () => {
+        if (ticking) return; ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          spaths.forEach((p) => {
+            const svg = p.closest('svg'); const r = svg.getBoundingClientRect();
+            const prog = Math.min(Math.max((innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.25), 0), 1);
+            p.style.strokeDashoffset = String(1 - prog);
+          });
+        });
+      };
+      addEventListener('scroll', this.onScroll, { passive: true });
+      this.onScroll();
+    }
+
+    // Live attribution log: rotate rows every 2.8s
+    const logRows = [...document.querySelectorAll('#liveLog .logRow')];
+    if (motion && logRows.length) {
+      let cur = 0;
+      this.logTimer = setInterval(() => {
+        const prev = logRows[cur]; cur = (cur + 1) % logRows.length; const next = logRows[cur];
+        prev.style.transform = 'translateY(-22px)'; prev.style.opacity = '0';
+        next.style.transition = 'none'; next.style.transform = 'translateY(22px)'; next.style.opacity = '0';
+        requestAnimationFrame(() => { requestAnimationFrame(() => {
+          next.style.transition = 'transform .5s cubic-bezier(.16,1,.3,1),opacity .5s';
+          next.style.transform = 'translateY(0)'; next.style.opacity = '1';
+        }); });
+        setTimeout(() => { prev.style.transition = 'none'; prev.style.transform = 'translateY(22px)'; }, 550);
+      }, 2800);
+    }
+
+    // Header cinematics: progress hairline + shadow + hide-on-scroll-down
+    const hdr = document.getElementById('siteHeader');
+    const prog = document.getElementById('scrollProgress');
+    let lastY = scrollY, hTick = false;
+    this.onHdr = () => {
+      if (hTick) return; hTick = true;
+      requestAnimationFrame(() => {
+        hTick = false; const y = scrollY;
+        if (prog) { const max = document.documentElement.scrollHeight - innerHeight; prog.style.transform = 'scaleX(' + (max > 0 ? y / max : 0).toFixed(4) + ')'; }
+        if (hdr) {
+          hdr.style.boxShadow = y > 8 ? '0 4px 16px #00132E1F' : 'none';
+          hdr.style.background = y > 8 ? '#FFFFFFF7' : '#F5F8FCE0';
+        }
+      });
+    };
+    addEventListener('scroll', this.onHdr, { passive: true });
+    this.onHdr();
+
+    // Rail active pill
+    const pill = document.getElementById('railPill');
+    const railLinks = [...document.querySelectorAll('[data-rail]')];
+    const secIds = ['hero', 'caracteristicas', 'beneficios', 'testimonios', 'contacto'];
+    if (pill) {
+      this.ioRail = new IntersectionObserver((es) => {
+        es.forEach((en) => {
+          if (!en.isIntersecting) return;
+          const i = secIds.indexOf(en.target.id); if (i < 0) return;
+          pill.style.transform = 'translateY(' + i * 48 + 'px)';
+          railLinks.forEach((a, j) => { a.style.color = j === i ? '#FFFFFF' : '#424242'; if (j === i) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+          document.querySelectorAll('#mainNav a').forEach((a) => {
+            const on = a.getAttribute('href') === '#' + en.target.id;
+            a.style.color = on ? '#0056CF' : '#424242';
+            a.style.textDecoration = on ? 'underline' : 'none';
+            a.style.textUnderlineOffset = '6px';
+            if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+          });
+        });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+      secIds.forEach((id) => { const s = document.getElementById(id); if (s) this.ioRail.observe(s); });
+    }
+
+    // Hero parallax (fine pointers only)
+    const hero = document.getElementById('hero');
+    if (motion && hero && matchMedia('(pointer:fine)').matches) {
+      const cards = [...document.querySelectorAll('#hero [data-depth]')];
+      let raf = null;
+      this.onMove = (e) => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          raf = null;
+          const r = hero.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5; const y = (e.clientY - r.top) / r.height - 0.5;
+          cards.forEach((c) => { const d = parseFloat(c.dataset.depth); c.style.transform = 'translate(' + (x * d).toFixed(1) + 'px,' + (y * d).toFixed(1) + 'px)'; });
+        });
+      };
+      hero.addEventListener('mousemove', this.onMove);
+    }
+  }
+  componentWillUnmount() {
+    if (this.io) this.io.disconnect();
+    if (this.ioIco) this.ioIco.disconnect();
+    if (this.ioCnt) this.ioCnt.disconnect();
+    if (this.ioRail) this.ioRail.disconnect();
+    if (this.onScroll) removeEventListener('scroll', this.onScroll);
+    if (this.onHdr) removeEventListener('scroll', this.onHdr);
+    if (this.logTimer) clearInterval(this.logTimer);
+  }
+}
+</script>
+</body>
+</html>

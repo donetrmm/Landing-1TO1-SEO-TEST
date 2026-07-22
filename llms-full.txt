@@ -1,0 +1,71 @@
+# 1to1AI — contenido completo (llms-full)
+
+## Definición canónica
+1to1AI es un software de atribución que trackea conversaciones de WhatsApp y las envía como eventos de conversión al Pixel de Meta y a la API de Conversiones (CAPI). Mercado: México y LATAM. Acceso por solicitud (revisión en 24–48 h, empresas con más de 500 leads mensuales).
+
+## El problema
+Cuando una venta cierra por WhatsApp, Meta nunca se entera. Sin eventos de conversión, el algoritmo no aprende qué anuncio funciona, el pixel se queda sin señal y el costo por lead (CPL) sube. Cuatro fallas típicas:
+1. Vendes por WhatsApp pero Meta no sabe qué funciona — la venta ocurre en el chat, fuera del alcance del pixel.
+2. Tus campañas no se optimizan porque no hay datos de conversión — el algoritmo optimiza hacia clics, no hacia ventas.
+3. Pierdes tiempo preguntando "¿cómo nos conociste?" — la memoria del cliente no es un sistema de atribución.
+4. Tu pixel está muerto y tu CPL se va al cielo — sin eventos, Meta no puede refinar audiencias.
+
+## Cómo funciona (4 pasos)
+01. Crea tu evento personalizado — define qué quieres trackear (compra, cotización, cita).
+02. Comparte tu formulario inteligente — envíalo por WhatsApp, email o donde vendas.
+03. Pixel alimentado automáticamente — cada respuesta envía eventos al Pixel de Meta y a CAPI en tiempo real, atribuidos al anuncio de origen.
+04. Campañas que se optimizan solas — Meta ahora sabe qué anuncios generan ventas reales.
+
+## Características
+- Eventos de atribución automáticos: cada conversación se convierte en un evento de conversión sin trabajo manual.
+- Optimización real para WhatsApp: Meta optimiza hacia ventas cerradas por chat, no hacia clics.
+- IA que potencia tus ventas: los formularios se adaptan a cada conversación.
+- Adiós a los preguntones: la atribución ya está hecha; nadie vuelve a preguntar "¿cómo nos conociste?".
+
+## Beneficios
+Para marketing: datos precisos de conversión, campañas que realmente se optimizan, menor CPL y mayor ROAS, reportes en tiempo real.
+Para ventas: formularios listos, sin preguntas incómodas, proceso más fluido, más conversiones.
+
+## Antes vs Después
+Antes: Tráfico → WhatsApp → Vendes → Meta no sabe nada → Campañas no mejoran → Gastas en lo que no funciona.
+Después: Tráfico → WhatsApp → Formulario → Pixel alimentado → Meta optimiza → El ROI se dispara.
+
+## Métricas de ejemplo (cuenta mostrada en el dashboard del hero)
+ROAS 4.2x (+127%) · Conversiones 1,247 (+89%) · Leads 3,891 (+156%) · CPL $2.40 MXN (−43%). Los resultados varían por industria y presupuesto.
+Testimonio atribuido: "ROAS 3x en 2 meses" — Carlos Méndez, Director de Marketing.
+
+## Preguntas frecuentes
+### ¿Cómo trackear ventas de WhatsApp en Meta Ads?
+Se trackean enviando cada conversación como evento de conversión al Pixel de Meta mediante un formulario inteligente: 1to1AI captura la respuesta del cliente y dispara el evento al Pixel y a la API de Conversiones en tiempo real, atribuido al anuncio original.
+
+### ¿Se puede alimentar el Pixel de Meta desde WhatsApp?
+Sí. WhatsApp no ejecuta píxeles, pero 1to1AI conecta cada conversación con la API de Conversiones de Meta, de modo que las ventas cerradas por chat llegan al Pixel como eventos de conversión con su campaña, conjunto y anuncio de origen.
+
+### ¿Qué es la API de Conversiones y para qué sirve?
+La API de Conversiones (CAPI) es la vía de servidor a servidor con la que Meta recibe eventos de conversión sin depender del navegador. Sirve para reportar ventas que ocurren fuera del sitio web, como las que cierran por WhatsApp.
+
+### ¿Cómo se mide el ROAS de campañas que cierran por WhatsApp?
+El ROAS se mide atribuyendo cada venta de WhatsApp al anuncio que la originó: 1to1AI registra el valor de la conversión y lo envía a Meta, que lo cruza con el gasto de campaña.
+
+### ¿Cuánto tarda la implementación?
+La revisión de la solicitud tarda 24 a 48 horas. Tras la aprobación, la configuración del evento personalizado y del formulario inteligente se completa el mismo día; no requiere cambios en tu sitio web.
+
+## Comparativa de métodos de atribución
+| Criterio | 1to1AI | UTMs manuales | "¿Cómo nos conociste?" | No medir |
+|---|---|---|---|---|
+| Precisión de atribución | Evento por evento, a nivel anuncio | Parcial; se pierde al saltar al chat | Baja; depende de la memoria del cliente | Nula |
+| Esfuerzo del equipo | Automático tras la configuración | Alto y constante | Una pregunta por venta | Ninguno |
+| Tiempo de implementación | 1 día tras aprobación | Semanas de disciplina | Inmediato pero impreciso | — |
+| Qué aprende Meta | Ventas reales, con valor de conversión | Clics, no ventas | Nada | Nada |
+
+## Glosario
+- ROAS: retorno sobre la inversión publicitaria; ingresos por cada peso gastado en anuncios.
+- CPL: costo por lead; lo que cuesta conseguir cada contacto interesado.
+- Pixel de Meta: código que registra acciones de usuarios para medir y optimizar campañas.
+- CAPI: API de Conversiones; canal servidor a servidor para enviar eventos a Meta sin depender del navegador.
+- Atribución: identificar qué anuncio o canal originó cada conversión.
+- Evento de conversión: señal que informa a Meta que ocurrió una acción valiosa.
+
+## Contacto y entidad
+[[PENDIENTE: razón social, domicilio fiscal, año de fundación, email, perfiles sociales]]
+Canonical: https://1to1ai.com · es-MX · México y LATAM
