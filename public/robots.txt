@@ -21,4 +21,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://1to1ai.com/sitemap.xml
+Sitemap: https://1to1ai.vercel.app/sitemap.xml

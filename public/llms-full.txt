@@ -68,4 +68,4 @@ La revisión de la solicitud tarda 24 a 48 horas. Tras la aprobación, la config
 
 ## Contacto y entidad
 [[PENDIENTE: razón social, domicilio fiscal, año de fundación, email, perfiles sociales]]
-Canonical: https://1to1ai.com · es-MX · México y LATAM
+Canonical: https://1to1ai.vercel.app · es-MX · México y LATAM
