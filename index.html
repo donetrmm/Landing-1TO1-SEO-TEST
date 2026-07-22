@@ -23,6 +23,9 @@ input,select,textarea{font:inherit}
 @keyframes blink{0%,100%{opacity:.25}50%{opacity:.9}}
 @keyframes draw{to{stroke-dashoffset:0}}
 @media(max-width:1023px){#rail{display:none!important}}
+@media(max-width:679px){#langSwitch{display:none!important}#headerCta{padding:10px 16px!important;font-size:14px!important}}
+@media(max-width:519px){#qCount{display:none!important}}
+@media(max-width:379px){#siteHeader img{height:26px!important}#headerCta{padding:9px 13px!important;font-size:13.5px!important}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.15s!important;animation-delay:0s!important;transition-duration:.15s!important}}
 </style>
 <script type="application/ld+json">
@@ -53,11 +56,11 @@ input,select,textarea{font:inherit}
       <a href="#contacto" style="color:#424242;text-decoration:none" style-hover="color:#0056CF">Contacto</a>
     </nav>
     <div style="display:flex;align-items:center;gap:14px">
-      <div role="group" aria-label="Idioma" style="display:flex;border:1px solid #D7E3F4;border-radius:999px;overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:12px">
+      <div id="langSwitch" role="group" aria-label="Idioma" style="display:flex;border:1px solid #D7E3F4;border-radius:999px;overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:12px">
         <a href="#hero" aria-current="true" style="padding:8px 12px;background:#00132E;color:#FFFFFF;text-decoration:none">ES</a>
         <a href="#hero" title="Versión en inglés — próximamente" style="padding:8px 12px;color:#424242;text-decoration:none">EN</a>
       </div>
-      <a href="#contacto" style="display:inline-flex;align-items:center;gap:8px;background:#0056CF;color:#FFFFFF;text-decoration:none;font-weight:500;font-size:14.5px;padding:11px 22px;border-radius:999px" style-hover="background:#002F70">Solicitar acceso<span aria-hidden="true">→</span></a>
+      <a id="headerCta" href="#contacto" style="display:inline-flex;align-items:center;gap:8px;background:#0056CF;color:#FFFFFF;text-decoration:none;font-weight:500;font-size:14.5px;padding:11px 22px;border-radius:999px" style-hover="background:#002F70">Solicitar acceso<span aria-hidden="true">→</span></a>
     </div>
   </div>
 </header>
@@ -75,7 +78,7 @@ input,select,textarea{font:inherit}
 <main>
 <!-- ============ 01 · HERO: LA CONVERSACIÓN QUE SÍ SE MIDE ============ -->
 <section id="hero" aria-labelledby="h1" style="position:relative;overflow:hidden">
-  <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(52px,6vw,96px) clamp(20px,4vw,48px) clamp(56px,6vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:clamp(36px,5vw,72px);align-items:center">
+  <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(52px,6vw,96px) clamp(20px,4vw,48px) clamp(56px,6vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:clamp(36px,5vw,72px);align-items:center">
     <div style="max-width:640px">
       <p style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;font-weight:500;color:#0056CF;margin:0 0 22px;display:flex;align-items:center;gap:10px;animation:rise .5s cubic-bezier(.16,1,.3,1) .05s both"><span aria-hidden="true" style="width:26px;height:1px;background:#0056CF;display:inline-block"></span>SOFTWARE EXCLUSIVO · MÉXICO Y LATAM</p>
       <h1 id="h1" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.035em;font-size:clamp(42px,5.4vw,76px);line-height:1.04;color:#00132E;margin:0 0 24px;text-wrap:balance">
@@ -121,7 +124,7 @@ input,select,textarea{font:inherit}
         <p class="logRow" style="position:absolute;inset:0;margin:0;font-size:12.5px;color:#424242;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transform:translateY(22px);transition:transform .5s cubic-bezier(.16,1,.3,1)"><span style="color:#0056CF">✓</span> evento: cotización · atribuido → ad_5512 · CAPI 0.5s</p>
         <p class="logRow" style="position:absolute;inset:0;margin:0;font-size:12.5px;color:#424242;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transform:translateY(22px);transition:transform .5s cubic-bezier(.16,1,.3,1)"><span style="color:#0056CF">✓</span> evento: compra · valor $1,890 MXN → Pixel de Meta</p>
       </div>
-      <p style="margin:0;font-size:11px;letter-spacing:.12em;color:#424242;flex:none">0 preguntas hechas</p>
+      <p id="qCount" style="margin:0;font-size:11px;letter-spacing:.12em;color:#424242;flex:none">0 preguntas hechas</p>
     </div>
   </div>
 </section>
@@ -129,7 +132,7 @@ input,select,textarea{font:inherit}
 <!-- ============ 02 · PROBLEMA: LA CONVERSACIÓN QUE NADIE ESCUCHA ============ -->
 <section id="problema" aria-labelledby="h-problema" style="background:#00132E;position:relative;overflow:hidden">
   <div aria-hidden="true" style="position:absolute;top:-12%;right:-6%;width:52%;height:74%;background:radial-gradient(closest-side,#0056CF4D,transparent 74%);border-radius:58% 42% 62% 38%/45% 62% 38% 55%;animation:drift 26s ease-in-out infinite"></div>
-  <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(80px,8vw,120px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:clamp(36px,5vw,72px);align-items:center">
+  <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(80px,8vw,120px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:clamp(36px,5vw,72px);align-items:center">
     <div>
       <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 40px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#43C5FF;font-weight:500">/02</span><span style="font-weight:500;color:#FFFFFF">DIAGNÓSTICO</span><span aria-hidden="true" style="flex:1;height:1px;background:#FFFFFF26"></span><span style="color:#D7E3F4">02 — 10</span></div>
       <h2 id="h-problema" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.035em;font-size:clamp(34px,4.2vw,58px);line-height:1.06;color:#FFFFFF;margin:0 0 18px;max-width:16ch;text-wrap:balance">¿Cansado de campañas a ciegas?</h2>
@@ -207,7 +210,7 @@ input,select,textarea{font:inherit}
   <div style="max-width:1280px;margin:0 auto;padding:clamp(80px,8vw,120px) clamp(20px,4vw,48px)">
     <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 40px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#0056CF;font-weight:500">/04</span><span style="font-weight:500;color:#00132E">CARACTERÍSTICAS</span><span aria-hidden="true" style="flex:1;height:1px;background:#D7E3F4"></span><span style="color:#424242">04 — 10</span></div>
     <h2 id="h-feat" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.035em;font-size:clamp(34px,4.2vw,58px);line-height:1.06;color:#00132E;margin:0 0 48px;max-width:20ch;text-wrap:balance">Todo lo que necesitas para optimizar</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:14px">
       <div class="rv" style="border:1px solid #D7E3F4;border-radius:16px 16px 16px 4px;padding:28px 28px;background:#F5F8FC;transition:transform .25s cubic-bezier(.16,1,.3,1),border-color .2s" style-hover="transform:translateY(-3px);border-color:#0B9EFD">
         <p aria-hidden="true" style="margin:0 0 16px;display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11.5px;white-space:nowrap;color:#0056CF;font-variant-numeric:tabular-nums"><span style="color:#0B9EFD">▸</span>evento → Pixel/CAPI ✓ 0.4s</p>
         <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;color:#00132E;margin:0 0 8px">Eventos de atribución automáticos</h3>
@@ -238,7 +241,7 @@ input,select,textarea{font:inherit}
     <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 40px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#0056CF;font-weight:500">/05</span><span style="font-weight:500;color:#00132E">BENEFICIOS</span><span aria-hidden="true" style="flex:1;height:1px;background:#D7E3F4"></span><span style="color:#424242">05 — 10</span></div>
     <h2 id="h-benef" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.035em;font-size:clamp(34px,4.2vw,58px);line-height:1.06;color:#00132E;margin:0 0 18px;max-width:20ch;text-wrap:balance">Un dato preciso le sirve a dos equipos</h2>
     <p class="rv" style="max-width:62ch;line-height:1.6;margin:0 0 48px">Marketing recupera la atribución que WhatsApp le quitaba; ventas deja de hacer trabajo de encuestador. El mismo evento de conversión alimenta los reportes de ambos.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:24px">
       <article class="rv" style="background:#FFFFFF;border:1px solid #D7E3F4;border-radius:48px 16px 16px 16px;padding:38px 36px">
         <p style="margin:0 0 22px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;color:#0056CF">PARA MARKETING</p>
         <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px">
@@ -267,7 +270,7 @@ input,select,textarea{font:inherit}
     <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 40px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#0056CF;font-weight:500">/06</span><span style="font-weight:500;color:#00132E">ANTES VS DESPUÉS</span><span aria-hidden="true" style="flex:1;height:1px;background:#D7E3F4"></span><span style="color:#424242">06 — 10</span></div>
     <h2 id="h-avd" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.035em;font-size:clamp(34px,4.2vw,58px);line-height:1.06;color:#00132E;margin:0 auto 12px;max-width:22ch;text-align:center;text-wrap:balance">La misma venta, dos destinos</h2>
     <p class="rv" style="max-width:56ch;line-height:1.6;margin:0 auto 48px;text-align:center">Mismo anuncio, mismo cliente, misma compra. La única diferencia es si el dato llega al pixel — o muere en el chat.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(24px,3vw,40px);align-items:start">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(24px,3vw,40px);align-items:start">
       <div class="rv">
         <p style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;color:#424242;margin:0 0 18px;text-align:center">ANTES · SIN 1TO1AI</p>
         <div style="background:#F5F8FC;border:1px dashed #42424266;border-radius:28px;padding:22px 20px;display:flex;flex-direction:column;gap:12px;filter:saturate(.2);transform:rotate(-1.2deg)">
@@ -323,7 +326,7 @@ input,select,textarea{font:inherit}
   <div style="max-width:1280px;margin:0 auto;padding:clamp(80px,8vw,120px) clamp(20px,4vw,48px)">
     <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 40px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#0056CF;font-weight:500">/08</span><span style="font-weight:500;color:#00132E">TESTIMONIOS</span><span aria-hidden="true" style="flex:1;height:1px;background:#D7E3F4"></span><span style="color:#424242">08 — 10</span></div>
     <h2 id="h-testim" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.035em;font-size:clamp(34px,4.2vw,58px);line-height:1.06;color:#00132E;margin:0 0 48px;max-width:20ch;text-wrap:balance">Equipos que ya miden lo que venden</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px">
       <figure class="rv" style="margin:0;background:#FFFFFF;border:1px solid #D7E3F4;border-radius:16px 16px 16px 4px;padding:26px 26px;display:flex;flex-direction:column;gap:18px;box-shadow:0 2px 8px #00132E0A;transition:transform .25s cubic-bezier(.16,1,.3,1),border-color .2s" style-hover="transform:translateY(-3px);border-color:#0B9EFD">
         <blockquote style="margin:0;font-size:15.5px;line-height:1.65;color:#00132E;padding:0">"Logramos un ROAS 3x en 2 meses. Por primera vez Meta sabe qué anuncio genera cada venta que cerramos por WhatsApp."</blockquote>
         <figcaption style="display:flex;align-items:center;gap:12px;margin-top:auto">
@@ -402,7 +405,7 @@ input,select,textarea{font:inherit}
       </table>
     </div>
     <h3 class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;letter-spacing:-0.02em;color:#00132E;margin:72px 0 24px">Glosario</h3>
-    <dl class="rv" style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px 40px">
+    <dl class="rv" style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:22px 40px">
       <div><dt style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#0056CF;margin-bottom:4px">ROAS</dt><dd style="margin:0;font-size:14.5px;line-height:1.6">Retorno sobre la inversión publicitaria: ingresos generados por cada peso gastado en anuncios.</dd></div>
       <div><dt style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#0056CF;margin-bottom:4px">CPL</dt><dd style="margin:0;font-size:14.5px;line-height:1.6">Costo por lead: lo que cuesta conseguir cada contacto interesado.</dd></div>
       <div><dt style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#0056CF;margin-bottom:4px">Pixel de Meta</dt><dd style="margin:0;font-size:14.5px;line-height:1.6">Código de Meta que registra las acciones de los usuarios para medir y optimizar campañas.</dd></div>
@@ -415,7 +418,7 @@ input,select,textarea{font:inherit}
 
 <!-- ============ 10 · FORMULARIO ============ -->
 <section id="contacto" aria-labelledby="h-form">
-  <div style="max-width:1280px;margin:0 auto;padding:clamp(80px,8vw,120px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(36px,5vw,72px);align-items:start">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(80px,8vw,120px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(36px,5vw,72px);align-items:start">
     <div>
       <div class="rv" style="display:flex;align-items:center;gap:18px;margin:0 0 40px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;font-variant-numeric:tabular-nums"><span style="color:#0056CF;font-weight:500">/10</span><span style="font-weight:500;color:#00132E">ACCESO POR SOLICITUD</span><span aria-hidden="true" style="flex:1;height:1px;background:#D7E3F4"></span><span style="color:#424242">10 — 10</span></div>
       <h2 id="h-form" class="rv" style="font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.035em;font-size:clamp(32px,3.8vw,52px);line-height:1.08;color:#00132E;margin:0 0 18px;max-width:16ch">Solicita acceso a 1to1AI</h2>
