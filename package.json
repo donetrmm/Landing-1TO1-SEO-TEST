@@ -1,0 +1,19 @@
+{
+  "name": "landing-1to1ai",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node prerender.mjs",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "preact": "^10.29.7",
+    "preact-render-to-string": "^6.7.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.6",
+    "vite": "^6.3.5"
+  }
+}
