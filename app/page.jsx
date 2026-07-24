@@ -1,35 +1,91 @@
+import Link from 'next/link'
 import Behaviors from '../components/Behaviors'
 import Contacto from '../components/Contacto'
+import SiteHeader from '../components/SiteHeader'
+import SiteFooter from '../components/SiteFooter'
+import { ARTICLES } from '../lib/articles'
+import { BUSINESS, SITE_URL } from '../lib/site'
+
+const HOME_FAQ = [
+  ['¿Cómo trackear ventas de WhatsApp en Meta Ads?', 'Se trackean capturando el identificador de clic que Meta adjunta al primer mensaje de una conversación originada por un anuncio Click-to-WhatsApp y reenviando después la conversión por la API de Conversiones, atribuida al anuncio original.'],
+  ['¿Se puede alimentar el Pixel de Meta desde WhatsApp?', 'No se instala un pixel dentro de WhatsApp, porque la app no ejecuta código de terceros. Lo que sí se puede es escribir en el mismo conjunto de datos del Pixel desde un servidor, mediante la API de Conversiones.'],
+  ['¿Qué es la API de Conversiones y para qué sirve?', 'La API de Conversiones (CAPI) es la vía de servidor a servidor con la que Meta recibe eventos de conversión sin depender del navegador. Sirve para reportar ventas que ocurren fuera del sitio web, como las que cierran por WhatsApp.'],
+  ['¿Cómo se mide el ROAS de campañas que cierran por WhatsApp?', 'Enviando el valor y la moneda de cada conversión junto al evento, para que Meta divida los ingresos atribuidos entre el gasto de la campaña dentro de la ventana de atribución configurada.'],
+  ['¿No basta con usar UTMs para atribuir las ventas de WhatsApp?', 'No. Un UTM es texto en una URL y en un anuncio Click-to-WhatsApp no hay URL que cargue. Además, aunque se capturara, el dato se queda en la analítica propia y nunca llega al algoritmo de Meta.'],
+  ['¿Cuánto tarda la implementación de 1to1AI?', 'La revisión de la solicitud tarda de 24 a 48 horas; tras la aprobación, la configuración del evento personalizado y del formulario inteligente se hace el mismo día.'],
+]
+
+const homeJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: '1to1AI',
+      url: SITE_URL,
+      logo: `${SITE_URL}/uploads/logo.png`,
+      areaServed: ['MX', 'LATAM'],
+      email: BUSINESS.email,
+      disambiguatingDescription: BUSINESS.legalNotice,
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'sales',
+        email: BUSINESS.email,
+        availableLanguage: ['es-MX', 'en'],
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      name: '1to1AI',
+      url: SITE_URL,
+      inLanguage: 'es-MX',
+      publisher: { '@id': `${SITE_URL}/#organization` },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: '1to1AI',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      url: SITE_URL,
+      publisher: { '@id': `${SITE_URL}/#organization` },
+      description:
+        'Software de atribución que trackea conversaciones de WhatsApp y las envía como eventos de conversión al Pixel de Meta y a la API de Conversiones.',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'MXN',
+        description: 'Acceso por solicitud, aprobación en 24–48 horas',
+      },
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${SITE_URL}/#guias`,
+      name: 'Guías de atribución de WhatsApp para Meta Ads',
+      itemListElement: ARTICLES.map((a, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: a.h1,
+        url: `${SITE_URL}/${a.slug}`,
+      })),
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${SITE_URL}/#faq`,
+      mainEntity: HOME_FAQ.map(([q, a]) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    },
+  ],
+}
 
 function Check() {
   return (
     <span className="chk" aria-hidden="true">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M4 13c3 1.5 5 4 6 6 2-6 6.5-12 10-15" /></svg>
     </span>
-  )
-}
-
-function Header() {
-  return (
-    <header id="siteHeader" className="hdr">
-      <div id="scrollProgress" className="hdr-prog" aria-hidden="true" />
-      <div className="wrap hdr-in">
-        <a href="#hero" aria-label="1to1AI — inicio" className="hdr-logo"><img src="/uploads/logo.png" alt="Logotipo de 1to1AI" width="118" height="34" /></a>
-        <nav aria-label="Navegación principal" className="nav" id="mainNav">
-          <a href="#caracteristicas">Características</a>
-          <a href="#beneficios">Beneficios</a>
-          <a href="#testimonios">Testimonios</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
-        <div className="hdr-right">
-          <div className="lang" role="group" aria-label="Idioma">
-            <a href="#hero" aria-current="true">ES</a>
-            <a href="#hero" title="Versión en inglés — próximamente">EN</a>
-          </div>
-          <a href="#contacto" className="hdr-cta">Solicitar acceso<span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </header>
   )
 }
 
@@ -40,7 +96,7 @@ function Rail() {
       <a href="#hero" data-rail="0" aria-label="Inicio" aria-current="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M3 11l9-8 9 8v9a2 2 0 0 1-2 2h-4v-7h-6v7H5a2 2 0 0 1-2-2z" /></svg></a>
       <a href="#caracteristicas" data-rail="1" aria-label="Características"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="3.5" /></svg></a>
       <a href="#beneficios" data-rail="2" aria-label="Beneficios"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M4 20v-6M12 20V8M20 20V4" /></svg></a>
-      <a href="#testimonios" data-rail="3" aria-label="Testimonios"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M21 12a8 8 0 1 1-3.6-6.7L21 4l-.9 3.4A8 8 0 0 1 21 12z" /></svg></a>
+      <a href="#guias" data-rail="3" aria-label="Guías"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h11v18H6a2 2 0 0 1-2-2z" /><path d="M8 8h6M8 12h6" /></svg></a>
       <a href="#contacto" data-rail="4" aria-label="Contacto"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg></a>
     </nav>
   )
@@ -84,6 +140,7 @@ function Hero() {
               <div className="learn rv" data-delay="1s"><span>Meta aprende: ad_7231 vende</span><span>ROAS ▲</span></div>
             </div>
           </div>
+          <p className="visual-note">Escenario ilustrativo. No es una conversación real de un cliente.</p>
         </div>
       </div>
       <div className="logstrip" aria-hidden="true">
@@ -95,7 +152,7 @@ function Hero() {
             <p className="logrow"><span className="ok">✓</span> evento: cotización · atribuido → ad_5512 · CAPI 0.5s</p>
             <p className="logrow"><span className="ok">✓</span> evento: compra · valor $1,890 MXN → Pixel de Meta</p>
           </div>
-          <p className="qcount">0 preguntas hechas</p>
+          <p className="qcount">registro simulado</p>
         </div>
       </div>
     </section>
@@ -147,7 +204,7 @@ function ComoFunciona() {
       <div className="wrap sec proc">
         <div className="kicker rv"><span className="no">/03</span><span className="lbl">CÓMO FUNCIONA</span><span className="fill" aria-hidden="true" /><span className="idx">03 — 10</span></div>
         <h2 id="h-proceso" className="h2 rv" style={{ maxWidth: '20ch' }}>Trackea cada venta como si fuera en tu sitio web</h2>
-        <p className="lead rv" style={{ marginBottom: 56 }}>El proceso completo toma cuatro pasos: se define un evento personalizado, se comparte un formulario inteligente por WhatsApp, cada respuesta alimenta el Pixel de Meta vía API de Conversiones en tiempo real, y las campañas comienzan a optimizarse hacia ventas reales.</p>
+        <p className="lead rv" style={{ marginBottom: 56 }}>El proceso completo toma cuatro pasos: se define un evento personalizado, se comparte un formulario inteligente por WhatsApp, cada respuesta alimenta el Pixel de Meta vía API de Conversiones en tiempo real, y las campañas comienzan a optimizarse hacia ventas reales. El recorrido técnico completo está en la guía <Link href="/como-trackear-ventas-whatsapp-meta-ads">cómo trackear ventas de WhatsApp en Meta Ads</Link>.</p>
         <div className="timeline">
           <svg aria-hidden="true" viewBox="0 0 4 100" preserveAspectRatio="none">
             <path data-scrollpath="1" d="M2,0 C-7,18 11,34 2,50 C-6,64 9,84 2,100" fill="none" stroke="#0B9EFD" strokeWidth="2" vectorEffect="non-scaling-stroke" pathLength="1" />
@@ -269,48 +326,62 @@ function AntesDespues() {
   )
 }
 
+// El HTML servido lleva ya la cifra final: el contador de JS solo la reanima.
+// Antes se renderizaba "0.0" y el crawler veía ceros.
 function Metricas() {
+  const stats = [
+    { count: '4.2', decimals: '1', shown: '4.2', suffix: 'x', lbl: 'ROAS' },
+    { count: '1247', shown: '1,247', lbl: 'CONVERSIONES', delay: '.07s' },
+    { count: '3891', shown: '3,891', lbl: 'LEADS ATRIBUIDOS', delay: '.14s' },
+    { count: '43', shown: '43', prefix: '−', suffix: '%', lbl: 'CPL', delay: '.21s' },
+  ]
   return (
     <section id="metricas" aria-labelledby="h-metricas">
-      <h2 id="h-metricas" className="sr-only">Métricas del dashboard</h2>
+      <h2 id="h-metricas" className="sr-only">Métricas de la cuenta de ejemplo</h2>
       <div className="stats-band">
         <div className="wrap">
           <div className="stats">
-            <div className="stat rv"><p className="num"><span data-count="4.2" data-decimals="1">0.0</span>x</p><p className="lbl">ROAS</p></div>
-            <div className="stat rv" data-delay=".07s"><p className="num"><span data-count="1247">0</span></p><p className="lbl">CONVERSIONES</p></div>
-            <div className="stat rv" data-delay=".14s"><p className="num"><span data-count="3891">0</span></p><p className="lbl">LEADS ATRIBUIDOS</p></div>
-            <div className="stat rv" data-delay=".21s"><p className="num">−<span data-count="43">0</span>%</p><p className="lbl">CPL</p></div>
+            {stats.map((s) => (
+              <div className="stat rv" data-delay={s.delay} key={s.lbl}>
+                <p className="num">
+                  {s.prefix}
+                  <span data-count={s.count} data-decimals={s.decimals}>{s.shown}</span>
+                  {s.suffix}
+                </p>
+                <p className="lbl">{s.lbl}</p>
+              </div>
+            ))}
           </div>
-          <p className="stats-note rv">Métricas de la cuenta de ejemplo mostrada en el hero. Los resultados varían por industria y presupuesto.</p>
+          <p className="stats-note rv">
+            Cifras de una cuenta de ejemplo construida con fines ilustrativos: no corresponden a
+            resultados de clientes reales ni constituyen una promesa de desempeño. Cómo se calcula
+            cada una: <Link href="/medir-roas-campanas-whatsapp">guía de medición de ROAS</Link>.
+          </p>
         </div>
       </div>
     </section>
   )
 }
 
-function Testimonios() {
-  const items = [
-    { ini: 'CM', quote: '"Logramos un ROAS 3x en 2 meses. Por primera vez Meta sabe qué anuncio genera cada venta que cerramos por WhatsApp."', name: 'Carlos Méndez', role: 'Director de Marketing' },
-    { ini: 'AR', quote: '"Dejamos de preguntar \'¿cómo nos conociste?\'. La atribución llega sola al pixel y las campañas se optimizan sin que toquemos nada."', name: 'Ana Rodríguez', role: 'Growth Lead', delay: '.08s' },
-    { ini: 'MT', quote: '"Antes decidíamos el presupuesto a ciegas. Hoy cada peso va al anuncio que sí vende, con datos en tiempo real."', name: 'Miguel Torres', role: 'Fundador', delay: '.16s' },
-  ]
+function Guias() {
   return (
-    <section id="testimonios" aria-labelledby="h-testim">
+    <section id="guias" aria-labelledby="h-guias">
       <div className="wrap sec">
-        <div className="kicker rv"><span className="no">/08</span><span className="lbl">TESTIMONIOS</span><span className="fill" aria-hidden="true" /><span className="idx">08 — 10</span></div>
-        <h2 id="h-testim" className="h2 rv" style={{ maxWidth: '20ch', marginBottom: 48 }}>Equipos que ya miden lo que venden</h2>
-        <div className="grid-tsm">
-          {items.map((t) => (
-            <figure className="tsm rv" data-delay={t.delay} key={t.ini}>
-              <blockquote>{t.quote}</blockquote>
-              <figcaption>
-                <span className="avatar" aria-hidden="true">{t.ini}</span>
-                <span className="who"><span className="nm">{t.name}</span><span className="rl">{t.role}</span></span>
-                <span className="vv" aria-hidden="true">✓✓</span>
-              </figcaption>
-            </figure>
+        <div className="kicker rv"><span className="no">/08</span><span className="lbl">GUÍAS</span><span className="fill" aria-hidden="true" /><span className="idx">08 — 10</span></div>
+        <h2 id="h-guias" className="h2 rv" style={{ maxWidth: '22ch' }}>Cómo funciona la atribución de WhatsApp, en detalle</h2>
+        <p className="lead rv" style={{ marginBottom: 44 }}>Cinco guías técnicas sobre el problema que resuelve 1to1AI: identificadores de clic, API de Conversiones, deduplicación de eventos y medición de retorno. Escritas para quien va a implementarlo, no para quien va a comprarlo.</p>
+        <ul className="grid-guias">
+          {ARTICLES.map((a, i) => (
+            <li className="rv" data-delay={`${i * 0.06}s`} key={a.slug}>
+              <Link href={`/${a.slug}`} className="guia-card">
+                <span className="guia-k">{a.kicker}</span>
+                <span className="h3">{a.h1}</span>
+                <span className="guia-d">{a.description}</span>
+                <span className="guia-go" aria-hidden="true">Leer la guía →</span>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )
@@ -318,10 +389,11 @@ function Testimonios() {
 
 function Faq() {
   const faqs = [
-    { q: '¿Cómo trackear ventas de WhatsApp en Meta Ads?', a: 'Se trackean enviando cada conversación como evento de conversión al Pixel de Meta mediante un formulario inteligente: 1to1AI captura la respuesta del cliente y dispara el evento al Pixel y a la API de Conversiones en tiempo real, atribuido al anuncio original.' },
-    { q: '¿Se puede alimentar el Pixel de Meta desde WhatsApp?', a: 'Sí. WhatsApp no ejecuta píxeles, pero 1to1AI conecta cada conversación con la API de Conversiones de Meta, de modo que las ventas cerradas por chat llegan al Pixel como eventos de conversión con su campaña, conjunto y anuncio de origen.' },
-    { q: '¿Qué es la API de Conversiones y para qué sirve?', a: 'La API de Conversiones (CAPI) es la vía de servidor a servidor con la que Meta recibe eventos de conversión sin depender del navegador. Sirve para reportar ventas que ocurren fuera del sitio web — como las que cierran por WhatsApp — sin perder señal por bloqueadores o cookies.' },
-    { q: '¿Cómo se mide el ROAS de campañas que cierran por WhatsApp?', a: 'El ROAS se mide atribuyendo cada venta de WhatsApp al anuncio que la originó: 1to1AI registra el valor de la conversión y lo envía a Meta, que lo cruza con el gasto de campaña para calcular el retorno real, no el estimado.' },
+    { q: '¿Cómo trackear ventas de WhatsApp en Meta Ads?', a: 'Se trackean enviando cada conversación como evento de conversión al Pixel de Meta mediante un formulario inteligente: 1to1AI captura la respuesta del cliente y dispara el evento al Pixel y a la API de Conversiones en tiempo real, atribuido al anuncio original.', to: 'como-trackear-ventas-whatsapp-meta-ads' },
+    { q: '¿Se puede alimentar el Pixel de Meta desde WhatsApp?', a: 'Sí. WhatsApp no ejecuta píxeles, pero 1to1AI conecta cada conversación con la API de Conversiones de Meta, de modo que las ventas cerradas por chat llegan al Pixel como eventos de conversión con su campaña, conjunto y anuncio de origen.', to: 'alimentar-pixel-meta-desde-whatsapp' },
+    { q: '¿Qué es la API de Conversiones y para qué sirve?', a: 'La API de Conversiones (CAPI) es la vía de servidor a servidor con la que Meta recibe eventos de conversión sin depender del navegador. Sirve para reportar ventas que ocurren fuera del sitio web — como las que cierran por WhatsApp — sin perder señal por bloqueadores o cookies.', to: 'api-de-conversiones-meta-que-es' },
+    { q: '¿Cómo se mide el ROAS de campañas que cierran por WhatsApp?', a: 'El ROAS se mide atribuyendo cada venta de WhatsApp al anuncio que la originó: 1to1AI registra el valor de la conversión y lo envía a Meta, que lo cruza con el gasto de campaña para calcular el retorno real, no el estimado.', to: 'medir-roas-campanas-whatsapp' },
+    { q: '¿No basta con usar UTMs para atribuir las ventas de WhatsApp?', a: 'No. Un UTM es texto en una URL y en un anuncio Click-to-WhatsApp no hay URL: el usuario salta directo a la app. Además, aunque lo capturaras, el dato se queda en tu analítica y nunca llega al algoritmo de Meta, que es quien reparte el presupuesto.', to: 'atribucion-whatsapp-vs-utms' },
     { q: '¿Cuánto tarda la implementación?', a: 'La revisión de la solicitud tarda 24 a 48 horas. Tras la aprobación, la configuración del evento personalizado y del formulario inteligente se completa el mismo día; no requiere cambios en tu sitio web.' },
   ]
   const gloss = [
@@ -329,8 +401,10 @@ function Faq() {
     ['CPL', 'Costo por lead: lo que cuesta conseguir cada contacto interesado.'],
     ['Pixel de Meta', 'Código de Meta que registra las acciones de los usuarios para medir y optimizar campañas.'],
     ['CAPI', 'API de Conversiones: canal de servidor a servidor para enviar eventos a Meta sin depender del navegador.'],
+    ['ctwa_clid', 'Identificador de clic que Meta adjunta al primer mensaje de una conversación originada por un anuncio Click-to-WhatsApp.'],
     ['Atribución', 'Proceso de identificar qué anuncio o canal originó cada conversión.'],
     ['Evento de conversión', 'Señal que informa a Meta que ocurrió una acción valiosa: compra, registro o cita.'],
+    ['Deduplicación', 'Mecanismo por el que Meta descarta la copia repetida de un evento que llega por Pixel y por CAPI con el mismo event_id.'],
   ]
   return (
     <section id="faq" className="light" aria-labelledby="h-faq">
@@ -339,7 +413,13 @@ function Faq() {
         <h2 id="h-faq" className="h2 rv" style={{ maxWidth: '24ch', marginBottom: 44 }}>Lo que todo el mundo pregunta antes de medir WhatsApp</h2>
         <div className="faq-list rv">
           {faqs.map((f) => (
-            <details key={f.q}><summary>{f.q}</summary><p>{f.a}</p></details>
+            <details key={f.q}>
+              <summary>{f.q}</summary>
+              <p>
+                {f.a}
+                {f.to && <> <Link href={`/${f.to}`} className="faq-more">Guía completa →</Link></>}
+              </p>
+            </details>
           ))}
         </div>
         <h3 className="sub-h rv">1to1AI frente a las alternativas</h3>
@@ -357,6 +437,7 @@ function Faq() {
             </tbody>
           </table>
         </div>
+        <p className="lead rv" style={{ marginTop: 20, fontSize: 14.5 }}>El desglose de esta comparativa, con los cuatro métodos frente a frente, está en <Link href="/atribucion-whatsapp-vs-utms">atribución de WhatsApp vs UTMs</Link>.</p>
         <h3 className="sub-h rv">Glosario</h3>
         <dl className="gloss rv">
           {gloss.map(([t, d]) => <div key={t}><dt>{t}</dt><dd>{d}</dd></div>)}
@@ -380,52 +461,11 @@ function Cierre() {
   )
 }
 
-function Footer() {
-  return (
-    <footer className="foot">
-      <div className="wrap foot-grid">
-        <div className="foot-about">
-          <img src="/uploads/logo.png" alt="Logotipo de 1to1AI" width="104" height="30" />
-          <p>Software de atribución que conecta tus conversaciones de WhatsApp con el Pixel de Meta y la API de Conversiones.</p>
-        </div>
-        <nav aria-label="Navegación del sitio">
-          <p className="foot-h">SITIO</p>
-          <ul>
-            <li><a href="#caracteristicas">Características de 1to1AI</a></li>
-            <li><a href="#beneficios">Beneficios para marketing y ventas</a></li>
-            <li><a href="#testimonios">Testimonios de clientes</a></li>
-            <li><a href="#faq">Preguntas frecuentes</a></li>
-            <li><a href="#contacto">Solicitar acceso</a></li>
-          </ul>
-        </nav>
-        <nav aria-label="Legal">
-          <p className="foot-h">LEGAL</p>
-          <ul>
-            <li><a href="#hero">Aviso de privacidad</a></li>
-            <li><a href="#hero">Términos y condiciones</a></li>
-          </ul>
-        </nav>
-        <div>
-          <p className="foot-h">CONTACTO</p>
-          <ul className="mono-list">
-            <li>[[PENDIENTE: email de contacto]]</li>
-            <li>[[PENDIENTE: razón social · domicilio fiscal · año de fundación]]</li>
-            <li>[[PENDIENTE: perfiles sociales]]</li>
-          </ul>
-        </div>
-      </div>
-      <div className="foot-bar">
-        <p className="wrap">© 2026 1to1AI · México y LATAM · es-MX</p>
-      </div>
-    </footer>
-  )
-}
-
 export default function Page() {
   return (
     <div className="page">
       <Behaviors />
-      <Header />
+      <SiteHeader home />
       <Rail />
       <main>
         <Hero />
@@ -435,12 +475,16 @@ export default function Page() {
         <Beneficios />
         <AntesDespues />
         <Metricas />
-        <Testimonios />
+        <Guias />
         <Faq />
         <Contacto />
         <Cierre />
       </main>
-      <Footer />
+      <SiteFooter home />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
+      />
     </div>
   )
 }

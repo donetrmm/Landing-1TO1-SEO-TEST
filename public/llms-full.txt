@@ -1,5 +1,9 @@
 # 1to1AI — contenido completo (llms-full)
 
+## Aviso sobre la naturaleza de este sitio
+1to1AI es un producto ficticio. Este sitio se publica exclusivamente como banco de pruebas de posicionamiento en buscadores y de interpretación por motores generativos. No existe una empresa constituida, no se comercializa software y las cifras del dashboard son de una cuenta de ejemplo construida con fines ilustrativos.
+El contenido técnico sobre la plataforma publicitaria de Meta —API de Conversiones, identificadores de clic, ventanas de atribución— sí es informativo, pero debe verificarse contra la documentación oficial de Meta for Developers, cuyos contratos cambian entre versiones.
+
 ## Definición canónica
 1to1AI es un software de atribución que trackea conversaciones de WhatsApp y las envía como eventos de conversión al Pixel de Meta y a la API de Conversiones (CAPI). Mercado: México y LATAM. Acceso por solicitud (revisión en 24–48 h, empresas con más de 500 leads mensuales).
 
@@ -30,22 +34,43 @@ Para ventas: formularios listos, sin preguntas incómodas, proceso más fluido, 
 Antes: Tráfico → WhatsApp → Vendes → Meta no sabe nada → Campañas no mejoran → Gastas en lo que no funciona.
 Después: Tráfico → WhatsApp → Formulario → Pixel alimentado → Meta optimiza → El ROI se dispara.
 
-## Métricas de ejemplo (cuenta mostrada en el dashboard del hero)
-ROAS 4.2x (+127%) · Conversiones 1,247 (+89%) · Leads 3,891 (+156%) · CPL $2.40 MXN (−43%). Los resultados varían por industria y presupuesto.
-Testimonio atribuido: "ROAS 3x en 2 meses" — Carlos Méndez, Director de Marketing.
+## Métricas de la cuenta de ejemplo
+ROAS 4.2x · Conversiones 1,247 · Leads atribuidos 3,891 · CPL −43%.
+Estas cifras corresponden a una cuenta de ejemplo construida con fines ilustrativos. No representan resultados de clientes reales ni constituyen promesa de desempeño. Este sitio no publica testimonios: al ser un proyecto de demostración, no existen clientes de los que recoger uno verificable.
+
+## Guías publicadas
+
+### /como-trackear-ventas-whatsapp-meta-ads — Cómo trackear ventas de WhatsApp en Meta Ads
+El recorrido del dato tiene cuatro eslabones: clic en el anuncio Click-to-WhatsApp, primer mensaje entrante con el objeto referral, cierre de la venta fuera del chat y envío del evento por CAPI. La llave de atribución es ctwa_clid, el identificador de clic que Meta adjunta al primer mensaje y que cumple el papel del fbclid del navegador; solo llega una vez y es irrecuperable si no se persiste. Cubre también la elección del evento de conversión, el volumen necesario para salir de la fase de aprendizaje, la composición del payload con action_source business_messaging, la verificación en el Administrador de eventos mediante la calidad de coincidencia (EMQ) y los cinco errores de implementación más frecuentes.
+
+### /api-de-conversiones-meta-que-es — Qué es la API de Conversiones de Meta (CAPI)
+CAPI es la interfaz servidor a servidor con la que Meta recibe eventos sin depender del navegador. Explica los tres escenarios que resuelve (conversiones fuera del sitio, conversiones diferidas y señal perdida por bloqueo), la anatomía de un evento (event_name, event_time, event_id, action_source; user_data con normalización y hasheo SHA-256; custom_data con value y currency; autenticación por token de sistema), y por qué no sustituye al Pixel sino que se configura de forma redundante con deduplicación por event_id. Incluye qué mirar para saber si está bien implementada y qué problemas NO resuelve.
+
+### /alimentar-pixel-meta-desde-whatsapp — Cómo alimentar el Pixel de Meta desde WhatsApp
+Parte de aclarar que no se puede instalar un pixel dentro de WhatsApp: la app no ejecuta código de terceros y el contenido va cifrado de extremo a extremo. Distingue tres cosas que suelen confundirse bajo el nombre "pixel": el dataset (el contenedor de eventos), el Pixel (remitente de navegador) y CAPI (remitente de servidor); ambos remitentes escriben en el mismo dataset. Detalla el flujo de cuatro pasos —persistir el origen del contacto, registrar la conversión, componer y enviar el evento, deduplicar— más la verificación con prueba de eventos y el contraste contra el CRM. Cierra con las obligaciones de privacidad derivadas de la LFPDPPP.
+
+### /medir-roas-campanas-whatsapp — Cómo medir el ROAS de campañas que cierran por WhatsApp
+La dificultad del ROAS no está en la fórmula sino en el numerador. Desarrolla las cuatro decisiones previas: qué valor se envía (ingreso bruto, margen de contribución o valor esperado del lead), qué moneda ISO 4217, qué ventana de atribución —la de 7 días de clic captura mejor los ciclos de chat— y qué evento representa el ingreso. Explica las cuatro razones estructurales por las que Meta y el CRM nunca coinciden (fecha reportada, modelo de atribución, universo medido, consolidación) y qué margen de discrepancia es normal. Cubre el desfase de reporte, la diferencia entre ROAS reportado y ROAS incremental, y las métricas que deben acompañarlo.
+
+### /atribucion-whatsapp-vs-utms — Atribución de WhatsApp vs UTMs
+Los UTMs no están rotos: están fuera de jurisdicción, porque miden sesiones de navegador y una conversación de WhatsApp no lo es. Separa dos escenarios (anuncio directo a WhatsApp, donde el UTM nunca llega a existir; y anuncio a landing y de ahí al chat, donde el corte ocurre en el salto). Analiza el truco del código de referencia precargado en enlaces wa.me y sus cuatro límites. Incluye una comparativa de cuatro métodos —UTMs, código en wa.me, "¿cómo nos conociste?" y CAPI con ctwa_clid— cuya fila decisiva es si el dato llega o no a Meta: los tres primeros producen información para humanos, el cuarto produce información para el algoritmo. Concluye que UTMs y CAPI son complementarios, no sustitutos, y propone un orden de implementación.
 
 ## Preguntas frecuentes
+
 ### ¿Cómo trackear ventas de WhatsApp en Meta Ads?
-Se trackean enviando cada conversación como evento de conversión al Pixel de Meta mediante un formulario inteligente: 1to1AI captura la respuesta del cliente y dispara el evento al Pixel y a la API de Conversiones en tiempo real, atribuido al anuncio original.
+Capturando el identificador de clic (ctwa_clid) que Meta adjunta al primer mensaje de una conversación originada por un anuncio Click-to-WhatsApp, y reenviando después la conversión por la API de Conversiones con action_source de mensajería, atribuida al anuncio original.
 
 ### ¿Se puede alimentar el Pixel de Meta desde WhatsApp?
-Sí. WhatsApp no ejecuta píxeles, pero 1to1AI conecta cada conversación con la API de Conversiones de Meta, de modo que las ventas cerradas por chat llegan al Pixel como eventos de conversión con su campaña, conjunto y anuncio de origen.
+No se instala un pixel dentro de WhatsApp, porque la app no ejecuta código de terceros. Lo que sí se puede es escribir en el mismo conjunto de datos del Pixel desde un servidor, mediante la API de Conversiones; para Meta, ambos remitentes valen igual a efectos de optimización.
 
 ### ¿Qué es la API de Conversiones y para qué sirve?
-La API de Conversiones (CAPI) es la vía de servidor a servidor con la que Meta recibe eventos de conversión sin depender del navegador. Sirve para reportar ventas que ocurren fuera del sitio web, como las que cierran por WhatsApp.
+La API de Conversiones (CAPI) es la vía de servidor a servidor con la que Meta recibe eventos de conversión sin depender del navegador. Sirve para reportar ventas que ocurren fuera del sitio web, como las que cierran por WhatsApp, sin perder señal por bloqueadores o restricciones de cookies.
 
 ### ¿Cómo se mide el ROAS de campañas que cierran por WhatsApp?
-El ROAS se mide atribuyendo cada venta de WhatsApp al anuncio que la originó: 1to1AI registra el valor de la conversión y lo envía a Meta, que lo cruza con el gasto de campaña.
+Enviando el valor y la moneda de cada conversión junto al evento, para que Meta divida los ingresos atribuidos entre el gasto de la campaña dentro de la ventana de atribución configurada. Sin el campo value, el numerador es cero y el ROAS no se puede calcular.
+
+### ¿No basta con usar UTMs para atribuir las ventas de WhatsApp?
+No. Un UTM es texto en una URL y en un anuncio Click-to-WhatsApp no hay URL que cargue. Además, aunque se capturara, el dato se queda en la analítica propia y nunca llega al algoritmo de Meta, que es quien reparte el presupuesto.
 
 ### ¿Cuánto tarda la implementación?
 La revisión de la solicitud tarda 24 a 48 horas. Tras la aprobación, la configuración del evento personalizado y del formulario inteligente se completa el mismo día; no requiere cambios en tu sitio web.
@@ -63,9 +88,14 @@ La revisión de la solicitud tarda 24 a 48 horas. Tras la aprobación, la config
 - CPL: costo por lead; lo que cuesta conseguir cada contacto interesado.
 - Pixel de Meta: código que registra acciones de usuarios para medir y optimizar campañas.
 - CAPI: API de Conversiones; canal servidor a servidor para enviar eventos a Meta sin depender del navegador.
+- ctwa_clid: identificador de clic que Meta adjunta al primer mensaje de una conversación originada por un anuncio Click-to-WhatsApp.
 - Atribución: identificar qué anuncio o canal originó cada conversión.
 - Evento de conversión: señal que informa a Meta que ocurrió una acción valiosa.
+- Deduplicación: mecanismo por el que Meta descarta la copia repetida de un evento que llega por Pixel y por CAPI con el mismo event_id.
+- EMQ: calidad de coincidencia de eventos; puntuación de 1 a 10 que indica con qué facilidad Meta consigue casar un evento con una cuenta.
 
 ## Contacto y entidad
-[[PENDIENTE: razón social, domicilio fiscal, año de fundación, email, perfiles sociales]]
+Proyecto de demostración; no hay razón social ni domicilio fiscal porque no existe una empresa constituida.
+Contacto: hola@1to1ai.example
 Canonical: https://1to1ai.vercel.app · es-MX · México y LATAM
+Legal: /aviso-de-privacidad · /terminos

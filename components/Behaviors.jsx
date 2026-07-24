@@ -26,30 +26,39 @@ export default function Behaviors() {
       cleanups.push(() => io.disconnect())
     }
 
-    // metric counters
+    // metric counters — el HTML ya trae la cifra final; esto solo la reanima.
     const counters = [...document.querySelectorAll('[data-count]')]
-    const runCounter = (el) => {
-      const target = parseFloat(el.dataset.count)
+    const fmt = (el, v) => {
       const dec = parseInt(el.dataset.decimals || '0', 10)
+      el.textContent = v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec })
+    }
+    const settle = (el) => fmt(el, parseFloat(el.dataset.count))
+    const runCounter = (el) => {
+      // En pestaña oculta requestAnimationFrame se estrangula y el contador se quedaría
+      // congelado en una cifra baja: justo lo que vería un crawler que renderiza en
+      // segundo plano. En ese caso no animamos, dejamos la cifra final.
+      if (document.hidden) return settle(el)
+      const target = parseFloat(el.dataset.count)
       const t0 = performance.now()
       const dur = 1400
       const tick = (t) => {
         const p = Math.min((t - t0) / dur, 1)
-        const v = target * (1 - Math.pow(1 - p, 3))
-        el.textContent = v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec })
+        fmt(el, target * (1 - Math.pow(1 - p, 3)))
         if (p < 1) requestAnimationFrame(tick)
+        else settle(el)
       }
       requestAnimationFrame(tick)
     }
     if (!motion) {
-      counters.forEach((el) => {
-        const d = parseInt(el.dataset.decimals || '0', 10)
-        el.textContent = parseFloat(el.dataset.count).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d })
-      })
+      counters.forEach(settle)
     } else {
       const ioCnt = new IntersectionObserver((es) => { es.forEach((en) => { if (en.isIntersecting) { runCounter(en.target); ioCnt.unobserve(en.target) } }) }, { threshold: 0.6 })
       counters.forEach((el) => ioCnt.observe(el))
       cleanups.push(() => ioCnt.disconnect())
+      // Si la pestaña se oculta a mitad de la animación, fijamos la cifra final.
+      const onHide = () => { if (document.hidden) counters.forEach(settle) }
+      document.addEventListener('visibilitychange', onHide)
+      cleanups.push(() => document.removeEventListener('visibilitychange', onHide))
     }
 
     // timeline draw on scroll
@@ -118,7 +127,7 @@ export default function Behaviors() {
     // rail + nav active section
     const pill = document.getElementById('railPill')
     const railLinks = [...document.querySelectorAll('[data-rail]')]
-    const secIds = ['hero', 'caracteristicas', 'beneficios', 'testimonios', 'contacto']
+    const secIds = ['hero', 'caracteristicas', 'beneficios', 'guias', 'contacto']
     const ioRail = new IntersectionObserver((es) => {
       es.forEach((en) => {
         if (!en.isIntersecting) return
