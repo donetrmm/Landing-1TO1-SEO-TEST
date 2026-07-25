@@ -1,9 +1,60 @@
 import Link from 'next/link'
 import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
-import { BUSINESS, IS_DEMO, LAST_REVIEWED } from '../lib/site'
+import { BUSINESS, IS_DEMO, LAST_REVIEWED, SITE_URL } from '../lib/site'
+import { orgRef, organizationNode, websiteNode } from '../lib/schema'
 
-export default function LegalShell({ title, kicker, children }) {
+// Metadata de una página legal. Antes solo declaraban title/description/canonical, así
+// que heredaban el bloque openGraph del layout y publicaban og:url apuntando a la home —
+// contradiciendo su propio canonical en dos URLs.
+export function legalMetadata({ title, description, path }) {
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      type: 'article',
+      url: path,
+      siteName: '1to1AI',
+      locale: 'es_MX',
+      title,
+      description,
+      images: ['/uploads/logo.png'],
+    },
+    twitter: { card: 'summary', title, description, images: ['/uploads/logo.png'] },
+  }
+}
+
+function legalJsonLd({ title, description, path }) {
+  const url = `${SITE_URL}${path}`
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      organizationNode(),
+      websiteNode(),
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: title,
+        description,
+        inLanguage: 'es-MX',
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+        publisher: orgRef,
+        dateModified: LAST_REVIEWED,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: title, item: url },
+        ],
+      },
+    ],
+  }
+}
+
+export default function LegalShell({ title, kicker, description, path, children }) {
   return (
     <div className="page">
       <SiteHeader />
@@ -18,7 +69,7 @@ export default function LegalShell({ title, kicker, children }) {
             <p className="eyebrow">{kicker}</p>
             <h1 className="h1 art-h1">{title}</h1>
             <p className="art-meta">
-              <time dateTime={LAST_REVIEWED}>Última actualización: 24 de julio de 2026</time>
+              <time dateTime={LAST_REVIEWED}>Última actualización: 25 de julio de 2026</time>
             </p>
 
             {IS_DEMO && (
@@ -40,6 +91,12 @@ export default function LegalShell({ title, kicker, children }) {
         </article>
       </main>
       <SiteFooter />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(legalJsonLd({ title, description, path })),
+        }}
+      />
     </div>
   )
 }

@@ -33,7 +33,10 @@ export default function sitemap() {
     })),
     {
       url: `${SITE_URL}/sobre`,
-      lastModified: homeLastmod,
+      // LAST_REVIEWED, no homeLastmod: /sobre no cambia porque se edite una guía, y un
+      // lastmod que se mueve sin cambio real es exactamente lo que hace que Google deje
+      // de creerse el campo.
+      lastModified: reviewed,
       changeFrequency: 'yearly',
       priority: 0.5,
     },

@@ -4,16 +4,44 @@ import Contacto from '../components/Contacto'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
 import { ARTICLES } from '../lib/articles'
-import { SITE_URL } from '../lib/site'
+import { BUSINESS, SITE_URL } from '../lib/site'
 import { orgRef, organizationNode, websiteNode } from '../lib/schema'
 
+// FUENTE ÚNICA del FAQ de la home: la consumen el <details> visible y el FAQPage del
+// JSON-LD. Antes eran dos arrays independientes y habían divergido en 4 de 6 respuestas
+// —una decía lo contrario que la otra— además de declarar en el marcado una pregunta que
+// no aparecía en la página. Marcar contenido que el usuario no ve infringe las políticas
+// de datos estructurados de Google. Si añades una pregunta, va aquí y sale en los dos.
 const HOME_FAQ = [
-  ['¿Cómo trackear ventas de WhatsApp en Meta Ads?', 'Se trackean capturando el identificador de clic que Meta adjunta al primer mensaje de una conversación originada por un anuncio Click-to-WhatsApp y reenviando después la conversión por la API de Conversiones, atribuida al anuncio original.'],
-  ['¿Se puede alimentar el Pixel de Meta desde WhatsApp?', 'No se instala un pixel dentro de WhatsApp, porque la app no ejecuta código de terceros. Lo que sí se puede es escribir en el mismo conjunto de datos del Pixel desde un servidor, mediante la API de Conversiones.'],
-  ['¿Qué es la API de Conversiones y para qué sirve?', 'La API de Conversiones (CAPI) es la vía de servidor a servidor con la que Meta recibe eventos de conversión sin depender del navegador. Sirve para reportar ventas que ocurren fuera del sitio web, como las que cierran por WhatsApp.'],
-  ['¿Cómo se mide el ROAS de campañas que cierran por WhatsApp?', 'Enviando el valor y la moneda de cada conversión junto al evento, para que Meta divida los ingresos atribuidos entre el gasto de la campaña dentro de la ventana de atribución configurada.'],
-  ['¿No basta con usar UTMs para atribuir las ventas de WhatsApp?', 'No. Un UTM es texto en una URL y en un anuncio Click-to-WhatsApp no hay URL que cargue. Además, aunque se capturara, el dato se queda en la analítica propia y nunca llega al algoritmo de Meta.'],
-  ['¿Cuánto tarda la implementación de 1to1AI?', 'La revisión de la solicitud tarda de 24 a 48 horas; tras la aprobación, la configuración del evento personalizado y del formulario inteligente se hace el mismo día.'],
+  {
+    q: '¿Cómo trackear ventas de WhatsApp en Meta Ads?',
+    a: 'Se trackean enviando cada conversación como evento de conversión al Pixel de Meta mediante un formulario inteligente: 1to1AI captura la respuesta del cliente y dispara el evento al Pixel y a la API de Conversiones en tiempo real, atribuido al anuncio original.',
+    to: 'como-trackear-ventas-whatsapp-meta-ads',
+  },
+  {
+    q: '¿Se puede alimentar el Pixel de Meta desde WhatsApp?',
+    a: 'Sí. WhatsApp no ejecuta píxeles, pero 1to1AI conecta cada conversación con la API de Conversiones de Meta, de modo que las ventas cerradas por chat llegan al Pixel como eventos de conversión con su campaña, conjunto y anuncio de origen.',
+    to: 'alimentar-pixel-meta-desde-whatsapp',
+  },
+  {
+    q: '¿Qué es la API de Conversiones y para qué sirve?',
+    a: 'La API de Conversiones (CAPI) es la vía de servidor a servidor con la que Meta recibe eventos de conversión sin depender del navegador. Sirve para reportar ventas que ocurren fuera del sitio web — como las que cierran por WhatsApp — sin perder señal por bloqueadores o cookies.',
+    to: 'api-de-conversiones-meta-que-es',
+  },
+  {
+    q: '¿Cómo se mide el ROAS de campañas que cierran por WhatsApp?',
+    a: 'El ROAS se mide atribuyendo cada venta de WhatsApp al anuncio que la originó: 1to1AI registra el valor de la conversión y lo envía a Meta, que lo cruza con el gasto de campaña para calcular el retorno real, no el estimado.',
+    to: 'medir-roas-campanas-whatsapp',
+  },
+  {
+    q: '¿No basta con usar UTMs para atribuir las ventas de WhatsApp?',
+    a: 'No. Un UTM es texto en una URL y en un anuncio Click-to-WhatsApp no hay URL: el usuario salta directo a la app. Además, aunque lo capturaras, el dato se queda en tu analítica y nunca llega al algoritmo de Meta, que es quien reparte el presupuesto.',
+    to: 'atribucion-whatsapp-vs-utms',
+  },
+  {
+    q: '¿Cuánto tarda la implementación?',
+    a: 'La revisión de la solicitud tarda 24 a 48 horas. Tras la aprobación, la configuración del evento personalizado y del formulario inteligente se completa el mismo día; no requiere cambios en tu sitio web.',
+  },
 ]
 
 const homeJsonLd = {
@@ -23,6 +51,7 @@ const homeJsonLd = {
     websiteNode(),
     {
       '@type': 'SoftwareApplication',
+      '@id': `${SITE_URL}/#software`,
       name: '1to1AI',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web',
@@ -30,16 +59,16 @@ const homeJsonLd = {
       publisher: orgRef,
       description:
         'Software de atribución que trackea conversaciones de WhatsApp y las envía como eventos de conversión al Pixel de Meta y a la API de Conversiones.',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'MXN',
-        description: 'Acceso por solicitud, aprobación en 24–48 horas',
-      },
+      // La declaración de que el producto es ficticio viajaba solo en el Organization.
+      // Quien leyera este nodo aislado veía un producto real con precio, así que se
+      // repite aquí y se retira la Offer: no hay nada que ofertar.
+      disambiguatingDescription: BUSINESS.legalNotice,
     },
     {
       '@type': 'ItemList',
-      '@id': `${SITE_URL}/#guias`,
+      // Anclado a /guias, que es donde vive la lista. Antes había dos ItemList sin
+      // relación: este con @id en la home y otro anónimo dentro de /guias.
+      '@id': `${SITE_URL}/guias#list`,
       name: 'Guías de atribución de WhatsApp para Meta Ads',
       url: `${SITE_URL}/guias`,
       itemListElement: ARTICLES.map((a, i) => ({
@@ -52,10 +81,10 @@ const homeJsonLd = {
     {
       '@type': 'FAQPage',
       '@id': `${SITE_URL}/#faq`,
-      mainEntity: HOME_FAQ.map(([q, a]) => ({
+      mainEntity: HOME_FAQ.map((f) => ({
         '@type': 'Question',
-        name: q,
-        acceptedAnswer: { '@type': 'Answer', text: a },
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
       })),
     },
   ],
@@ -372,14 +401,7 @@ function Guias() {
 }
 
 function Faq() {
-  const faqs = [
-    { q: '¿Cómo trackear ventas de WhatsApp en Meta Ads?', a: 'Se trackean enviando cada conversación como evento de conversión al Pixel de Meta mediante un formulario inteligente: 1to1AI captura la respuesta del cliente y dispara el evento al Pixel y a la API de Conversiones en tiempo real, atribuido al anuncio original.', to: 'como-trackear-ventas-whatsapp-meta-ads' },
-    { q: '¿Se puede alimentar el Pixel de Meta desde WhatsApp?', a: 'Sí. WhatsApp no ejecuta píxeles, pero 1to1AI conecta cada conversación con la API de Conversiones de Meta, de modo que las ventas cerradas por chat llegan al Pixel como eventos de conversión con su campaña, conjunto y anuncio de origen.', to: 'alimentar-pixel-meta-desde-whatsapp' },
-    { q: '¿Qué es la API de Conversiones y para qué sirve?', a: 'La API de Conversiones (CAPI) es la vía de servidor a servidor con la que Meta recibe eventos de conversión sin depender del navegador. Sirve para reportar ventas que ocurren fuera del sitio web — como las que cierran por WhatsApp — sin perder señal por bloqueadores o cookies.', to: 'api-de-conversiones-meta-que-es' },
-    { q: '¿Cómo se mide el ROAS de campañas que cierran por WhatsApp?', a: 'El ROAS se mide atribuyendo cada venta de WhatsApp al anuncio que la originó: 1to1AI registra el valor de la conversión y lo envía a Meta, que lo cruza con el gasto de campaña para calcular el retorno real, no el estimado.', to: 'medir-roas-campanas-whatsapp' },
-    { q: '¿No basta con usar UTMs para atribuir las ventas de WhatsApp?', a: 'No. Un UTM es texto en una URL y en un anuncio Click-to-WhatsApp no hay URL: el usuario salta directo a la app. Además, aunque lo capturaras, el dato se queda en tu analítica y nunca llega al algoritmo de Meta, que es quien reparte el presupuesto.', to: 'atribucion-whatsapp-vs-utms' },
-    { q: '¿Cuánto tarda la implementación?', a: 'La revisión de la solicitud tarda 24 a 48 horas. Tras la aprobación, la configuración del evento personalizado y del formulario inteligente se completa el mismo día; no requiere cambios en tu sitio web.' },
-  ]
+  const faqs = HOME_FAQ
   const gloss = [
     ['ROAS', 'Retorno sobre la inversión publicitaria: ingresos generados por cada peso gastado en anuncios.'],
     ['CPL', 'Costo por lead: lo que cuesta conseguir cada contacto interesado.'],
@@ -406,7 +428,7 @@ function Faq() {
             </details>
           ))}
         </div>
-        <h3 className="sub-h rv">1to1AI frente a las alternativas</h3>
+        <h2 className="sub-h rv">1to1AI frente a las alternativas</h2>
         <div className="tbl-wrap rv">
           <table className="tbl">
             <caption className="sr-only">Comparación de métodos de atribución para ventas por WhatsApp</caption>
@@ -424,7 +446,7 @@ function Faq() {
           </table>
         </div>
         <p className="lead rv" style={{ marginTop: 20, fontSize: 14.5 }}>Las dos últimas filas son las que 1to1AI pierde, y están aquí a propósito: una comparativa donde la opción propia gana todas las filas no informa de nada. El desglose completo —incluido el quinto método, los reportes nativos de Meta, que ya te dan atribución a nivel de anuncio sin montar nada— está en <Link href="/atribucion-whatsapp-vs-utms">atribución de WhatsApp vs UTMs</Link>.</p>
-        <h3 className="sub-h rv">Glosario</h3>
+        <h2 className="sub-h rv">Glosario</h2>
         <dl className="gloss rv">
           {gloss.map(([t, d]) => <div key={t}><dt>{t}</dt><dd>{d}</dd></div>)}
         </dl>

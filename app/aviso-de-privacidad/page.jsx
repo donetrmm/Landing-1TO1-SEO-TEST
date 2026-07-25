@@ -1,20 +1,20 @@
 import Link from 'next/link'
-import LegalShell from '../../components/LegalShell'
+import LegalShell, { legalMetadata } from '../../components/LegalShell'
 import ContactChannel, { hasContact } from '../../components/ContactChannel'
 import { BUSINESS } from '../../lib/site'
 
-export const metadata = {
+const DESCRIPTION =
+  'Aviso de privacidad de 1to1AI: datos personales que se recaban en el formulario de solicitud, finalidades del tratamiento, transferencias a Meta y ejercicio de derechos ARCO conforme a la LFPDPPP.'
+
+export const metadata = legalMetadata({
   title: 'Aviso de privacidad | 1to1AI',
-  description:
-    'Aviso de privacidad de 1to1AI: datos personales que se recaban en el formulario de solicitud, finalidades del tratamiento, transferencias a Meta y ejercicio de derechos ARCO conforme a la LFPDPPP.',
-  // Sin `robots` explícito: indexable es el default, y declararlo aquí anulaba el
-  // noindex que el layout aplica a los despliegues espejo.
-  alternates: { canonical: '/aviso-de-privacidad' },
-}
+  description: DESCRIPTION,
+  path: '/aviso-de-privacidad',
+})
 
 export default function Page() {
   return (
-    <LegalShell title="Aviso de privacidad" kicker="LEGAL">
+    <LegalShell title="Aviso de privacidad" kicker="LEGAL" description={DESCRIPTION} path="/aviso-de-privacidad">
       <h2>1. Responsable del tratamiento</h2>
       <p>
         El artículo 16 de la Ley Federal de Protección de Datos Personales en Posesión de los

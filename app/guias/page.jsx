@@ -3,7 +3,7 @@ import SiteHeader from '../../components/SiteHeader'
 import SiteFooter from '../../components/SiteFooter'
 import { ARTICLES } from '../../lib/articles'
 import { SITE_URL } from '../../lib/site'
-import { orgRef, organizationNode } from '../../lib/schema'
+import { orgRef, organizationNode, websiteNode } from '../../lib/schema'
 
 const TITLE = 'Guías de atribución de WhatsApp para Meta Ads'
 const DESCRIPTION =
@@ -29,6 +29,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     organizationNode(),
+    websiteNode(),
     {
       '@type': 'CollectionPage',
       '@id': `${SITE_URL}/guias#collection`,

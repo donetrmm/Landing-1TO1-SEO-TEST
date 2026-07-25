@@ -1,19 +1,20 @@
 import Link from 'next/link'
-import LegalShell from '../../components/LegalShell'
+import LegalShell, { legalMetadata } from '../../components/LegalShell'
 import ContactChannel from '../../components/ContactChannel'
 import { BUSINESS } from '../../lib/site'
 
-export const metadata = {
+const DESCRIPTION =
+  'Términos y condiciones de uso del sitio de 1to1AI: naturaleza demostrativa del proyecto, alcance del contenido publicado, propiedad intelectual y limitación de responsabilidad.'
+
+export const metadata = legalMetadata({
   title: 'Términos y condiciones | 1to1AI',
-  description:
-    'Términos y condiciones de uso del sitio de 1to1AI: naturaleza demostrativa del proyecto, alcance del contenido publicado, propiedad intelectual y limitación de responsabilidad.',
-  // Sin `robots` explícito: ver app/aviso-de-privacidad/page.jsx.
-  alternates: { canonical: '/terminos' },
-}
+  description: DESCRIPTION,
+  path: '/terminos',
+})
 
 export default function Page() {
   return (
-    <LegalShell title="Términos y condiciones" kicker="LEGAL">
+    <LegalShell title="Términos y condiciones" kicker="LEGAL" description={DESCRIPTION} path="/terminos">
       <h2>1. Naturaleza de este sitio</h2>
       <p>
         {BUSINESS.name} es un producto ficticio. Este sitio se publica exclusivamente como banco de

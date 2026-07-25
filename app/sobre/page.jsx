@@ -4,7 +4,7 @@ import SiteFooter from '../../components/SiteFooter'
 import ContactChannel from '../../components/ContactChannel'
 import { ARTICLES } from '../../lib/articles'
 import { AUTHOR, SITE_URL } from '../../lib/site'
-import { PERSON_ID, orgRef, personNode } from '../../lib/schema'
+import { PERSON_ID, orgRef, organizationNode, personNode, websiteNode } from '../../lib/schema'
 
 const TITLE = `${AUTHOR.name} — autor de las guías de atribución de WhatsApp`
 const DESCRIPTION = `${AUTHOR.name}, ${AUTHOR.jobTitle.toLowerCase()}, firma las guías técnicas sobre atribución de conversaciones de WhatsApp en Meta Ads publicadas en este sitio.`
@@ -28,6 +28,8 @@ export const metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
+    organizationNode(),
+    websiteNode(),
     personNode(),
     {
       '@type': 'ProfilePage',

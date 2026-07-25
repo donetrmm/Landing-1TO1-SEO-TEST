@@ -4,7 +4,7 @@ import SiteFooter from './SiteFooter'
 import Sources from './Sources'
 import { relatedOf } from '../lib/articles'
 import { AUTHOR, SITE_URL } from '../lib/site'
-import { WEBSITE_ID, orgRef, organizationNode, personNode, personRef } from '../lib/schema'
+import { WEBSITE_ID, orgRef, organizationNode, personNode, personRef, websiteNode } from '../lib/schema'
 
 const LONG_DATE = { day: 'numeric', month: 'long', year: 'numeric' }
 const fmtDate = (iso) =>
@@ -41,8 +41,12 @@ function articleJsonLd(a) {
   // El Organization va como nodo completo con su @id estable, y author/publisher lo
   // referencian. Antes se redefinía inline en cada campo de cada página: siete copias de
   // la misma entidad en vez de una.
+  // Google resuelve el @graph por documento: no cose @id entre URLs. Los nodos que se
+  // referencian —Organization, WebSite, Person— tienen que emitirse en la misma página,
+  // o `isPartOf` y `publisher` quedan colgando.
   const graph = [
     organizationNode(),
+    websiteNode(),
     personNode(),
     {
       '@type': 'TechArticle',

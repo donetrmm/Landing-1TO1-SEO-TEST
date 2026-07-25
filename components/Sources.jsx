@@ -2,9 +2,11 @@
 // plataforma deben poder contrastarse contra documentación de primera mano: sin esto, el
 // contenido técnico es palabra del sitio contra la del lector.
 //
-// Los enlaces salen con rel="nofollow noopener" y target en blanco. nofollow no es por
-// desconfianza —es documentación oficial— sino porque no queremos que la única señal
-// saliente del dominio apunte en masa a un solo host.
+// Los enlaces salen con rel="noopener" y target en blanco, SIN nofollow. Los llevaban al
+// principio, y era un error: nofollow significa "no respaldo este destino", que es lo
+// contrario de lo que hace una cita editorial a la documentación primaria del proveedor
+// del que trata el artículo. Enlazar sin reservas a developers.facebook.com es señal de
+// contexto temático, no un riesgo.
 export default function Sources({ items }) {
   if (!items?.length) return null
   return (
@@ -17,7 +19,7 @@ export default function Sources({ items }) {
       <ol className="src-list">
         {items.map((s) => (
           <li key={s.url}>
-            <a href={s.url} target="_blank" rel="nofollow noopener">{s.title}</a>
+            <a href={s.url} target="_blank" rel="noopener">{s.title}</a>
             <span className="src-host">{new URL(s.url).host}</span>
             {s.note && <span className="src-note">{s.note}</span>}
           </li>
