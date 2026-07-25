@@ -32,6 +32,12 @@ export default function sitemap() {
       priority: 0.8,
     })),
     {
+      url: `${SITE_URL}/sobre`,
+      lastModified: homeLastmod,
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
       url: `${SITE_URL}/aviso-de-privacidad`,
       lastModified: reviewed,
       changeFrequency: 'yearly',

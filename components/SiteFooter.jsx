@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { BUSINESS, CONTACT_EMAIL, IS_DEMO } from '../lib/site'
+import { AUTHOR, BUSINESS, CONTACT_EMAIL, IS_DEMO } from '../lib/site'
 
 // El footer ya NO lista las cinco guías. Repetirlas en las nueve páginas producía 45
 // enlaces boilerplate que Google descuenta, aplanaban el grafo interno hasta volverlo una
@@ -23,6 +23,7 @@ export default function SiteFooter({ home = false }) {
             <li><a href={h('caracteristicas')}>Características de 1to1AI</a></li>
             <li><a href={h('beneficios')}>Beneficios para marketing y ventas</a></li>
             <li><Link href="/guias">Guías de atribución de WhatsApp</Link></li>
+            <li><Link href="/sobre">Sobre {AUTHOR.name}</Link></li>
             <li><a href={h('faq')}>Preguntas frecuentes</a></li>
             <li><a href={h('contacto')}>Solicitar acceso</a></li>
           </ul>

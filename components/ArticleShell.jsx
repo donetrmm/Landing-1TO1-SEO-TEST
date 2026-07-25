@@ -3,8 +3,8 @@ import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
 import Sources from './Sources'
 import { relatedOf } from '../lib/articles'
-import { SITE_URL } from '../lib/site'
-import { WEBSITE_ID, orgRef, organizationNode } from '../lib/schema'
+import { AUTHOR, SITE_URL } from '../lib/site'
+import { WEBSITE_ID, orgRef, organizationNode, personNode, personRef } from '../lib/schema'
 
 const LONG_DATE = { day: 'numeric', month: 'long', year: 'numeric' }
 const fmtDate = (iso) =>
@@ -43,6 +43,7 @@ function articleJsonLd(a) {
   // la misma entidad en vez de una.
   const graph = [
     organizationNode(),
+    personNode(),
     {
       '@type': 'TechArticle',
       '@id': `${url}#article`,
@@ -55,7 +56,10 @@ function articleJsonLd(a) {
       isPartOf: { '@id': WEBSITE_ID },
       datePublished: a.published,
       dateModified: a.lastmod,
-      author: orgRef,
+      // author = persona, publisher = organización. Un autor con nombre y perfil
+      // verificable pesa más que una marca anónima, sobre todo en un dominio sin
+      // autoridad propia.
+      author: personRef,
       publisher: orgRef,
       about: [
         { '@type': 'Thing', name: 'Meta Ads' },
@@ -107,11 +111,13 @@ export default function ArticleShell({ article, children }) {
             <h1 className="h1 art-h1">{article.h1}</h1>
             <p className="art-standfirst">{article.standfirst}</p>
             <p className="art-meta">
+              <span className="byline">
+                Por <Link href="/sobre" rel="author">{AUTHOR.name}</Link>, {AUTHOR.jobTitle}
+              </span>
+              <span aria-hidden="true">·</span>
               <time dateTime={article.published}>Publicado el {fmtDate(article.published)}</time>
               <span aria-hidden="true">·</span>
               <span>Revisado el {fmtDate(article.lastmod)}</span>
-              <span aria-hidden="true">·</span>
-              <span>1to1AI</span>
             </p>
 
             <div className="prose">{children}</div>

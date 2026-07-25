@@ -378,6 +378,10 @@ input,select,textarea,button{font:inherit}
 .art-standfirst{font-size:18px;line-height:1.6;color:var(--navy);margin:0 0 24px;max-width:60ch;border-left:2px solid var(--sky);padding-left:20px}
 .art-meta{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 44px;padding-bottom:28px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--ink)}
 .art-meta span[aria-hidden]{opacity:.5}
+.byline{color:var(--navy)}
+.byline a{font-weight:500;text-underline-offset:3px}
+.perfil-list{list-style:none;padding-left:0;gap:8px}
+.perfil-list li{font-family:var(--mono);font-size:14px}
 
 /* El texto se lee mejor a 68ch, pero tablas y bloques de código necesitan el ancho
    completo del artículo: con seis columnas, encajonar la tabla en la medida del párrafo

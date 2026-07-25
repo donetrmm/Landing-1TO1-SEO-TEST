@@ -26,6 +26,10 @@ Qué hace: crea eventos de conversión personalizados (compra, cotización, cita
 - [Preguntas frecuentes](/#faq): trackeo de WhatsApp en Meta Ads, CAPI, medición de ROAS, UTMs y tiempos de implementación
 - [Solicitar acceso](/#contacto): formulario de solicitud; revisión en 24–48 h, requisito de más de 500 leads mensuales
 
+## Autor
+
+- [Sobre Iskander Ramos](/sobre): ingeniero en software; firma las cinco guías técnicas. Perfil en linkedin.com/in/donetramos
+
 ## Legal
 
 - [Aviso de privacidad](/aviso-de-privacidad): datos recabados, finalidades, transferencia de identificadores hasheados a Meta y derechos ARCO conforme a la LFPDPPP
