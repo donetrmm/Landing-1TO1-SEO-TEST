@@ -26,20 +26,34 @@ export const metadata = {
     locale: 'es_MX',
     title: TITLE,
     description: DESCRIPTION.replace(' Solicita acceso.', ''),
-    images: ['/uploads/logo.png'],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: TITLE,
     description: DESCRIPTION.replace(' Solicita acceso.', ''),
-    images: ['/uploads/logo.png'],
   },
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="es-MX">
-      <body>{children}</body>
+      {/* El H1 es el elemento LCP en todas las páginas y usa Space Grotesk. Sin este
+          preload la fuente no se descubre hasta que el navegador parsea el CSS inline,
+          lo que retrasa el pintado del texto grande. Solo esta familia: precargar también
+          Inter y JetBrains Mono las pondría a competir por el mismo ancho de banda en el
+          momento más crítico.
+          Va dentro de <body>: React 19 lo eleva a <head> igual, y colocarlo como hijo
+          directo de <html> lo emitía dos veces. */}
+      <body>
+        <link
+          rel="preload"
+          href="/uploads/fonts/space-grotesk-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        {children}
+      </body>
     </html>
   )
 }

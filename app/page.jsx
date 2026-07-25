@@ -12,35 +12,38 @@ import { orgRef, organizationNode, websiteNode } from '../lib/schema'
 // —una decía lo contrario que la otra— además de declarar en el marcado una pregunta que
 // no aparecía en la página. Marcar contenido que el usuario no ve infringe las políticas
 // de datos estructurados de Google. Si añades una pregunta, va aquí y sale en los dos.
+// Preguntas de intención COMERCIAL, no informativa. Antes eran, literalmente, los cinco
+// títulos de las guías: la home compite con ellas y gana, porque concentra casi todos los
+// enlaces internos. El usuario que busca "cómo trackear ventas de WhatsApp" acababa en
+// una landing de producto en vez de en el contenido. Las consultas informativas son de
+// las guías; aquí van las dudas de quien ya está evaluando contratar.
 const HOME_FAQ = [
   {
-    q: '¿Cómo trackear ventas de WhatsApp en Meta Ads?',
-    a: 'Se trackean enviando cada conversación como evento de conversión al Pixel de Meta mediante un formulario inteligente: 1to1AI captura la respuesta del cliente y dispara el evento al Pixel y a la API de Conversiones en tiempo real, atribuido al anuncio original.',
-    to: 'como-trackear-ventas-whatsapp-meta-ads',
+    q: '¿Qué necesito tener antes de empezar?',
+    a: 'Una cuenta publicitaria de Meta con un dataset (el antiguo Pixel) ya creado, y un número de WhatsApp Business por el que cierres ventas. Nada más: la configuración del evento y del formulario la hace 1to1AI.',
   },
   {
-    q: '¿Se puede alimentar el Pixel de Meta desde WhatsApp?',
-    a: 'Sí. WhatsApp no ejecuta píxeles, pero 1to1AI conecta cada conversación con la API de Conversiones de Meta, de modo que las ventas cerradas por chat llegan al Pixel como eventos de conversión con su campaña, conjunto y anuncio de origen.',
+    q: '¿Tengo que tocar mi sitio web?',
+    a: 'No. Toda la integración ocurre entre 1to1AI y la API de Conversiones de Meta, del lado del servidor. No hay que instalar scripts ni modificar plantillas, y por eso no depende de tu equipo de desarrollo.',
     to: 'alimentar-pixel-meta-desde-whatsapp',
   },
   {
-    q: '¿Qué es la API de Conversiones y para qué sirve?',
-    a: 'La API de Conversiones (CAPI) es la vía de servidor a servidor con la que Meta recibe eventos de conversión sin depender del navegador. Sirve para reportar ventas que ocurren fuera del sitio web — como las que cierran por WhatsApp — sin perder señal por bloqueadores o cookies.',
+    q: '¿Qué pasa con los datos de mis clientes?',
+    a: 'Los identificadores de contacto que se envían a Meta —correo y teléfono— viajan cifrados con SHA-256. El hash reduce la exposición pero no anonimiza: sigue siendo dato personal, así que en México necesitas aviso de privacidad que declare la transferencia.',
     to: 'api-de-conversiones-meta-que-es',
   },
   {
-    q: '¿Cómo se mide el ROAS de campañas que cierran por WhatsApp?',
-    a: 'El ROAS se mide atribuyendo cada venta de WhatsApp al anuncio que la originó: 1to1AI registra el valor de la conversión y lo envía a Meta, que lo cruza con el gasto de campaña para calcular el retorno real, no el estimado.',
+    q: '¿Cuándo se empiezan a notar los resultados?',
+    a: 'El evento llega a Meta en segundos, pero el conjunto de anuncios entra en fase de aprendizaje y necesita del orden de 50 conversiones semanales para estabilizarse. Entre una y dos semanas de costos erráticos son normales, y tocar presupuestos durante ese periodo reinicia el aprendizaje.',
     to: 'medir-roas-campanas-whatsapp',
   },
   {
-    q: '¿No basta con usar UTMs para atribuir las ventas de WhatsApp?',
-    a: 'No. Un UTM es texto en una URL y en un anuncio Click-to-WhatsApp no hay URL: el usuario salta directo a la app. Además, aunque lo capturaras, el dato se queda en tu analítica y nunca llega al algoritmo de Meta, que es quien reparte el presupuesto.',
-    to: 'atribucion-whatsapp-vs-utms',
+    q: '¿Cuánto tarda la implementación?',
+    a: 'La revisión de la solicitud tarda 24 a 48 horas. Tras la aprobación, la configuración del evento personalizado y del formulario inteligente se completa el mismo día.',
   },
   {
-    q: '¿Cuánto tarda la implementación?',
-    a: 'La revisión de la solicitud tarda 24 a 48 horas. Tras la aprobación, la configuración del evento personalizado y del formulario inteligente se completa el mismo día; no requiere cambios en tu sitio web.',
+    q: '¿Por qué el acceso es por solicitud y no abierto?',
+    a: 'Porque por debajo de cierto volumen la señal no alcanza para que el algoritmo de Meta aprenda: con pocas conversiones semanales el conjunto de anuncios no sale de la fase de aprendizaje y la integración no cambia nada. El umbral son 500 leads mensuales.',
   },
 ]
 
@@ -387,7 +390,10 @@ function Guias() {
             <li className="rv guia-card" data-delay={`${i * 0.06}s`} key={a.slug}>
               <p className="guia-k">{a.kicker}</p>
               <p className="guia-t h3"><Link href={`/${a.slug}`}>{a.h1}</Link></p>
-              <p className="guia-d">{a.description}</p>
+              {/* `hook`, no `description`: la description es la meta description de la
+                  guía y también salía en /guias, con lo que el mismo texto vivía en tres
+                  URLs y hacía de /guias un duplicado del 70 % de esta sección. */}
+              <p className="guia-d">{a.hook}</p>
               <p className="guia-go" aria-hidden="true">Leer la guía →</p>
             </li>
           ))}

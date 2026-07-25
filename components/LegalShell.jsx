@@ -19,9 +19,8 @@ export function legalMetadata({ title, description, path }) {
       locale: 'es_MX',
       title,
       description,
-      images: ['/uploads/logo.png'],
     },
-    twitter: { card: 'summary', title, description, images: ['/uploads/logo.png'] },
+    twitter: { card: 'summary_large_image', title, description },
   }
 }
 

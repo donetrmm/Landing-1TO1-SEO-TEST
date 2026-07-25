@@ -4,7 +4,7 @@ import ContactChannel, { hasContact } from '../../components/ContactChannel'
 import { BUSINESS } from '../../lib/site'
 
 const DESCRIPTION =
-  'Aviso de privacidad de 1to1AI: datos personales que se recaban en el formulario de solicitud, finalidades del tratamiento, transferencias a Meta y ejercicio de derechos ARCO conforme a la LFPDPPP.'
+  'Aviso de privacidad de 1to1AI: datos recabados, finalidades, transferencia de identificadores hasheados a Meta y derechos ARCO conforme a la LFPDPPP.'
 
 export const metadata = legalMetadata({
   title: 'Aviso de privacidad | 1to1AI',

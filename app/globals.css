@@ -442,3 +442,7 @@ input,select,textarea,button{font:inherit}
 .art-cta-k .pin{width:7px;height:7px;border-radius:999px;background:var(--sky);animation:pulse 1.8s ease-in-out infinite}
 .art-cta .h3{color:#fff;font-size:22px;margin-bottom:10px}
 .art-cta p{margin:0 0 22px;font-size:15px;line-height:1.65;max-width:52ch}
+.guias-intro{margin:36px 0 0;font-size:16px}
+.guias-intro p{max-width:68ch}
+.guia-for{margin:10px 0 0;font-family:var(--mono);font-size:12.5px;line-height:1.6;color:var(--blue);max-width:70ch}
+.guia-for span{opacity:.7}

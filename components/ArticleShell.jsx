@@ -25,13 +25,11 @@ export function articleMetadata(a) {
       description: a.description,
       publishedTime: a.published,
       modifiedTime: a.lastmod,
-      images: ['/uploads/logo.png'],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: a.title,
       description: a.description,
-      images: ['/uploads/logo.png'],
     },
   }
 }

@@ -4,7 +4,7 @@ import ContactChannel from '../../components/ContactChannel'
 import { BUSINESS } from '../../lib/site'
 
 const DESCRIPTION =
-  'Términos y condiciones de uso del sitio de 1to1AI: naturaleza demostrativa del proyecto, alcance del contenido publicado, propiedad intelectual y limitación de responsabilidad.'
+  'Términos de uso de 1to1AI: naturaleza demostrativa del proyecto, alcance del contenido técnico publicado y limitación de responsabilidad.'
 
 export const metadata = legalMetadata({
   title: 'Términos y condiciones | 1to1AI',

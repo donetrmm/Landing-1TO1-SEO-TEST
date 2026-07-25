@@ -7,7 +7,7 @@ import { orgRef, organizationNode, websiteNode } from '../../lib/schema'
 
 const TITLE = 'Guías de atribución de WhatsApp para Meta Ads'
 const DESCRIPTION =
-  'Cinco guías técnicas sobre cómo atribuir a Meta Ads las ventas que cierran en WhatsApp: identificadores de clic, API de Conversiones, deduplicación de eventos y medición de ROAS.'
+  'Cinco guías técnicas de atribución de WhatsApp en Meta Ads: identificador de clic, API de Conversiones, deduplicación de eventos y medición de ROAS.'
 
 export const metadata = {
   title: `${TITLE} | 1to1AI`,
@@ -20,9 +20,8 @@ export const metadata = {
     locale: 'es_MX',
     title: TITLE,
     description: DESCRIPTION,
-    images: ['/uploads/logo.png'],
   },
-  twitter: { card: 'summary', title: TITLE, description: DESCRIPTION, images: ['/uploads/logo.png'] },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
 }
 
 const jsonLd = {
@@ -82,6 +81,29 @@ export default function Page() {
               qué se puede concluir del número que sale al final.
             </p>
 
+            <div className="prose guias-intro">
+              <p>
+                Las cinco se pueden leer sueltas, pero forman una secuencia. El problema que
+                resuelven es siempre el mismo: <strong>la venta ocurre en un chat y la decisión
+                de presupuesto ocurre en Meta Ads</strong>, y entre los dos hay un salto fuera
+                del navegador donde se pierde la identidad del clic.
+              </p>
+              <p>
+                Antes de montar nada conviene saber tres cosas. La primera, que Meta ya te da
+                atribución a nivel de anuncio para campañas Click-to-WhatsApp sin que integres
+                nada — puede que te baste. La segunda, que el identificador que sostiene todo,{' '}
+                <code>ctwa_clid</code>, solo llega en el primer mensaje de la conversación y es
+                irrecuperable: cada día sin guardarlo es historia perdida. Y la tercera, que
+                enviar identificadores de contacto a Meta es tratamiento de datos personales, con
+                lo que eso implica en México.
+              </p>
+              <p>
+                Ninguna de las cinco vende un producto. Todas cierran con sus fuentes: la
+                documentación de Meta que respalda cada afirmación, porque los contratos de la
+                API cambian entre versiones y la fuente manda sobre el texto.
+              </p>
+            </div>
+
             <ol className="guias-list">
               {ARTICLES.map((a, i) => (
                 <li key={a.slug} className="guia-row">
@@ -92,6 +114,9 @@ export default function Page() {
                       <Link href={`/${a.slug}`}>{a.h1}</Link>
                     </h2>
                     <p className="guia-d">{a.description}</p>
+                    <p className="guia-for">
+                      <span aria-hidden="true">▸</span> {a.forWhom}
+                    </p>
                   </div>
                 </li>
               ))}

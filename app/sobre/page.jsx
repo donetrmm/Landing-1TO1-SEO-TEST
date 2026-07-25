@@ -20,9 +20,8 @@ export const metadata = {
     locale: 'es_MX',
     title: TITLE,
     description: DESCRIPTION,
-    images: ['/uploads/logo.png'],
   },
-  twitter: { card: 'summary', title: TITLE, description: DESCRIPTION, images: ['/uploads/logo.png'] },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
 }
 
 const jsonLd = {
