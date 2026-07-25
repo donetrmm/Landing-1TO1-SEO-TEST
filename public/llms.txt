@@ -10,6 +10,7 @@ Qué hace: crea eventos de conversión personalizados (compra, cotización, cita
 
 ## Guías
 
+- [Índice de guías](/guias): página de categoría con las cinco guías técnicas
 - [Cómo trackear ventas de WhatsApp en Meta Ads](/como-trackear-ventas-whatsapp-meta-ads): recorrido completo del dato, del clic en el anuncio al evento atribuido; ctwa_clid, elección del evento, envío por CAPI y verificación
 - [Qué es la API de Conversiones de Meta](/api-de-conversiones-meta-que-es): envío servidor a servidor, campos de un evento, normalización y hasheo de user_data, deduplicación con event_id, calidad de coincidencia
 - [Cómo alimentar el Pixel de Meta desde WhatsApp](/alimentar-pixel-meta-desde-whatsapp): por qué no se instala un pixel en WhatsApp, la distinción entre dataset, Pixel y CAPI, y el flujo de implementación paso a paso

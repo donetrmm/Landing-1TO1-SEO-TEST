@@ -22,7 +22,7 @@ export default function SiteHeader({ home = false }) {
           <nav aria-label="Navegación principal" className="nav" id="mainNav">
             <a href={h('caracteristicas')}>Características</a>
             <a href={h('beneficios')}>Beneficios</a>
-            <a href={h('guias')}>Guías</a>
+            <Link href="/guias">Guías</Link>
             <a href={h('contacto')}>Contacto</a>
           </nav>
           <div className="hdr-right">

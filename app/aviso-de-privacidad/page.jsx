@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import LegalShell from '../../components/LegalShell'
+import ContactChannel, { hasContact } from '../../components/ContactChannel'
 import { BUSINESS } from '../../lib/site'
 
 export const metadata = {
@@ -15,16 +16,25 @@ export default function Page() {
     <LegalShell title="Aviso de privacidad" kicker="LEGAL">
       <h2>1. Responsable del tratamiento</h2>
       <p>
-        {BUSINESS.name} es el responsable del tratamiento de los datos personales que se recaban a
-        través de este sitio. Al tratarse de un proyecto de demostración, no existe una persona
-        moral constituida ni un domicilio fiscal asociado. Para cualquier asunto relacionado con
-        este aviso, el canal de contacto es{' '}
-        <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>.
+        El artículo 16 de la Ley Federal de Protección de Datos Personales en Posesión de los
+        Particulares (LFPDPPP) exige que todo aviso de privacidad identifique al responsable con
+        su denominación o razón social y su domicilio.{' '}
+        <strong>Este documento no puede cumplir ese requisito</strong>, y conviene decirlo sin
+        rodeos en lugar de rellenarlo con datos inventados: {BUSINESS.name} es un producto
+        ficticio, no existe persona moral constituida, ni domicilio fiscal, ni RFC.
       </p>
       <p>
-        En una implementación real, esta sección debe contener la denominación o razón social
-        completa del responsable y su domicilio, conforme al artículo 16 de la Ley Federal de
-        Protección de Datos Personales en Posesión de los Particulares (LFPDPPP).
+        La consecuencia práctica es que <strong>este sitio no está en condiciones de recabar
+        datos personales</strong>, y por eso no lo hace: el formulario de solicitud valida los
+        campos en el navegador y no transmite nada a ningún servidor (sección 2). Un aviso de
+        privacidad sin responsable identificable solo es admisible porque no hay tratamiento
+        detrás. En cuanto exista un formulario que envíe datos de verdad, esta sección deja de
+        ser un apunte metodológico y pasa a ser un incumplimiento.
+      </p>
+      <p>
+        Canal de contacto para cualquier asunto relacionado con este aviso:{' '}
+        <ContactChannel fallback="no hay buzón de contacto activo mientras el proyecto sea una demostración" />
+        .
       </p>
 
       <h2>2. Datos personales que se recaban</h2>
@@ -64,8 +74,8 @@ export default function Page() {
         <li>Elaboración de estadísticas agregadas de uso y de perfilamiento comercial.</li>
       </ul>
       <p>
-        Para oponerse a las finalidades secundarias basta con enviar un correo a{' '}
-        <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a> indicándolo expresamente.
+        Para oponerse a las finalidades secundarias bastaría con indicarlo expresamente por el
+        canal de contacto: <ContactChannel />.
       </p>
 
       <h2>4. Transferencias y remisiones de datos</h2>
@@ -110,8 +120,16 @@ export default function Page() {
         principios y deberes que marca la normativa (Cancelación); y oponerse al uso de sus datos
         personales para fines específicos (Oposición).
       </p>
+      {!hasContact && (
+        <p>
+          <strong>Sin canal de contacto activo, estos derechos no son ejercitables aquí.</strong>{' '}
+          Es una consecuencia directa de lo dicho en la sección 1, y la razón por la que este
+          sitio no recaba dato alguno: no se recoge lo que no se puede atender. El procedimiento
+          que sigue describe cómo debería tramitarse en una implementación real.
+        </p>
+      )}
       <p>
-        La solicitud debe enviarse a <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a> con el
+        La solicitud debe enviarse por el canal de contacto (<ContactChannel />) con el
         nombre del titular, un medio para comunicarle la respuesta, los documentos que acrediten su
         identidad, la descripción clara de los datos respecto de los que busca ejercer el derecho y
         cualquier elemento que facilite su localización.

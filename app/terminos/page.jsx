@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import LegalShell from '../../components/LegalShell'
+import ContactChannel from '../../components/ContactChannel'
 import { BUSINESS } from '../../lib/site'
 
 export const metadata = {
@@ -110,7 +111,8 @@ export default function Page() {
       <h2>10. Contacto</h2>
       <p>
         Para cualquier consulta relacionada con estos términos:{' '}
-        <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>.
+        <ContactChannel fallback="no hay buzón de contacto activo mientras el proyecto sea una demostración" />
+        .
       </p>
 
       <p className="prose-note">

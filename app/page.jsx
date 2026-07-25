@@ -4,7 +4,8 @@ import Contacto from '../components/Contacto'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
 import { ARTICLES } from '../lib/articles'
-import { BUSINESS, SITE_URL } from '../lib/site'
+import { SITE_URL } from '../lib/site'
+import { orgRef, organizationNode, websiteNode } from '../lib/schema'
 
 const HOME_FAQ = [
   ['¿Cómo trackear ventas de WhatsApp en Meta Ads?', 'Se trackean capturando el identificador de clic que Meta adjunta al primer mensaje de una conversación originada por un anuncio Click-to-WhatsApp y reenviando después la conversión por la API de Conversiones, atribuida al anuncio original.'],
@@ -18,37 +19,15 @@ const HOME_FAQ = [
 const homeJsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': `${SITE_URL}/#organization`,
-      name: '1to1AI',
-      url: SITE_URL,
-      logo: `${SITE_URL}/uploads/logo.png`,
-      areaServed: ['MX', 'LATAM'],
-      email: BUSINESS.email,
-      disambiguatingDescription: BUSINESS.legalNotice,
-      contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'sales',
-        email: BUSINESS.email,
-        availableLanguage: ['es-MX', 'en'],
-      },
-    },
-    {
-      '@type': 'WebSite',
-      '@id': `${SITE_URL}/#website`,
-      name: '1to1AI',
-      url: SITE_URL,
-      inLanguage: 'es-MX',
-      publisher: { '@id': `${SITE_URL}/#organization` },
-    },
+    organizationNode(),
+    websiteNode(),
     {
       '@type': 'SoftwareApplication',
       name: '1to1AI',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web',
       url: SITE_URL,
-      publisher: { '@id': `${SITE_URL}/#organization` },
+      publisher: orgRef,
       description:
         'Software de atribución que trackea conversaciones de WhatsApp y las envía como eventos de conversión al Pixel de Meta y a la API de Conversiones.',
       offers: {
@@ -62,6 +41,7 @@ const homeJsonLd = {
       '@type': 'ItemList',
       '@id': `${SITE_URL}/#guias`,
       name: 'Guías de atribución de WhatsApp para Meta Ads',
+      url: `${SITE_URL}/guias`,
       itemListElement: ARTICLES.map((a, i) => ({
         '@type': 'ListItem',
         position: i + 1,
@@ -370,18 +350,22 @@ function Guias() {
         <div className="kicker rv"><span className="no">/08</span><span className="lbl">GUÍAS</span><span className="fill" aria-hidden="true" /><span className="idx">08 — 10</span></div>
         <h2 id="h-guias" className="h2 rv" style={{ maxWidth: '22ch' }}>Cómo funciona la atribución de WhatsApp, en detalle</h2>
         <p className="lead rv" style={{ marginBottom: 44 }}>Cinco guías técnicas sobre el problema que resuelve 1to1AI: identificadores de clic, API de Conversiones, deduplicación de eventos y medición de retorno. Escritas para quien va a implementarlo, no para quien va a comprarlo.</p>
+        {/* El <a> envuelve solo el título: ese es el anchor que ve Google, y coincide
+            con la consulta objetivo del destino. El resto de la tarjeta sigue siendo
+            clicable mediante .guia-t a::after, sin diluir el anchor. */}
         <ul className="grid-guias">
           {ARTICLES.map((a, i) => (
-            <li className="rv" data-delay={`${i * 0.06}s`} key={a.slug}>
-              <Link href={`/${a.slug}`} className="guia-card">
-                <span className="guia-k">{a.kicker}</span>
-                <span className="h3">{a.h1}</span>
-                <span className="guia-d">{a.description}</span>
-                <span className="guia-go" aria-hidden="true">Leer la guía →</span>
-              </Link>
+            <li className="rv guia-card" data-delay={`${i * 0.06}s`} key={a.slug}>
+              <p className="guia-k">{a.kicker}</p>
+              <p className="guia-t h3"><Link href={`/${a.slug}`}>{a.h1}</Link></p>
+              <p className="guia-d">{a.description}</p>
+              <p className="guia-go" aria-hidden="true">Leer la guía →</p>
             </li>
           ))}
         </ul>
+        <p className="guias-more rv">
+          <Link href="/guias">Ver el índice completo de guías de atribución de WhatsApp</Link>
+        </p>
       </div>
     </section>
   )

@@ -2,7 +2,12 @@ import Link from 'next/link'
 import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
 import { relatedOf } from '../lib/articles'
-import { LAST_REVIEWED, SITE_URL } from '../lib/site'
+import { SITE_URL } from '../lib/site'
+import { WEBSITE_ID, orgRef, organizationNode } from '../lib/schema'
+
+const LONG_DATE = { day: 'numeric', month: 'long', year: 'numeric' }
+const fmtDate = (iso) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString('es-MX', { ...LONG_DATE, timeZone: 'UTC' })
 
 // Metadata de Next para una guía. Cada page.jsx exporta `metadata = articleMetadata(a)`.
 export function articleMetadata(a) {
@@ -18,7 +23,7 @@ export function articleMetadata(a) {
       title: a.title,
       description: a.description,
       publishedTime: a.published,
-      modifiedTime: LAST_REVIEWED,
+      modifiedTime: a.lastmod,
       images: ['/uploads/logo.png'],
     },
     twitter: {
@@ -32,7 +37,11 @@ export function articleMetadata(a) {
 
 function articleJsonLd(a) {
   const url = `${SITE_URL}/${a.slug}`
+  // El Organization va como nodo completo con su @id estable, y author/publisher lo
+  // referencian. Antes se redefinía inline en cada campo de cada página: siete copias de
+  // la misma entidad en vez de una.
   const graph = [
+    organizationNode(),
     {
       '@type': 'TechArticle',
       '@id': `${url}#article`,
@@ -42,15 +51,11 @@ function articleJsonLd(a) {
       inLanguage: 'es-MX',
       url,
       mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      isPartOf: { '@id': WEBSITE_ID },
       datePublished: a.published,
-      dateModified: LAST_REVIEWED,
-      author: { '@type': 'Organization', name: '1to1AI', url: SITE_URL },
-      publisher: {
-        '@type': 'Organization',
-        name: '1to1AI',
-        url: SITE_URL,
-        logo: { '@type': 'ImageObject', url: `${SITE_URL}/uploads/logo.png` },
-      },
+      dateModified: a.lastmod,
+      author: orgRef,
+      publisher: orgRef,
       about: [
         { '@type': 'Thing', name: 'Meta Ads' },
         { '@type': 'Thing', name: 'API de Conversiones de Meta' },
@@ -62,7 +67,7 @@ function articleJsonLd(a) {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE_URL },
-        { '@type': 'ListItem', position: 2, name: 'Guías', item: `${SITE_URL}/#guias` },
+        { '@type': 'ListItem', position: 2, name: 'Guías', item: `${SITE_URL}/guias` },
         { '@type': 'ListItem', position: 3, name: a.h1, item: url },
       ],
     },
@@ -92,7 +97,7 @@ export default function ArticleShell({ article, children }) {
             <nav className="crumbs" aria-label="Ruta de navegación">
               <Link href="/">Inicio</Link>
               <span aria-hidden="true">/</span>
-              <a href="/#guias">Guías</a>
+              <Link href="/guias">Guías</Link>
               <span aria-hidden="true">/</span>
               <span aria-current="page">{article.h1}</span>
             </nav>
@@ -101,9 +106,9 @@ export default function ArticleShell({ article, children }) {
             <h1 className="h1 art-h1">{article.h1}</h1>
             <p className="art-standfirst">{article.standfirst}</p>
             <p className="art-meta">
-              <time dateTime={article.published}>Publicado el 24 de julio de 2026</time>
+              <time dateTime={article.published}>Publicado el {fmtDate(article.published)}</time>
               <span aria-hidden="true">·</span>
-              <span>Revisado el 24 de julio de 2026</span>
+              <span>Revisado el {fmtDate(article.lastmod)}</span>
               <span aria-hidden="true">·</span>
               <span>1to1AI</span>
             </p>
@@ -125,19 +130,23 @@ export default function ArticleShell({ article, children }) {
             )}
 
             {related.length > 0 && (
+              // El enlace envuelve SOLO el título, que es el anchor descriptivo que
+              // interesa; el kicker y el resumen quedan fuera. La tarjeta entera sigue
+              // siendo clicable vía ::after, sin diluir el anchor con 30 palabras.
               <nav className="art-rel" aria-labelledby="rel-h">
                 <h2 id="rel-h" className="sub-h">Sigue leyendo</h2>
                 <ul>
                   {related.map((r) => (
-                    <li key={r.slug}>
-                      <Link href={`/${r.slug}`}>
-                        <span className="rel-k">{r.kicker}</span>
-                        <span className="rel-t">{r.h1}</span>
-                        <span className="rel-d">{r.standfirst}</span>
-                      </Link>
+                    <li key={r.slug} className="rel-card">
+                      <p className="rel-k">{r.kicker}</p>
+                      <p className="rel-t"><Link href={`/${r.slug}`}>{r.h1}</Link></p>
+                      <p className="rel-d">{r.standfirst}</p>
                     </li>
                   ))}
                 </ul>
+                <p className="rel-all">
+                  <Link href="/guias">Ver las cinco guías de atribución de WhatsApp</Link>
+                </p>
               </nav>
             )}
 

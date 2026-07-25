@@ -1,7 +1,10 @@
 import Link from 'next/link'
-import { ARTICLES } from '../lib/articles'
-import { BUSINESS, IS_DEMO } from '../lib/site'
+import { BUSINESS, CONTACT_EMAIL, IS_DEMO } from '../lib/site'
 
+// El footer ya NO lista las cinco guías. Repetirlas en las nueve páginas producía 45
+// enlaces boilerplate que Google descuenta, aplanaban el grafo interno hasta volverlo una
+// malla sin jerarquía, e inflaban cualquier conteo de enlaces entrantes. Ahora hay un
+// único enlace a /guias, que es el nodo que distribuye hacia las cinco.
 export default function SiteFooter({ home = false }) {
   const h = (id) => (home ? `#${id}` : `/#${id}`)
   return (
@@ -17,34 +20,28 @@ export default function SiteFooter({ home = false }) {
         <nav aria-label="Navegación del sitio">
           <p className="foot-h">SITIO</p>
           <ul>
-            <li><Link href="/">Inicio</Link></li>
             <li><a href={h('caracteristicas')}>Características de 1to1AI</a></li>
             <li><a href={h('beneficios')}>Beneficios para marketing y ventas</a></li>
+            <li><Link href="/guias">Guías de atribución de WhatsApp</Link></li>
             <li><a href={h('faq')}>Preguntas frecuentes</a></li>
             <li><a href={h('contacto')}>Solicitar acceso</a></li>
           </ul>
         </nav>
-        <nav aria-label="Guías">
-          <p className="foot-h">GUÍAS</p>
+        <nav aria-label="Legal">
+          <p className="foot-h">LEGAL</p>
           <ul>
-            {ARTICLES.map((a) => (
-              <li key={a.slug}>
-                <Link href={`/${a.slug}`}>{a.h1}</Link>
-              </li>
-            ))}
+            <li><Link href="/aviso-de-privacidad">Aviso de privacidad</Link></li>
+            <li><Link href="/terminos">Términos y condiciones</Link></li>
           </ul>
         </nav>
         <div>
-          <nav aria-label="Legal">
-            <p className="foot-h">LEGAL</p>
-            <ul>
-              <li><Link href="/aviso-de-privacidad">Aviso de privacidad</Link></li>
-              <li><Link href="/terminos">Términos y condiciones</Link></li>
-            </ul>
-          </nav>
-          <p className="foot-h" style={{ marginTop: 28 }}>CONTACTO</p>
+          <p className="foot-h">CONTACTO</p>
           <ul className="mono-list">
-            <li><a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a></li>
+            {CONTACT_EMAIL ? (
+              <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
+            ) : (
+              <li className="foot-nocontact">{BUSINESS.noContactNotice}</li>
+            )}
             <li>{BUSINESS.areaServed} · {BUSINESS.locale}</li>
           </ul>
         </div>
