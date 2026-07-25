@@ -55,6 +55,9 @@ function articleJsonLd(a) {
       inLanguage: 'es-MX',
       url,
       mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      // `image` es requisito de Google para rich results de articulo, y la imagen ya
+      // existe desde que se generan las OG por pagina. Faltaba cablearla.
+      image: { '@type': 'ImageObject', url: `${url}/opengraph-image`, width: 1200, height: 630 },
       isPartOf: { '@id': WEBSITE_ID },
       datePublished: a.published,
       dateModified: a.lastmod,
@@ -83,6 +86,7 @@ function articleJsonLd(a) {
     graph.push({
       '@type': 'FAQPage',
       '@id': `${url}#faq`,
+      isPartOf: { '@id': WEBSITE_ID },
       mainEntity: a.faq.map((f) => ({
         '@type': 'Question',
         name: f.q,
@@ -98,7 +102,7 @@ export default function ArticleShell({ article, children }) {
   return (
     <div className="page">
       <SiteHeader />
-      <main>
+      <main id="contenido">
         <article className="art">
           <div className="wrap art-in">
             <nav className="crumbs" aria-label="Ruta de navegación">

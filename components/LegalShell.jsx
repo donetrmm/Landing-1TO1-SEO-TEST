@@ -13,7 +13,7 @@ export function legalMetadata({ title, description, path }) {
     description,
     alternates: { canonical: path },
     openGraph: {
-      type: 'article',
+      type: 'website',
       url: path,
       siteName: '1to1AI',
       locale: 'es_MX',
@@ -41,6 +41,7 @@ function legalJsonLd({ title, description, path }) {
         isPartOf: { '@id': `${SITE_URL}/#website` },
         publisher: orgRef,
         dateModified: LAST_REVIEWED,
+        image: { '@type': 'ImageObject', url: `${url}/opengraph-image`, width: 1200, height: 630 },
       },
       {
         '@type': 'BreadcrumbList',
@@ -57,7 +58,7 @@ export default function LegalShell({ title, kicker, description, path, children 
   return (
     <div className="page">
       <SiteHeader />
-      <main>
+      <main id="contenido">
         <article className="art legal">
           <div className="wrap art-in">
             <nav className="crumbs" aria-label="Ruta de navegación">

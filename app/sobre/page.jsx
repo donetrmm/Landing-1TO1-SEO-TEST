@@ -38,6 +38,7 @@ const jsonLd = {
       description: DESCRIPTION,
       inLanguage: 'es-MX',
       isPartOf: { '@id': `${SITE_URL}/#website` },
+      image: { '@type': 'ImageObject', url: `${SITE_URL}/sobre/opengraph-image`, width: 1200, height: 630 },
       mainEntity: { '@id': PERSON_ID },
       publisher: orgRef,
     },
@@ -55,7 +56,7 @@ export default function Page() {
   return (
     <div className="page">
       <SiteHeader />
-      <main>
+      <main id="contenido">
         <article className="art">
           <div className="wrap art-in">
             <nav className="crumbs" aria-label="Ruta de navegación">

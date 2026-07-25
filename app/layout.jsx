@@ -3,7 +3,7 @@ import { IS_CANONICAL_DEPLOY, SITE_URL } from '../lib/site'
 
 const TITLE = '1to1AI | Trackea tus ventas de WhatsApp y optimiza Meta Ads'
 const DESCRIPTION =
-  'Trackea cada venta de WhatsApp y alimenta tu Pixel de Meta automáticamente. Optimiza campañas que antes eran imposibles de medir y baja tu CPL. Solicita acceso.'
+  'Trackea cada venta de WhatsApp y alimenta tu Pixel de Meta automáticamente. Optimiza campañas que antes eran imposibles de medir y baja tu CPL.'
 
 // El JSON-LD ya no vive aquí: cada ruta declara el suyo (la home en app/page.jsx, las
 // guías en components/ArticleShell). Tenerlo en el layout inyectaba el FAQPage de la
@@ -42,9 +42,15 @@ export default function RootLayout({ children }) {
           lo que retrasa el pintado del texto grande. Solo esta familia: precargar también
           Inter y JetBrains Mono las pondría a competir por el mismo ancho de banda en el
           momento más crítico.
-          Va dentro de <body>: React 19 lo eleva a <head> igual, y colocarlo como hijo
-          directo de <html> lo emitía dos veces. */}
+          React 19 lo eleva a <head>, pero además deja el elemento literal: sale dos
+          veces con distinto orden de atributos. Probé como hijo de <html> y dentro de
+          <body> y ocurre igual. El navegador deduplica por URL —la fuente se descarga
+          una sola vez— así que el coste real es cero; se documenta para que no vuelva a
+          reportarse como defecto pendiente. */}
       <body>
+        {/* Skip link: hay 4 enlaces de nav y 5 del rail lateral antes del
+            contenido, en las 10 URLs. */}
+        <a className="skip" href="#contenido">Ir al contenido</a>
         <link
           rel="preload"
           href="/uploads/fonts/space-grotesk-latin.woff2"

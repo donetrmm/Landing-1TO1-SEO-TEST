@@ -19,6 +19,17 @@ const nextConfig = {
   async headers() {
     return [
       {
+        // Los ficheros de public/ se servían con `max-age=0, must-revalidate`, así que la
+        // fuente del H1 —que es el LCP y va precargada— pagaba una petición condicional
+        // en cada navegación, incluidas las internas. En 4G eso es un RTT extra antes de
+        // pintar el texto grande, repetido en las 10 URLs.
+        //
+        // Es seguro marcarlas inmutables: si hay que cambiar una fuente o el logo, se
+        // cambia el nombre del fichero.
+        source: '/uploads/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
         // llms.txt y llms-full.txt reproducen buena parte del contenido del sitio en
         // texto plano. Un .txt no puede llevar <link rel="canonical">, así que para
         // Google son duplicados sin canónico declarado — justo el estado "Duplicada: el

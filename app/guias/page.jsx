@@ -38,8 +38,11 @@ const jsonLd = {
       inLanguage: 'es-MX',
       isPartOf: { '@id': `${SITE_URL}/#website` },
       publisher: orgRef,
+      image: { '@type': 'ImageObject', url: `${SITE_URL}/guias/opengraph-image`, width: 1200, height: 630 },
       mainEntity: {
         '@type': 'ItemList',
+        // Mismo @id que declara la home: antes eran dos entidades sin relacion.
+        '@id': `${SITE_URL}/guias#list`,
         itemListOrder: 'https://schema.org/ItemListOrderAscending',
         numberOfItems: ARTICLES.length,
         itemListElement: ARTICLES.map((a, i) => ({
@@ -64,7 +67,7 @@ export default function Page() {
   return (
     <div className="page">
       <SiteHeader />
-      <main>
+      <main id="contenido">
         <div className="art">
           <div className="wrap art-in art-in-wide">
             <nav className="crumbs" aria-label="Ruta de navegación">
