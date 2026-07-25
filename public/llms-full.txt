@@ -96,6 +96,6 @@ La revisión de la solicitud tarda 24 a 48 horas. Tras la aprobación, la config
 
 ## Contacto y entidad
 Proyecto de demostración; no hay razón social ni domicilio fiscal porque no existe una empresa constituida.
-Contacto: no hay buzón activo. Se retiró una dirección en el TLD reservado .example (RFC 2606, garantizado a no resolver) porque anunciar un canal inexistente es peor que declarar su ausencia.
+Contacto: donetramosm@gmail.com
 Canonical: https://1to1ai.vercel.app · es-MX · México y LATAM
 Legal: /aviso-de-privacidad · /terminos
