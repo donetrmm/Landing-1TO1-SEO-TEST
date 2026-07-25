@@ -418,10 +418,12 @@ function Faq() {
               <tr><th scope="row">Esfuerzo del equipo</th><td className="hl">Automático tras la configuración</td><td>Alto y constante</td><td>Una pregunta por cada venta</td><td>Ninguno</td></tr>
               <tr><th scope="row">Tiempo de implementación</th><td className="hl">1 día tras aprobación</td><td>Semanas de disciplina</td><td>Inmediato pero impreciso</td><td>—</td></tr>
               <tr><th scope="row">Qué aprende Meta</th><td className="hl">Ventas reales, con valor de conversión</td><td>Clics, no ventas</td><td>Nada — el dato nunca llega al pixel</td><td>Nada</td></tr>
+              <tr><th scope="row">Mantenimiento y riesgo</th><td>Continuo: si un hash va mal normalizado, Meta acepta el evento y no lo atribuye, sin dar error</td><td>Alto, pero los fallos se ven</td><td>Ninguno</td><td>Ninguno</td></tr>
+              <tr><th scope="row">Carga de cumplimiento</th><td>Alta: transfieres identificadores personales a un tercero y necesitas aviso de privacidad</td><td>Baja</td><td>Ninguna</td><td>Ninguna</td></tr>
             </tbody>
           </table>
         </div>
-        <p className="lead rv" style={{ marginTop: 20, fontSize: 14.5 }}>El desglose de esta comparativa, con los cuatro métodos frente a frente, está en <Link href="/atribucion-whatsapp-vs-utms">atribución de WhatsApp vs UTMs</Link>.</p>
+        <p className="lead rv" style={{ marginTop: 20, fontSize: 14.5 }}>Las dos últimas filas son las que 1to1AI pierde, y están aquí a propósito: una comparativa donde la opción propia gana todas las filas no informa de nada. El desglose completo —incluido el quinto método, los reportes nativos de Meta, que ya te dan atribución a nivel de anuncio sin montar nada— está en <Link href="/atribucion-whatsapp-vs-utms">atribución de WhatsApp vs UTMs</Link>.</p>
         <h3 className="sub-h rv">Glosario</h3>
         <dl className="gloss rv">
           {gloss.map(([t, d]) => <div key={t}><dt>{t}</dt><dd>{d}</dd></div>)}

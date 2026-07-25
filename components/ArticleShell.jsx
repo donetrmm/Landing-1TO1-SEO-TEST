@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
+import Sources from './Sources'
 import { relatedOf } from '../lib/articles'
 import { SITE_URL } from '../lib/site'
 import { WEBSITE_ID, orgRef, organizationNode } from '../lib/schema'
@@ -114,6 +115,8 @@ export default function ArticleShell({ article, children }) {
             </p>
 
             <div className="prose">{children}</div>
+
+            <Sources items={article.sources} />
 
             {article.faq?.length > 0 && (
               <section className="art-faq" aria-labelledby={`faq-${article.slug}`}>
