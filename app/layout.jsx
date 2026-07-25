@@ -1,5 +1,5 @@
 import './globals.css'
-import { SITE_URL } from '../lib/site'
+import { IS_CANONICAL_DEPLOY, SITE_URL } from '../lib/site'
 
 const TITLE = '1to1AI | Trackea tus ventas de WhatsApp y optimiza Meta Ads'
 const DESCRIPTION =
@@ -13,6 +13,10 @@ export const metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: '/' },
+  // Los espejos (Netlify, previews) se sirven con noindex. Se deja crawleable a
+  // propósito: si además lo bloqueáramos por robots.txt, el rastreador no podría leer
+  // la propia etiqueta noindex.
+  ...(IS_CANONICAL_DEPLOY ? {} : { robots: { index: false, follow: false } }),
   verification: { google: '7qlw5EF9VOeYZGMe_2K3eJfHdHMorpQmuWKXtoLCea4' },
   icons: { icon: '/uploads/logo.png' },
   openGraph: {

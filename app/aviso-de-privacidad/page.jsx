@@ -7,8 +7,9 @@ export const metadata = {
   title: 'Aviso de privacidad | 1to1AI',
   description:
     'Aviso de privacidad de 1to1AI: datos personales que se recaban en el formulario de solicitud, finalidades del tratamiento, transferencias a Meta y ejercicio de derechos ARCO conforme a la LFPDPPP.',
+  // Sin `robots` explícito: indexable es el default, y declararlo aquí anulaba el
+  // noindex que el layout aplica a los despliegues espejo.
   alternates: { canonical: '/aviso-de-privacidad' },
-  robots: { index: true, follow: true },
 }
 
 export default function Page() {

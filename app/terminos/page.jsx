@@ -7,8 +7,8 @@ export const metadata = {
   title: 'Términos y condiciones | 1to1AI',
   description:
     'Términos y condiciones de uso del sitio de 1to1AI: naturaleza demostrativa del proyecto, alcance del contenido publicado, propiedad intelectual y limitación de responsabilidad.',
+  // Sin `robots` explícito: ver app/aviso-de-privacidad/page.jsx.
   alternates: { canonical: '/terminos' },
-  robots: { index: true, follow: true },
 }
 
 export default function Page() {

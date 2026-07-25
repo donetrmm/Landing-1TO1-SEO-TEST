@@ -1,0 +1,22 @@
+
+# Despliegue espejo en Netlify, para contrastar proveedor contra Vercel.
+#
+# El dominio que debe posicionar sigue siendo el de Vercel (lib/site.js → CANONICAL_URL).
+# Este despliegue se sirve con noindex porque la variable `URL` que inyecta Netlify no
+# coincide con esa constante: dos copias idénticas indexables se canibalizarían y
+# repartirían señales entre ambas.
+#
+# Para invertirlo y que Netlify sea el canónico: cambia CANONICAL_URL en lib/site.js al
+# dominio de Netlify. El otro pasará a noindex solo. Nunca los dos a la vez.
+#
+# No se declara @netlify/plugin-nextjs: Netlify autodetecta Next.js e instala el runtime.
+# El resto de la configuración de build vive aquí para no depender de la UI.
+
+[build]
+  command = "pnpm run build"
+  publish = ".next"
+
+[build.environment]
+  # Next 16 exige Node >= 20.9. Se fija para no depender del default de Netlify,
+  # que cambia con el tiempo. Mismo valor que .nvmrc.
+  NODE_VERSION = "22"
